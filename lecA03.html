@@ -311,7 +311,7 @@ window.Quarto = {
 <section id="偏差-deviation" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="偏差-deviation">偏差 (Deviation)</h3>
 <p>個々の観測値 <span class="math inline">\(x_i\)</span> が平均値 <span class="math inline">\(\bar{x}\)</span> からどれだけ離れているか、平均との差を示す値です。</p>
-<p><span class="math display">\[\text{偏差} = x_i - \bar{x}\]</span> この偏差の平均を比べて評価すれば良いように思われますが、合計が0となり、うまく行きません。</p>
+<p><span class="math display">\[\text{偏差} = x_i - \bar{x}\]</span> この偏差の平均を比べて評価すれば良いように思われますが、合計が0となり、うまくいきません。</p>
 <p><span class="math display">\[
 \begin{aligned}
 &amp;\frac{1}{n} \{ (x_1 - \bar{x}) + (x_2 - \bar{x}) + \cdots + (x_n - \bar{x}) \} \\[15pt]
@@ -349,14 +349,14 @@ Note
 </section>
 <section id="標準偏差-standard-deviation" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="標準偏差-standard-deviation">標準偏差 (Standard Deviation)</h3>
-<p>分散は単位が2乗になってしまうため、平方根をとって元の単位に戻したものです。合計が0になることもなく、単位も元の単位を同じになります。</p>
+<p>分散は単位が2乗になってしまうため、平方根をとって元の単位に戻したものです。合計が0になることもなく、単位も元の単位と同じになります。</p>
 <p><span class="math display">\[s_x = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2}\]</span></p>
 </section>
 <section id="標準偏差による分布の形状変化" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="標準偏差による分布の形状変化">標準偏差による分布の形状変化</h3>
 <p>標準偏差の大きさが変わると、分布の裾野の広がり方が以下のように変化します。</p>
 <p>分散は単位が違うのでグラフ上で具体的な長さをイメージするのは難しいです。</p>
-<p>他方、標準偏差は単位が同じなので同じグラフ上でばらつきの幅をイメージすることができます。標準偏差の範囲を <span class="math inline">\(\sigma\)</span> 範囲と呼びます。</p>
+<p>他方、標準偏差は単位が同じなので同じグラフ上でばらつきの幅をイメージすることができます。1 標準偏差の範囲を <span class="math inline">\(1 \sigma\)</span> 範囲と呼びます。</p>
 <ul>
 <li>標準偏差 = 1: 標準的な広がり</li>
 </ul>
@@ -505,7 +505,7 @@ z_{花子} &amp;= \frac{\text{得点} - \text{平均}}{\text{標準偏差}} \\[1
 </section>
 <section id="偏差値" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="偏差値"><span class="header-section-number">3.3</span> 偏差値</h2>
-<p>Zスコアをさらに人間が直感的に理解しやすい数値（平均 50、標準偏差 10）に変換したものです。</p>
+<p>Zスコアをさらに人間（日本人）が直感的に理解しやすい数値（平均 50、標準偏差 10）に変換したものです。</p>
 <p><span class="math display">\[\text{偏差値} = \left( \frac{x_i - \bar{x}}{s} \times 10 \right) + 50\]</span></p>
 <p>これにより、平均的な学生は偏差値 50となり、偏差値 60は上位約 16%（1 標準偏差）となります。</p>
 <section id="標準偏差と偏差値の割合" class="level3 unnumbered">
@@ -560,7 +560,7 @@ z_{花子} &amp;= \frac{\text{得点} - \text{平均}}{\text{標準偏差}} \\[1
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><span class="math inline">\(-3\)</span></td>
-<td style="text-align: center;">30</td>
+<td style="text-align: center;">20</td>
 <td style="text-align: center;">約 99.87%</td>
 <td style="text-align: center;">1,000人で999位</td>
 </tr>
