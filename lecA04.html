@@ -336,7 +336,7 @@ window.Quarto = {
 <p><strong>全体のデータ数が奇数の場合</strong></p>
 <p>上記例のように、中央値を除いて上下半分に分け、それぞれの真ん中の値を第3四分位、第1四分位とします。</p>
 <p><strong>全体のデータ数が偶数の場合</strong></p>
-<p>以下のように、データ全体を単純に上下半分に分け、それぞれの真ん中の値を第3四分位、第1四分位とします。（その際、中央値は真ん中の値2つの平均値になります。）</p>
+<p>以下のように、データ全体を単純に上下半分に分け、それぞれの真ん中の値を第3四分位、第1四分位とします。その際、中央値は真ん中の値2つの平均値になります。</p>
 <div id="fig-A04-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-A04-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -368,15 +368,15 @@ window.Quarto = {
 <p>エクセルで四分位値を求める際は、以下の関数を使用します。</p>
 <p>関数： <code>=QUARTILE.INC(範囲, 四分位位置)</code></p>
 <ul>
-<li>最小値：位置に <code>0</code><br>
-</li>
-<li>第1四分位：位置に <code>1</code><br>
-</li>
-<li>第2四分位：位置に <code>2</code><br>
+<li>最大値：位置に <code>4</code><br>
 </li>
 <li>第3四分位：位置に <code>3</code><br>
 </li>
-<li>最大値：位置に <code>4</code></li>
+<li>第2四分位：位置に <code>2</code><br>
+</li>
+<li>第1四分位：位置に <code>1</code><br>
+</li>
+<li>最小値：位置に <code>0</code></li>
 </ul>
 <p>※ 注意点: エクセルの計算アルゴリズムの関係上、手計算の結果と完全に一致しない場合があります。</p>
 <p>参考：<a href="https://www.fy1203.com/2020/06/19/excel-qurtile-2/">QURTILE関数～結果が手計算と違う理由</a></p>
