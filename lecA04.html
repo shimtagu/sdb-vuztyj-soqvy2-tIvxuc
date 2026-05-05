@@ -254,11 +254,13 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#定義" id="toc-定義" class="nav-link" data-scroll-target="#定義">定義</a></li>
   <li><a href="#中央値の扱い" id="toc-中央値の扱い" class="nav-link" data-scroll-target="#中央値の扱い">「中央値」の扱い</a></li>
-  <li><a href="#計算例の比較" id="toc-計算例の比較" class="nav-link" data-scroll-target="#計算例の比較">計算例の比較</a></li>
   <li><a href="#四分位範囲iqr" id="toc-四分位範囲iqr" class="nav-link" data-scroll-target="#四分位範囲iqr">四分位範囲（IQR）</a></li>
   <li><a href="#外れ値" id="toc-外れ値" class="nav-link" data-scroll-target="#外れ値">外れ値</a></li>
   </ul></li>
-  <li><a href="#エクセルによる四分位値の算出" id="toc-エクセルによる四分位値の算出" class="nav-link" data-scroll-target="#エクセルによる四分位値の算出"><span class="header-section-number">4.2</span> エクセルによる四分位値の算出</a></li>
+  <li><a href="#エクセルによる四分位値の算出" id="toc-エクセルによる四分位値の算出" class="nav-link" data-scroll-target="#エクセルによる四分位値の算出"><span class="header-section-number">4.2</span> エクセルによる四分位値の算出</a>
+  <ul class="collapse">
+  <li><a href="#最大値最小値を含めない計算" id="toc-最大値最小値を含めない計算" class="nav-link" data-scroll-target="#最大値最小値を含めない計算">最大値・最小値を含めない計算</a></li>
+  </ul></li>
   <li><a href="#箱ひげ図-box-plot" id="toc-箱ひげ図-box-plot" class="nav-link" data-scroll-target="#箱ひげ図-box-plot"><span class="header-section-number">4.3</span> 箱ひげ図 （Box Plot）</a>
   <ul class="collapse">
   <li><a href="#エクセルでの描画" id="toc-エクセルでの描画" class="nav-link" data-scroll-target="#エクセルでの描画">エクセルでの描画</a></li>
@@ -330,30 +332,11 @@ window.Quarto = {
 </section>
 <section id="中央値の扱い" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="中央値の扱い">「中央値」の扱い</h3>
-<p>四分位を求める際、第1四分位数（<span class="math inline">\(Q_1\)</span>）と第3四分位数（<span class="math inline">\(Q_3\)</span>）をどのように計算するかには幾つかの方法が存在します。特に重要なのが、<strong>中央値を計算対象に含めるかどうか</strong>という点です。</p>
-<p><br></p>
-<p><strong>中央値を含めない計算（排他的 / Exclusive）</strong></p>
-<p>データを中央値で前後2つのグループに分ける際、中央値そのものをどちらのグループにも含めずに計算する方法です。</p>
-<ul>
-<li><strong>Excel関数</strong>: <code>QUARTILE.EXC</code></li>
-<li><strong>特徴</strong>:
-<ul>
-<li>文部科学省の学習指導要領（中学校・高校）で推奨されている定義です。</li>
-<li>中央値を除外（Exclude）して、残りのデータの真ん中の値を求めます。</li>
-<li>計算結果は、後述の <code>INC</code> よりも四分位範囲（IQR）が広くなる傾向があります。</li>
-</ul></li>
-</ul>
-<p><br></p>
-<p><strong>中央値を含める計算（包括的 / Inclusive）</strong></p>
-<p>中央値を前後両方のグループに含めて計算する方法です。</p>
-<ul>
-<li><strong>Excel関数</strong>: <code>QUARTILE.INC</code> (従来の <code>QUARTILE</code> 関数と同一)</li>
-<li><strong>特徴</strong>:
-<ul>
-<li>最小値・最大値を計算に含む（Include）という考え方に基づきます。</li>
-<li>中央値がグループの一部としてカウントされるため、データ数が少ない場合に <code>EXC</code> との差が顕著になります。</li>
-</ul></li>
-</ul>
+<p>四分位を求める際、第1四分位数（<span class="math inline">\(Q_1\)</span>）と第3四分位数（<span class="math inline">\(Q_3\)</span>）をどのように計算するかには幾つかの方法が存在しますが、手計算する場合には（エクセルなど統計ソフトを使わない場合には）、以下のように考えておけば良いです。</p>
+<p><strong>全体のデータ数が奇数の場合</strong></p>
+<p>上記例のように、中央値を除いて上下半分に分け、それぞれの真ん中の値を第3四分位、第1四分位とします。</p>
+<p><strong>全体のデータ数が偶数の場合</strong></p>
+<p>以下のように、データ全体を単純に上下半分に分け、それぞれの真ん中の値を第3四分位、第1四分位とします。（その際、中央値は真ん中の値2つの平均値になります。）</p>
 <div id="fig-A04-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-A04-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -364,33 +347,6 @@ window.Quarto = {
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="計算例の比較" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="計算例の比較">計算例の比較</h3>
-<p>例えば、奇数個のデータ <span class="math inline">\(\{10, 20, 30, 40, 50\}\)</span> がある場合を考えます（中央値は 30）。</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">手法</th>
-<th style="text-align: left;">下位グループの対象データ</th>
-<th style="text-align: center;"><span class="math inline">\(Q_1\)</span> の値</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>排他的 (EXC)</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\{10, 20\}\)</span></td>
-<td style="text-align: center;">15</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>包括的 (INC)</strong></td>
-<td style="text-align: left;"><span class="math inline">\(\{10, 20, 30\}\)</span></td>
-<td style="text-align: center;">20</td>
-</tr>
-</tbody>
-</table>
-<p>このように、定義の違いによって四分位の値が変わるため、レポートや論文ではどの定義（あるいはソフトウェア）を使用して箱ひげ図を作成したかを意識することが重要です。</p>
-<p><strong>参考</strong>： <a href="https://bellcurve.jp/statistics/blog/17472.html">統計WEB（BellCurve）- 四分位数</a></p>
 </section>
 <section id="四分位範囲iqr" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="四分位範囲iqr">四分位範囲（IQR）</h3>
@@ -410,16 +366,27 @@ window.Quarto = {
 <section id="エクセルによる四分位値の算出" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="エクセルによる四分位値の算出"><span class="header-section-number">4.2</span> エクセルによる四分位値の算出</h2>
 <p>エクセルで四分位値を求める際は、以下の関数を使用します。</p>
-<p>関数： <code>=QUARTILE.EXC(範囲, 四分位位置)</code></p>
+<p>関数： <code>=QUARTILE.INC(範囲, 四分位位置)</code></p>
 <ul>
+<li>最小値：位置に <code>0</code><br>
+</li>
 <li>第1四分位：位置に <code>1</code><br>
 </li>
 <li>第2四分位：位置に <code>2</code><br>
 </li>
-<li>第3四分位：位置に <code>3</code></li>
+<li>第3四分位：位置に <code>3</code><br>
+</li>
+<li>最大値：位置に <code>4</code></li>
 </ul>
 <p>※ 注意点: エクセルの計算アルゴリズムの関係上、手計算の結果と完全に一致しない場合があります。</p>
 <p>参考：<a href="https://www.fy1203.com/2020/06/19/excel-qurtile-2/">QURTILE関数～結果が手計算と違う理由</a></p>
+<section id="最大値最小値を含めない計算" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="最大値最小値を含めない計算">最大値・最小値を含めない計算</h3>
+<p><strong>Excel関数</strong>: <code>QUARTILE.EXC</code></p>
+<p>QUARTILE.EXC関数（排他的 / Exclusive）は、0% と 100% の端点を含めない定義（PERCENTILE.EXC）で四分位数を計算します。データから最小・最大を削除するわけではなく、quart 引数は 1・2・3 のみ有効（0 と 4 は #NUM!）です。</p>
+<p>一般的には、QUARTILE.INCを使います。</p>
+<p>参考：<a href="https://biz.moneyforward.com/work-efficiency/basic/18276/">QUARTILE.INC関数の使い方（MoneyForward）</a></p>
+</section>
 </section>
 <section id="箱ひげ図-box-plot" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="箱ひげ図-box-plot"><span class="header-section-number">4.3</span> 箱ひげ図 （Box Plot）</h2>
