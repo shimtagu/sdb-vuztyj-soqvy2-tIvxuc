@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="2026年度　前期（A） 後期（B） 時間： 月曜日 3 時限（13:50-15:35） 教室： C 館 地下1階 PC4 教室">
+
+<title>18&nbsp; 母平均の仮説検定 – 政経データ分析</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lecB06.html" rel="next">
+<link href="./lecB04.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6b436361868395b7681bd6fb8d30040a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta name="robots" content="noindex, nofollow">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecB01.html">後期（B）</a></li><li class="breadcrumb-item"><a href="./lecB05.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">母平均の仮説検定</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">政経データ分析</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">はじめに</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">前期（A）</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">エクセルの基礎</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データの種類と代表する値</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">データのばらつき</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">記述統計</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">調査データのクロス集計</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">データの可視化</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">相関分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（中間テスト）</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">格差の可視化</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">物価の計算</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">正規分布を用いた推測</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">信頼区間</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（期末テスト）</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">後期（B）</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">基礎的統計手法の確認</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">母集団の推定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">大数の法則・中心極限定理</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">母平均の推定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB05.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">母平均の仮説検定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">2群の比較</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（中間テスト）</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><span class="math inline">\(\chi^2\)</span> 検定と相関分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">単回帰分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">重回帰分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">質的情報の分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">データ分析演習</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（期末テスト）</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#仮説検定の目的" id="toc-仮説検定の目的" class="nav-link active" data-scroll-target="#仮説検定の目的"><span class="header-section-number">18.1</span> 仮説検定の目的</a></li>
+  <li><a href="#仮説検定の手順" id="toc-仮説検定の手順" class="nav-link" data-scroll-target="#仮説検定の手順"><span class="header-section-number">18.2</span> 仮説検定の手順</a></li>
+  <li><a href="#帰無仮説と対立仮説" id="toc-帰無仮説と対立仮説" class="nav-link" data-scroll-target="#帰無仮説と対立仮説"><span class="header-section-number">18.3</span> 帰無仮説と対立仮説</a></li>
+  <li><a href="#仮説検定の論理" id="toc-仮説検定の論理" class="nav-link" data-scroll-target="#仮説検定の論理"><span class="header-section-number">18.4</span> 仮説検定の論理</a></li>
+  <li><a href="#標本平均の分布" id="toc-標本平均の分布" class="nav-link" data-scroll-target="#標本平均の分布"><span class="header-section-number">18.5</span> 標本平均の分布</a></li>
+  <li><a href="#検定統計量" id="toc-検定統計量" class="nav-link" data-scroll-target="#検定統計量"><span class="header-section-number">18.6</span> 検定統計量</a></li>
+  <li><a href="#具体的な計算" id="toc-具体的な計算" class="nav-link" data-scroll-target="#具体的な計算"><span class="header-section-number">18.7</span> 具体的な計算</a></li>
+  <li><a href="#棄却域" id="toc-棄却域" class="nav-link" data-scroll-target="#棄却域"><span class="header-section-number">18.8</span> 棄却域</a></li>
+  <li><a href="#有意水準自分で設定する基準" id="toc-有意水準自分で設定する基準" class="nav-link" data-scroll-target="#有意水準自分で設定する基準"><span class="header-section-number">18.9</span> 有意水準（自分で設定する基準）</a>
+  <ul class="collapse">
+  <li><a href="#有意水準10" id="toc-有意水準10" class="nav-link" data-scroll-target="#有意水準10"><span class="header-section-number">18.9.1</span> 有意水準10%</a></li>
+  <li><a href="#有意水準5" id="toc-有意水準5" class="nav-link" data-scroll-target="#有意水準5"><span class="header-section-number">18.9.2</span> 有意水準5%</a></li>
+  <li><a href="#有意水準1" id="toc-有意水準1" class="nav-link" data-scroll-target="#有意水準1"><span class="header-section-number">18.9.3</span> 有意水準1%</a></li>
+  </ul></li>
+  <li><a href="#検定統計量とp値" id="toc-検定統計量とp値" class="nav-link" data-scroll-target="#検定統計量とp値"><span class="header-section-number">18.10</span> 検定統計量とP値</a></li>
+  <li><a href="#検定の結論" id="toc-検定の結論" class="nav-link" data-scroll-target="#検定の結論"><span class="header-section-number">18.11</span> 検定の結論</a></li>
+  <li><a href="#仮説検定の手順まとめ" id="toc-仮説検定の手順まとめ" class="nav-link" data-scroll-target="#仮説検定の手順まとめ"><span class="header-section-number">18.12</span> 仮説検定の手順まとめ</a></li>
+  <li><a href="#片側検定" id="toc-片側検定" class="nav-link" data-scroll-target="#片側検定"><span class="header-section-number">18.13</span> 片側検定</a></li>
+  <li><a href="#片側検定を行う際の留意点" id="toc-片側検定を行う際の留意点" class="nav-link" data-scroll-target="#片側検定を行う際の留意点"><span class="header-section-number">18.14</span> 片側検定を行う際の留意点</a></li>
+  <li><a href="#エクセルでの計算方法" id="toc-エクセルでの計算方法" class="nav-link" data-scroll-target="#エクセルでの計算方法"><span class="header-section-number">18.15</span> エクセルでの計算方法</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecB01.html">後期（B）</a></li><li class="breadcrumb-item"><a href="./lecB05.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">母平均の仮説検定</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">母平均の仮説検定</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>母平均が、ある値と違うかどうかをどう判断するか？</p>
+<p>・仮説検定の考え方<br>
+・帰無仮説と対立仮説、有意水準と棄却域、検定統計量とP値、エクセルでの計算方法</p>
+<section id="仮説検定の目的" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="仮説検定の目的"><span class="header-section-number">18.1</span> 仮説検定の目的</h2>
+<p>あなたは東京の飲食店でアルバイトをしています。時給は 1,000円 です。大学の友人と話をしていたら、時給が1,200円の人、900円の人と様々でした。自分の時給が、東京都内で働く大学生の平均時給とは違うのではないかと考えました。</p>
+<p>そこで、（東京でバイトしている大学生の時給を全て調べることはできないので）東京でバイトしている大学生から無作為に標本（サンプル）を抽出して調べることにしました。この標本から得られた推定量（標本平均）を使い、自分の時給（1,000円）が、東京で働く大学生の平均時給と違うかどうかを調べます（<strong>検定</strong>します）。</p>
+</section>
+<section id="仮説検定の手順" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="仮説検定の手順"><span class="header-section-number">18.2</span> 仮説検定の手順</h2>
+<ol type="1">
+<li><strong>仮説を設定する。</strong>
+<ul>
+<li>自分が証明したいことの仮説を設定します。</li>
+</ul></li>
+<li><strong>有意水準（臨界値 critical value）を決める。</strong>
+<ul>
+<li>どの程度の確からしさで結論を出すかを決めます。</li>
+</ul></li>
+<li><strong>検定統計量 <span class="math inline">\(t\)</span> を求める（P値を計算する）。</strong>
+<ul>
+<li>仮説を基に、分布に従うべき値（検定統計量）を求めます。</li>
+</ul></li>
+<li><strong>検定統計量と臨界値を比較する（P値と有意水準を比較する）。</strong>
+<ul>
+<li>計算した検定統計量が、あり得ることか、あり得ないことかを検証します。</li>
+</ul></li>
+<li><strong>検定の結論を出す。</strong></li>
+</ol>
+<p>以下では、この手順に沿って説明します。</p>
+</section>
+<section id="帰無仮説と対立仮説" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="帰無仮説と対立仮説"><span class="header-section-number">18.3</span> 帰無仮説と対立仮説</h2>
+<p><span class="orange"><strong>手順1：仮説を設定する</strong></span></p>
+<p>自分の時給（1,000円）が、東京で働く大学生の平均時給と違うかどうかを調べます（検定します）。</p>
+<ul>
+<li><strong>帰無仮説</strong>
+<ul>
+<li>東京都内の大学生の平均時給が1,000円であると仮定します。</li>
+<li>これを<span class="orange">帰無仮説（null hypothesis, <span class="math inline">\(H_0\)</span>）</span>といいます。</li>
+<li>あえて自分が主張したいことと反対のことを帰無仮説として提示し、その仮説が正しくないことを示す（つまり仮説を無に帰す）ことで、自分の主張の正当性を示します。</li>
+<li>そして、この仮説が正しいかどうかを検証（検定）します。</li>
+</ul></li>
+<li><strong>対立仮説</strong>
+<ul>
+<li>東京都内の大学生の平均時給は1,000円ではない、とします。</li>
+<li>これを<span class="orange">対立仮説（alternative hypothesis, <span class="math inline">\(H_1\)</span>）</span>といいます。</li>
+<li>帰無仮説が正しくなかった場合（帰無仮説が棄却された場合）に、対立仮説が正しいと判断されます。</li>
+</ul></li>
+</ul>
+</section>
+<section id="仮説検定の論理" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="仮説検定の論理"><span class="header-section-number">18.4</span> 仮説検定の論理</h2>
+<p>対立仮説（<span class="math inline">\(H_1\)</span>）の正しさを主張するために、対立仮説とは反対の帰無仮説（<span class="math inline">\(H_0\)</span>）の正しさを否定します。</p>
+<ul>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京都内の大学生の平均時給は1,000円である</li>
+</ul>
+<p><span class="math display">\[
+H_0: \mu = \mu_0 \quad \rightarrow \quad \mu = 1{,}000
+\]</span></p>
+<ul>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円ではない</li>
+</ul>
+<p><span class="math display">\[
+H_1: \mu \neq \mu_0 \quad \rightarrow \quad \mu \neq 1{,}000
+\]</span></p>
+<p>ここで、<span class="math inline">\(\mu_0\)</span> は帰無仮説で仮定する母平均の値（ここでは1,000）を表します。</p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>留意点：なぜ「1,000円である」を帰無仮説にするのか？
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>帰無仮説では母数（母平均）に一つの値を仮定し、対立仮説では一つの値を仮定しません。</p>
+<ul>
+<li><span class="math inline">\(H_0: \mu = \mu_0 \ \rightarrow \ \mu = 1{,}000\)</span>（母平均は1,000である）</li>
+<li><span class="math inline">\(H_1: \mu \neq \mu_0 \ \rightarrow \ \mu \neq 1{,}000\)</span>（母平均は1,000以外である）</li>
+</ul>
+<p>したがって、帰無仮説が棄却されても、母平均が一つの値に分かるわけではありません。</p>
+<p>それなら、以下のように帰無仮説と対立仮説を入れ替えて検定すれば良い、と考えることもできます。</p>
+<ul>
+<li><span class="math inline">\(H_0: \mu \neq \mu_0 \ \rightarrow \ \mu \neq 1{,}000\)</span>（母平均は1,000以外である）</li>
+<li><span class="math inline">\(H_1: \mu = \mu_0 \ \rightarrow \ \mu = 1{,}000\)</span>（母平均は1,000である）</li>
+</ul>
+<p>しかし、これだと母平均が1,000以外である無数の場合をすべて検証しなければならなくなり、これは不可能です。帰無仮説には、計算の基準にできる「一つの値」を置く必要があります。</p>
+</div>
+</div>
+</section>
+<section id="標本平均の分布" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="標本平均の分布"><span class="header-section-number">18.5</span> 標本平均の分布</h2>
+<p><span class="orange"><strong>手順3：検定統計量 <span class="math inline">\(t\)</span> を求める</strong></span></p>
+<p>東京でバイトしている大学生から無作為に標本（サンプル）を一つ抽出し、この標本から次の推定量を得たとします。</p>
+<ul>
+<li>標本平均 <span class="math inline">\(\bar{X}\)</span></li>
+<li>標本（不偏）分散 <span class="math inline">\(s^2\)</span></li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-B05-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-1.png" id="fig-B05-1" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.1
+</figcaption>
+</figure>
+</div>
+<p>標本平均 <span class="math inline">\(\bar{X}\)</span> の分布は、平均 <span class="math inline">\(\mu\)</span>、分散 <span class="math inline">\(\dfrac{\sigma^2}{n}\)</span> の正規分布に従います。そして、母分散 <span class="math inline">\(\sigma^2\)</span> を標本（不偏）分散 <span class="math inline">\(s^2\)</span> で置き換えて標準化すると、<span class="orange">自由度 <span class="math inline">\(n-1\)</span> の <span class="math inline">\(t\)</span> 分布</span>に従います。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-B05-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-2.png" id="fig-B05-2" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.2
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="検定統計量" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="検定統計量"><span class="header-section-number">18.6</span> 検定統計量</h2>
+<p>標本平均 <span class="math inline">\(\bar{X}\)</span> を、平均 <span class="math inline">\(\mu\)</span> と標本（不偏）分散 <span class="math inline">\(s^2\)</span> を使って標準化すると、自由度 <span class="math inline">\(n-1\)</span> の <span class="math inline">\(t\)</span> 分布に従います。</p>
+<p><span class="math display">\[
+t = \frac{\bar{X} - \color{#E36C09}{\mu}}{\frac{s}{\sqrt{n}}}
+\]</span></p>
+<p>今、我々は帰無仮説で <span class="math inline">\(\mu = 1{,}000\)</span> と仮定しているので、次の値が自由度 <span class="math inline">\(n-1\)</span> の <span class="math inline">\(t\)</span> 分布に従うはずだと考えられます。この値を<span class="orange">検定統計量</span>（<span class="math inline">\(t\)</span> 値、<span class="math inline">\(t\)</span> statistic）といいます。</p>
+<p><span class="math display">\[
+t = \frac{\bar{X} - \color{#E36C09}{1{,}000}}{\frac{s}{\sqrt{n}}}
+\]</span></p>
+<p>この <span class="math inline">\(t\)</span> が分布のどこにあるかを確認し、これがどの程度あり得ることかを判定します。</p>
+<ul>
+<li>標本から得られた <span class="math inline">\(\bar{X}\)</span> と、我々が母平均と仮定した 1,000 が近ければ、<span class="math inline">\(t\)</span> は分布の真ん中（ゼロ）に近くなります。この場合は十分あり得ることと考えられるので、帰無仮説は棄却されません。</li>
+<li>逆に、<span class="math inline">\(\bar{X}\)</span> と 1,000 が遠い場合は、<span class="math inline">\(t\)</span> が分布の端に近くなります。この場合はあまりないことだと考えられるので、その原因は帰無仮説が間違っていることにあると考え、帰無仮説を棄却し、対立仮説が正しいと判断します。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-B05-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-3.png" id="fig-B05-3" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.3
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="具体的な計算" class="level2" data-number="18.7">
+<h2 data-number="18.7" class="anchored" data-anchor-id="具体的な計算"><span class="header-section-number">18.7</span> 具体的な計算</h2>
+<p>仮に、標本サイズ <span class="math inline">\(n = 4\)</span> の標本から、以下のような推定量が得られたとします。</p>
+<ul>
+<li>標本平均 <span class="math inline">\(\bar{X} = 1{,}020\)</span></li>
+<li>標本（不偏）分散 <span class="math inline">\(s^2 = 100\)</span>（したがって <span class="math inline">\(s = 10\)</span>）</li>
+</ul>
+<p>このとき、検定統計量は次のようになります。</p>
+<p><span class="math display">\[
+t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\frac{10}{\sqrt{4}}} = \frac{20}{\frac{10}{2}} = \frac{20}{5} = 4
+\]</span></p>
+<p>そして、これは自由度 <span class="math inline">\(n - 1 = 4 - 1 = 3\)</span> の <span class="math inline">\(t\)</span> 分布に従うはずなので、自由度3の <span class="math inline">\(t\)</span> 分布でその位置（<span class="math inline">\(t = 4\)</span>）を確認すると、下の図のようにかなり端になります。</p>
+<p>これはあまりないことだと考えられるので、帰無仮説が間違っていたと判断されます。つまり、母平均は1,000ではないと判断されます。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-B05-4" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-4.png" id="fig-B05-4" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.4
+</figcaption>
+</figure>
+</div>
+<p>では、「かなり端」とは、どこから先のことでしょうか。これを決めるのが、次の棄却域と有意水準です。</p>
+</section>
+<section id="棄却域" class="level2" data-number="18.8">
+<h2 data-number="18.8" class="anchored" data-anchor-id="棄却域"><span class="header-section-number">18.8</span> 棄却域</h2>
+<p><span class="orange"><strong>手順4：検定統計量と臨界値を比較する</strong></span>（手順2の有意水準も、ここで説明します）</p>
+<p>分布の両端の「あまりないこと」と判断する領域を<span class="orange">棄却域</span>といいます。検定統計量 <span class="math inline">\(t\)</span> が棄却域に入れば、帰無仮説を棄却します。</p>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-B05-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-5.png" id="fig-B05-5" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.5
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="有意水準自分で設定する基準" class="level2" data-number="18.9">
+<h2 data-number="18.9" class="anchored" data-anchor-id="有意水準自分で設定する基準"><span class="header-section-number">18.9</span> 有意水準（自分で設定する基準）</h2>
+<ul>
+<li>棄却域の割合を<span class="orange">有意水準</span>といいます。</li>
+<li>定められた有意水準を与える値（棄却域の境目の値）を<span class="orange">臨界値（critical value）</span>といいます。</li>
+<li>下の図の場合は、棄却域が両側で合わせて5%なので、有意水準5%となります。</li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-B05-9" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-9.png" id="fig-B05-9" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.6
+</figcaption>
+</figure>
+</div>
+<p>有意水準は、分析する人が検定の前に自分で決めます。慣習として、10%、5%、1% のいずれかがよく使われます。</p>
+<section id="有意水準10" class="level3" data-number="18.9.1">
+<h3 data-number="18.9.1" class="anchored" data-anchor-id="有意水準10"><span class="header-section-number">18.9.1</span> 有意水準10%</h3>
+<ul>
+<li>両側を足して10%を「あまりない場合」として、帰無仮説を棄却します。</li>
+<li>つまり、主張したい対立仮説が正しいと判断します。</li>
+<li>慣習として、一番緩い（甘い）設定です。</li>
+</ul>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B05-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-6.png" id="fig-B05-6" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.7
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="有意水準5" class="level3" data-number="18.9.2">
+<h3 data-number="18.9.2" class="anchored" data-anchor-id="有意水準5"><span class="header-section-number">18.9.2</span> 有意水準5%</h3>
+<ul>
+<li>両側を足して5%を「あまりない場合」として、帰無仮説を棄却します。</li>
+<li>10%よりも厳しい判断です。</li>
+<li>慣習として、一番多く用いられる設定です。</li>
+</ul>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B05-7" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-7.png" id="fig-B05-7" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.8
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="有意水準1" class="level3" data-number="18.9.3">
+<h3 data-number="18.9.3" class="anchored" data-anchor-id="有意水準1"><span class="header-section-number">18.9.3</span> 有意水準1%</h3>
+<ul>
+<li>両側を足して1%（片側0.5%ずつ）を「あまりない場合」として、帰無仮説を棄却します。</li>
+<li>1%の珍しい場合のみ、帰無仮説を棄却（自分の主張を採択）します。</li>
+<li>慣習として、最も厳しい設定です。</li>
+</ul>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B05-8" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-8.png" id="fig-B05-8" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.9
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="検定統計量とp値" class="level2" data-number="18.10">
+<h2 data-number="18.10" class="anchored" data-anchor-id="検定統計量とp値"><span class="header-section-number">18.10</span> 検定統計量とP値</h2>
+<p>検定統計量 <span class="math inline">\(t\)</span> と臨界値を比べる代わりに、<span class="orange">P値（P-value）</span>と有意水準を比べる方法もあります。</p>
+<ul>
+<li><strong>P値</strong>
+<ul>
+<li>帰無仮説が正しいと仮定したときに、実際に計算した <span class="math inline">\(t\)</span> 値と同じか、それよりも極端な値が得られる確率です。</li>
+<li>両側検定の場合は、分布の <span class="math inline">\(-|t|\)</span> より左側と、<span class="math inline">\(|t|\)</span> より右側の面積を合計したものになります（下の図の斜線部分）。</li>
+</ul></li>
+<li><strong>判断の方法</strong>
+<ul>
+<li>P値が有意水準より小さい（P値 &lt; 有意水準）ならば、帰無仮説を棄却します。</li>
+<li>P値が有意水準以上ならば、帰無仮説を棄却しません。</li>
+</ul></li>
+<li><strong>臨界値との関係</strong>
+<ul>
+<li>「<span class="math inline">\(|t|\)</span> が臨界値より大きい」ことと、「P値が有意水準より小さい」ことは、同じことを表しています。</li>
+<li><span class="math inline">\(t\)</span> が棄却域の中にあれば、<span class="math inline">\(t\)</span> より外側の面積（P値）は、棄却域の面積（有意水準）より小さくなるためです。</li>
+</ul></li>
+</ul>
+<div style="margin-top: 2.0em;">
+
+</div>
+<div id="fig-B05-10" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-10.png" id="fig-B05-10" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.10
+</figcaption>
+</figure>
+</div>
+<p><br></p>
+<p><strong>「具体的な計算」の例で確かめてみましょう</strong></p>
+<p><span class="math inline">\(n = 4\)</span>（自由度3）で <span class="math inline">\(t = 4\)</span> だった例について、P値の部分を塗ったのが下の図です。オレンジの斜線部分の面積がP値、点線は有意水準5%の臨界値です。自由度や <span class="math inline">\(t\)</span> 値を変えて、P値や臨界値がどう変わるかも確かめてみましょう。</p>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="239" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 238;"><span id="cb1-239"><a href="#cb1-239"></a>viewof dfP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"自由度"</span>})</span>
+<span id="cb1-240"><a href="#cb1-240"></a>viewof tP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"t 値"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="245" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 244;"><span id="cb2-245"><a href="#cb2-245"></a>tTools <span class="op">=</span> {</span>
+<span id="cb2-246"><a href="#cb2-246"></a>  <span class="co">// 対数ガンマ関数（Lanczos近似）</span></span>
+<span id="cb2-247"><a href="#cb2-247"></a>  <span class="kw">function</span> <span class="fu">lgamma</span>(z) {</span>
+<span id="cb2-248"><a href="#cb2-248"></a>    <span class="kw">const</span> g <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb2-249"><a href="#cb2-249"></a>    <span class="kw">const</span> c <span class="op">=</span> [<span class="fl">0.99999999999980993</span><span class="op">,</span> <span class="fl">676.5203681218851</span><span class="op">,</span> <span class="op">-</span><span class="fl">1259.1392167224028</span><span class="op">,</span></span>
+<span id="cb2-250"><a href="#cb2-250"></a>      <span class="fl">771.32342877765313</span><span class="op">,</span> <span class="op">-</span><span class="fl">176.61502916214059</span><span class="op">,</span> <span class="fl">12.507343278686905</span><span class="op">,</span></span>
+<span id="cb2-251"><a href="#cb2-251"></a>      <span class="op">-</span><span class="fl">0.13857109526572012</span><span class="op">,</span> <span class="fl">9.9843695780195716e-6</span><span class="op">,</span> <span class="fl">1.5056327351493116e-7</span>]<span class="op">;</span></span>
+<span id="cb2-252"><a href="#cb2-252"></a>    <span class="cf">if</span> (z <span class="op">&lt;</span> <span class="fl">0.5</span>) <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> z)) <span class="op">-</span> <span class="fu">lgamma</span>(<span class="dv">1</span> <span class="op">-</span> z)<span class="op">;</span></span>
+<span id="cb2-253"><a href="#cb2-253"></a>    z <span class="op">-=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-254"><a href="#cb2-254"></a>    <span class="kw">let</span> x <span class="op">=</span> c[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb2-255"><a href="#cb2-255"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> g <span class="op">+</span> <span class="dv">2</span><span class="op">;</span> i<span class="op">++</span>) x <span class="op">+=</span> c[i] <span class="op">/</span> (z <span class="op">+</span> i)<span class="op">;</span></span>
+<span id="cb2-256"><a href="#cb2-256"></a>    <span class="kw">const</span> t <span class="op">=</span> z <span class="op">+</span> g <span class="op">+</span> <span class="fl">0.5</span><span class="op">;</span></span>
+<span id="cb2-257"><a href="#cb2-257"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">+</span> (z <span class="op">+</span> <span class="fl">0.5</span>) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(t) <span class="op">-</span> t <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(x)<span class="op">;</span></span>
+<span id="cb2-258"><a href="#cb2-258"></a>  }</span>
+<span id="cb2-259"><a href="#cb2-259"></a>  <span class="co">// 不完全ベータ関数（連分数展開）</span></span>
+<span id="cb2-260"><a href="#cb2-260"></a>  <span class="kw">function</span> <span class="fu">betacf</span>(a<span class="op">,</span> b<span class="op">,</span> x) {</span>
+<span id="cb2-261"><a href="#cb2-261"></a>    <span class="kw">const</span> FPMIN <span class="op">=</span> <span class="fl">1e-300</span><span class="op">;</span></span>
+<span id="cb2-262"><a href="#cb2-262"></a>    <span class="kw">let</span> qab <span class="op">=</span> a <span class="op">+</span> b<span class="op">,</span> qap <span class="op">=</span> a <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> qam <span class="op">=</span> a <span class="op">-</span> <span class="dv">1</span><span class="op">,</span> c <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> d <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> qab <span class="op">*</span> x <span class="op">/</span> qap<span class="op">;</span></span>
+<span id="cb2-263"><a href="#cb2-263"></a>    <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-264"><a href="#cb2-264"></a>    d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span></span>
+<span id="cb2-265"><a href="#cb2-265"></a>    <span class="kw">let</span> h <span class="op">=</span> d<span class="op">;</span></span>
+<span id="cb2-266"><a href="#cb2-266"></a>    <span class="cf">for</span> (<span class="kw">let</span> m <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> m <span class="op">&lt;=</span> <span class="dv">200</span><span class="op">;</span> m<span class="op">++</span>) {</span>
+<span id="cb2-267"><a href="#cb2-267"></a>      <span class="kw">const</span> m2 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> m<span class="op">;</span></span>
+<span id="cb2-268"><a href="#cb2-268"></a>      <span class="kw">let</span> aa <span class="op">=</span> m <span class="op">*</span> (b <span class="op">-</span> m) <span class="op">*</span> x <span class="op">/</span> ((qam <span class="op">+</span> m2) <span class="op">*</span> (a <span class="op">+</span> m2))<span class="op">;</span></span>
+<span id="cb2-269"><a href="#cb2-269"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">*</span> d<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-270"><a href="#cb2-270"></a>      c <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">/</span> c<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(c) <span class="op">&lt;</span> FPMIN) c <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-271"><a href="#cb2-271"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span> h <span class="op">*=</span> d <span class="op">*</span> c<span class="op">;</span></span>
+<span id="cb2-272"><a href="#cb2-272"></a>      aa <span class="op">=</span> <span class="op">-</span>(a <span class="op">+</span> m) <span class="op">*</span> (qab <span class="op">+</span> m) <span class="op">*</span> x <span class="op">/</span> ((a <span class="op">+</span> m2) <span class="op">*</span> (qap <span class="op">+</span> m2))<span class="op">;</span></span>
+<span id="cb2-273"><a href="#cb2-273"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">*</span> d<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-274"><a href="#cb2-274"></a>      c <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">/</span> c<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(c) <span class="op">&lt;</span> FPMIN) c <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-275"><a href="#cb2-275"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span></span>
+<span id="cb2-276"><a href="#cb2-276"></a>      <span class="kw">const</span> del <span class="op">=</span> d <span class="op">*</span> c<span class="op">;</span></span>
+<span id="cb2-277"><a href="#cb2-277"></a>      h <span class="op">*=</span> del<span class="op">;</span></span>
+<span id="cb2-278"><a href="#cb2-278"></a>      <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(del <span class="op">-</span> <span class="dv">1</span>) <span class="op">&lt;</span> <span class="fl">1e-14</span>) <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb2-279"><a href="#cb2-279"></a>    }</span>
+<span id="cb2-280"><a href="#cb2-280"></a>    <span class="cf">return</span> h<span class="op">;</span></span>
+<span id="cb2-281"><a href="#cb2-281"></a>  }</span>
+<span id="cb2-282"><a href="#cb2-282"></a>  <span class="kw">function</span> <span class="fu">ibeta</span>(x<span class="op">,</span> a<span class="op">,</span> b) {</span>
+<span id="cb2-283"><a href="#cb2-283"></a>    <span class="cf">if</span> (x <span class="op">&lt;=</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-284"><a href="#cb2-284"></a>    <span class="cf">if</span> (x <span class="op">&gt;=</span> <span class="dv">1</span>) <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-285"><a href="#cb2-285"></a>    <span class="kw">const</span> bt <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="fu">lgamma</span>(a <span class="op">+</span> b) <span class="op">-</span> <span class="fu">lgamma</span>(a) <span class="op">-</span> <span class="fu">lgamma</span>(b) <span class="op">+</span> a <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(x) <span class="op">+</span> b <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">-</span> x))<span class="op">;</span></span>
+<span id="cb2-286"><a href="#cb2-286"></a>    <span class="cf">return</span> x <span class="op">&lt;</span> (a <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> (a <span class="op">+</span> b <span class="op">+</span> <span class="dv">2</span>) <span class="op">?</span> bt <span class="op">*</span> <span class="fu">betacf</span>(a<span class="op">,</span> b<span class="op">,</span> x) <span class="op">/</span> a <span class="op">:</span> <span class="dv">1</span> <span class="op">-</span> bt <span class="op">*</span> <span class="fu">betacf</span>(b<span class="op">,</span> a<span class="op">,</span> <span class="dv">1</span> <span class="op">-</span> x) <span class="op">/</span> b<span class="op">;</span></span>
+<span id="cb2-287"><a href="#cb2-287"></a>  }</span>
+<span id="cb2-288"><a href="#cb2-288"></a>  <span class="co">// t分布の確率密度</span></span>
+<span id="cb2-289"><a href="#cb2-289"></a>  <span class="kw">const</span> pdf <span class="op">=</span> (x<span class="op">,</span> v) <span class="kw">=&gt;</span></span>
+<span id="cb2-290"><a href="#cb2-290"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="fu">lgamma</span>((v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">-</span> <span class="fu">lgamma</span>(v <span class="op">/</span> <span class="dv">2</span>)) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(v <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">*</span></span>
+<span id="cb2-291"><a href="#cb2-291"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">1</span> <span class="op">+</span> x <span class="op">*</span> x <span class="op">/</span> v<span class="op">,</span> <span class="op">-</span>(v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-292"><a href="#cb2-292"></a>  <span class="co">// 両側P値</span></span>
+<span id="cb2-293"><a href="#cb2-293"></a>  <span class="kw">const</span> p2 <span class="op">=</span> (t<span class="op">,</span> v) <span class="kw">=&gt;</span> <span class="fu">ibeta</span>(v <span class="op">/</span> (v <span class="op">+</span> t <span class="op">*</span> t)<span class="op">,</span> v <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb2-294"><a href="#cb2-294"></a>  <span class="co">// 両側検定の臨界値（二分法）</span></span>
+<span id="cb2-295"><a href="#cb2-295"></a>  <span class="kw">const</span> crit <span class="op">=</span> (alpha<span class="op">,</span> v) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-296"><a href="#cb2-296"></a>    <span class="kw">let</span> lo <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> hi <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-297"><a href="#cb2-297"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">100</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb2-298"><a href="#cb2-298"></a>      <span class="kw">const</span> m <span class="op">=</span> (lo <span class="op">+</span> hi) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-299"><a href="#cb2-299"></a>      <span class="cf">if</span> (<span class="fu">p2</span>(m<span class="op">,</span> v) <span class="op">&gt;</span> alpha) lo <span class="op">=</span> m<span class="op">;</span> <span class="cf">else</span> hi <span class="op">=</span> m<span class="op">;</span></span>
+<span id="cb2-300"><a href="#cb2-300"></a>    }</span>
+<span id="cb2-301"><a href="#cb2-301"></a>    <span class="cf">return</span> (lo <span class="op">+</span> hi) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-302"><a href="#cb2-302"></a>  }<span class="op">;</span></span>
+<span id="cb2-303"><a href="#cb2-303"></a>  <span class="cf">return</span> {pdf<span class="op">,</span> p2<span class="op">,</span> crit}<span class="op">;</span></span>
+<span id="cb2-304"><a href="#cb2-304"></a>}</span>
+<span id="cb2-305"><a href="#cb2-305"></a></span>
+<span id="cb2-306"><a href="#cb2-306"></a>pValue <span class="op">=</span> tTools<span class="op">.</span><span class="fu">p2</span>(tP<span class="op">,</span> dfP)</span>
+<span id="cb2-307"><a href="#cb2-307"></a>tCrit <span class="op">=</span> tTools<span class="op">.</span><span class="fu">crit</span>(<span class="fl">0.05</span><span class="op">,</span> dfP)</span>
+<span id="cb2-308"><a href="#cb2-308"></a></span>
+<span id="cb2-309"><a href="#cb2-309"></a><span class="fu">md</span><span class="vs">`自由度 </span><span class="sc">${</span>dfP<span class="sc">}</span><span class="vs">　t = </span><span class="sc">${</span>tP<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">　**P値（両側）= </span><span class="sc">${</span>pValue<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">**　臨界値（両側・5%）= ±</span><span class="sc">${</span>tCrit<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">　→　</span><span class="sc">${</span>pValue <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="op">?</span> <span class="st">"有意水準5%で帰無仮説を**棄却します**"</span> <span class="op">:</span> <span class="st">"有意水準5%で帰無仮説を**棄却しません**"</span><span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="311" data-source-offset="-2378"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 310;"><span id="cb3-311"><a href="#cb3-311"></a>{</span>
+<span id="cb3-312"><a href="#cb3-312"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="op">-</span><span class="dv">6</span><span class="op">,</span> <span class="fl">6.001</span><span class="op">,</span> <span class="fl">0.02</span>)<span class="op">;</span></span>
+<span id="cb3-313"><a href="#cb3-313"></a>  <span class="kw">const</span> curve <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> tTools<span class="op">.</span><span class="fu">pdf</span>(x<span class="op">,</span> dfP)}))<span class="op">;</span></span>
+<span id="cb3-314"><a href="#cb3-314"></a>  <span class="kw">const</span> right <span class="op">=</span> curve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> tP)<span class="op">;</span></span>
+<span id="cb3-315"><a href="#cb3-315"></a>  <span class="kw">const</span> left <span class="op">=</span> curve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> <span class="op">-</span>tP)<span class="op">;</span></span>
+<span id="cb3-316"><a href="#cb3-316"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-317"><a href="#cb3-317"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">6</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"t"</span>}<span class="op">,</span></span>
+<span id="cb3-318"><a href="#cb3-318"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="fl">0.42</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"確率密度"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb3-319"><a href="#cb3-319"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-320"><a href="#cb3-320"></a>      Plot<span class="op">.</span><span class="fu">areaY</span>(right<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.5</span>})<span class="op">,</span></span>
+<span id="cb3-321"><a href="#cb3-321"></a>      Plot<span class="op">.</span><span class="fu">areaY</span>(left<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.5</span>})<span class="op">,</span></span>
+<span id="cb3-322"><a href="#cb3-322"></a>      Plot<span class="op">.</span><span class="fu">line</span>(curve<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
+<span id="cb3-323"><a href="#cb3-323"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="op">-</span>tCrit<span class="op">,</span> tCrit]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
+<span id="cb3-324"><a href="#cb3-324"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="op">-</span>tP<span class="op">,</span> tP]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb3-325"><a href="#cb3-325"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> tP<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="vs">`t = </span><span class="sc">${</span>tP<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">`</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span>})<span class="op">,</span></span>
+<span id="cb3-326"><a href="#cb3-326"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
+<span id="cb3-327"><a href="#cb3-327"></a>    ]</span>
+<span id="cb3-328"><a href="#cb3-328"></a>  })<span class="op">;</span></span>
+<span id="cb3-329"><a href="#cb3-329"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-5" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>P値の読み方の注意
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>P値は「帰無仮説が正しい確率」ではありません。「帰無仮説が正しいとしたら、今回のようなデータ（またはそれより極端なデータ）がどのくらいの確率で得られるか」を表す値です。</li>
+<li>P値が小さいほど、「帰無仮説が正しいとすると、今回のデータはとても珍しい」ということになり、帰無仮説を疑う根拠が強くなります。</li>
+<li>統計ソフトやエクセルの分析ツールでは、多くの場合、臨界値ではなくP値が出力されます。</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="検定の結論" class="level2" data-number="18.11">
+<h2 data-number="18.11" class="anchored" data-anchor-id="検定の結論"><span class="header-section-number">18.11</span> 検定の結論</h2>
+<p><span class="orange"><strong>手順5：検定の結論を出す</strong></span></p>
+<ul>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京都内の大学生の平均時給は1,000円である</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円ではない</li>
+</ul>
+<div style="margin-top: 1.0em;">
+
+</div>
+<ul>
+<li><strong>帰無仮説が棄却された場合</strong>
+<ul>
+<li>対立仮説が正しいと判断し、対立仮説をそのまま主張します。</li>
+<li>例：「東京都内の大学生の平均時給は1,000円ではない（有意水準5%）」</li>
+</ul></li>
+<li><strong>帰無仮説が棄却できなかった場合</strong>
+<ul>
+<li>対立仮説が正しいとはいえません。つまり、「平均時給は1,000円ではない、とはいえない」という結論になります。</li>
+<li>帰無仮説が棄却されないからといって、帰無仮説が正しい（平均時給が1,000円である）とは限りません。</li>
+</ul></li>
+</ul>
+</section>
+<section id="仮説検定の手順まとめ" class="level2" data-number="18.12">
+<h2 data-number="18.12" class="anchored" data-anchor-id="仮説検定の手順まとめ"><span class="header-section-number">18.12</span> 仮説検定の手順まとめ</h2>
+<ol type="1">
+<li>仮説を設定する。</li>
+<li>有意水準（臨界値 critical value）を決める。</li>
+<li>検定統計量 <span class="math inline">\(t\)</span> を求める（P値を計算する）。</li>
+<li>検定統計量と臨界値を比較する（P値と有意水準を比較する）。</li>
+<li>検定の結論を出す。</li>
+</ol>
+</section>
+<section id="片側検定" class="level2" data-number="18.13">
+<h2 data-number="18.13" class="anchored" data-anchor-id="片側検定"><span class="header-section-number">18.13</span> 片側検定</h2>
+<p>これまでの検定は、対立仮説が「1,000円ではない」（高い場合と低い場合の両方）だったので、棄却域を分布の両側に置きました。これを<span class="orange">両側検定</span>といいます。</p>
+<p>対立仮説を「高い」または「低い」の一方だけにする場合は、棄却域を分布の片側だけに置きます。これを<span class="orange">片側検定</span>といいます。</p>
+<ul>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京都内の大学生の平均時給は1,000円である</li>
+</ul>
+<p><span class="math display">\[
+H_0: \mu = \mu_0 \quad \rightarrow \quad \mu = 1{,}000
+\]</span></p>
+<ul>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円ではない（両側検定）</li>
+</ul>
+<p><span class="math display">\[
+H_1: \mu \neq \mu_0 \quad \rightarrow \quad \mu \neq 1{,}000
+\]</span></p>
+<ul>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円より高い（片側検定）</li>
+</ul>
+<p><span class="math display">\[
+H_1: \mu &gt; \mu_0 \quad \rightarrow \quad \mu &gt; 1{,}000
+\]</span></p>
+<ul>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円より低い（片側検定）</li>
+</ul>
+<p><span class="math display">\[
+H_1: \mu &lt; \mu_0 \quad \rightarrow \quad \mu &lt; 1{,}000
+\]</span></p>
+</section>
+<section id="片側検定を行う際の留意点" class="level2" data-number="18.14">
+<h2 data-number="18.14" class="anchored" data-anchor-id="片側検定を行う際の留意点"><span class="header-section-number">18.14</span> 片側検定を行う際の留意点</h2>
+<ul>
+<li>通常は両側検定を行います。</li>
+<li>片側検定だと、基準が緩い検定になります（有意水準の確率が片側に寄るため）。
+<ul>
+<li>例えば有意水準5%の場合、両側検定では片側2.5%ずつですが、片側検定では片側に5%すべてを置きます。そのため臨界値が0に近くなり、帰無仮説が棄却されやすくなります。</li>
+</ul></li>
+<li>片側検定を使うのは、<span class="math inline">\(\mu\)</span> の値が <span class="math inline">\(\mu_0\)</span> より小さい（大きい）ことを信じるに足る、強い理論的根拠がある場合に限ります。</li>
+<li>それ以外の場合には、より厳密な検定ができる両側検定を使った方が良いです。</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>対立仮説が <span class="math inline">\(\mu &lt; \mu_0\)</span> の場合（左側検定）</strong></p>
+<div id="fig-B05-11" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-11.png" id="fig-B05-11" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.11
+</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong>対立仮説が <span class="math inline">\(\mu &gt; \mu_0\)</span> の場合（右側検定）</strong></p>
+<div id="fig-B05-12" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B05-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B05/B05-12.png" id="fig-B05-12" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;18.12
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="エクセルでの計算方法" class="level2" data-number="18.15">
+<h2 data-number="18.15" class="anchored" data-anchor-id="エクセルでの計算方法"><span class="header-section-number">18.15</span> エクセルでの計算方法</h2>
+<p>「具体的な計算」の例（<span class="math inline">\(n = 4\)</span>、<span class="math inline">\(\bar{X} = 1{,}020\)</span>、<span class="math inline">\(s^2 = 100\)</span>）を、エクセルで計算してみます。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">求めるもの</th>
+<th style="text-align: left;">エクセルの式</th>
+<th style="text-align: center;">結果</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">標準偏差 <span class="math inline">\(s\)</span></td>
+<td style="text-align: left;"><code>=SQRT(100)</code></td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">検定統計量 <span class="math inline">\(t\)</span></td>
+<td style="text-align: left;"><code>=(1020-1000)/(10/SQRT(4))</code></td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">臨界値（両側・有意水準5%）</td>
+<td style="text-align: left;"><code>=T.INV.2T(0.05, 3)</code></td>
+<td style="text-align: center;">3.182</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">臨界値（両側・有意水準1%）</td>
+<td style="text-align: left;"><code>=T.INV.2T(0.01, 3)</code></td>
+<td style="text-align: center;">5.841</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">P値（両側）</td>
+<td style="text-align: left;"><code>=T.DIST.2T(ABS(4), 3)</code></td>
+<td style="text-align: center;">0.028</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>関数の使い方</strong>
+<ul>
+<li><code>T.INV.2T(有意水準, 自由度)</code>：両側検定の臨界値を求めます。</li>
+<li><code>T.DIST.2T(t値の絶対値, 自由度)</code>：両側検定のP値を求めます。<span class="math inline">\(t\)</span> 値がマイナスのときはエラーになるので、<code>ABS</code> 関数で絶対値にして入れます。</li>
+<li>自由度は <span class="math inline">\(n - 1\)</span> なので、この例では3です。</li>
+</ul></li>
+<li><strong>結果の読み方</strong>
+<ul>
+<li>有意水準5%の場合：<span class="math inline">\(t = 4\)</span> は臨界値3.182より大きく、P値0.028は0.05より小さいので、帰無仮説は棄却されます。つまり、「平均時給は1,000円ではない」と判断されます。</li>
+<li>有意水準1%の場合：<span class="math inline">\(t = 4\)</span> は臨界値5.841より小さく、P値0.028は0.01より大きいので、帰無仮説は棄却されません。</li>
+<li>このように、同じデータでも、有意水準の決め方によって結論が変わることがあります。有意水準を検定の前に決めておくのはこのためです。</li>
+</ul></li>
+<li><strong>データから直接計算する場合</strong>
+<ul>
+<li>元のデータがA列（A2〜A5）に入力されているとすると、標本平均は <code>=AVERAGE(A2:A5)</code>、標本（不偏）分散は <code>=VAR.S(A2:A5)</code>、標準偏差は <code>=STDEV.S(A2:A5)</code>、標本サイズは <code>=COUNT(A2:A5)</code> で求められます。</li>
+</ul></li>
+<li><strong>片側検定の場合</strong>
+<ul>
+<li>臨界値は <code>=T.INV(0.95, 3)</code>（右側検定・有意水準5%、結果は2.353）、P値は <code>=T.DIST.RT(4, 3)</code>（右側検定、結果は0.014）で求められます。</li>
+<li>片側検定のP値は、両側検定のP値のちょうど半分になります。</li>
+</ul></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBkZlAgPSBJbnB1dHMuc2VsZWN0KFsxLCAyLCAzLCA1LCAxMCwgMzAsIDEwMF0sIHt2YWx1ZTogMywgbGFiZWw6IFwi6Ieq55Sx5bqmXCJ9KVxudmlld29mIHRQID0gSW5wdXRzLnJhbmdlKFswLCA2XSwge3N0ZXA6IDAuMSwgdmFsdWU6IDQsIGxhYmVsOiBcInQg5YCkXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidFRvb2xzID0ge1xuICAvLyDlr77mlbDjgqzjg7Pjg57plqLmlbDvvIhMYW5jem9z6L+R5Ly877yJXG4gIGZ1bmN0aW9uIGxnYW1tYSh6KSB7XG4gICAgY29uc3QgZyA9IDc7XG4gICAgY29uc3QgYyA9IFswLjk5OTk5OTk5OTk5OTgwOTkzLCA2NzYuNTIwMzY4MTIxODg1MSwgLTEyNTkuMTM5MjE2NzIyNDAyOCxcbiAgICAgIDc3MS4zMjM0Mjg3Nzc2NTMxMywgLTE3Ni42MTUwMjkxNjIxNDA1OSwgMTIuNTA3MzQzMjc4Njg2OTA1LFxuICAgICAgLTAuMTM4NTcxMDk1MjY1NzIwMTIsIDkuOTg0MzY5NTc4MDE5NTcxNmUtNiwgMS41MDU2MzI3MzUxNDkzMTE2ZS03XTtcbiAgICBpZiAoeiA8IDAuNSkgcmV0dXJuIE1hdGgubG9nKE1hdGguUEkgLyBNYXRoLnNpbihNYXRoLlBJICogeikpIC0gbGdhbW1hKDEgLSB6KTtcbiAgICB6IC09IDE7XG4gICAgbGV0IHggPSBjWzBdO1xuICAgIGZvciAobGV0IGkgPSAxOyBpIDwgZyArIDI7IGkrKykgeCArPSBjW2ldIC8gKHogKyBpKTtcbiAgICBjb25zdCB0ID0geiArIGcgKyAwLjU7XG4gICAgcmV0dXJuIDAuNSAqIE1hdGgubG9nKDIgKiBNYXRoLlBJKSArICh6ICsgMC41KSAqIE1hdGgubG9nKHQpIC0gdCArIE1hdGgubG9nKHgpO1xuICB9XG4gIC8vIOS4jeWujOWFqOODmeODvOOCv+mWouaVsO+8iOmAo+WIhuaVsOWxlemWi++8iVxuICBmdW5jdGlvbiBiZXRhY2YoYSwgYiwgeCkge1xuICAgIGNvbnN0IEZQTUlOID0gMWUtMzAwO1xuICAgIGxldCBxYWIgPSBhICsgYiwgcWFwID0gYSArIDEsIHFhbSA9IGEgLSAxLCBjID0gMSwgZCA9IDEgLSBxYWIgKiB4IC8gcWFwO1xuICAgIGlmIChNYXRoLmFicyhkKSA8IEZQTUlOKSBkID0gRlBNSU47XG4gICAgZCA9IDEgLyBkO1xuICAgIGxldCBoID0gZDtcbiAgICBmb3IgKGxldCBtID0gMTsgbSA8PSAyMDA7IG0rKykge1xuICAgICAgY29uc3QgbTIgPSAyICogbTtcbiAgICAgIGxldCBhYSA9IG0gKiAoYiAtIG0pICogeCAvICgocWFtICsgbTIpICogKGEgKyBtMikpO1xuICAgICAgZCA9IDEgKyBhYSAqIGQ7IGlmIChNYXRoLmFicyhkKSA8IEZQTUlOKSBkID0gRlBNSU47XG4gICAgICBjID0gMSArIGFhIC8gYzsgaWYgKE1hdGguYWJzKGMpIDwgRlBNSU4pIGMgPSBGUE1JTjtcbiAgICAgIGQgPSAxIC8gZDsgaCAqPSBkICogYztcbiAgICAgIGFhID0gLShhICsgbSkgKiAocWFiICsgbSkgKiB4IC8gKChhICsgbTIpICogKHFhcCArIG0yKSk7XG4gICAgICBkID0gMSArIGFhICogZDsgaWYgKE1hdGguYWJzKGQpIDwgRlBNSU4pIGQgPSBGUE1JTjtcbiAgICAgIGMgPSAxICsgYWEgLyBjOyBpZiAoTWF0aC5hYnMoYykgPCBGUE1JTikgYyA9IEZQTUlOO1xuICAgICAgZCA9IDEgLyBkO1xuICAgICAgY29uc3QgZGVsID0gZCAqIGM7XG4gICAgICBoICo9IGRlbDtcbiAgICAgIGlmIChNYXRoLmFicyhkZWwgLSAxKSA8IDFlLTE0KSBicmVhaztcbiAgICB9XG4gICAgcmV0dXJuIGg7XG4gIH1cbiAgZnVuY3Rpb24gaWJldGEoeCwgYSwgYikge1xuICAgIGlmICh4IDw9IDApIHJldHVybiAwO1xuICAgIGlmICh4ID49IDEpIHJldHVybiAxO1xuICAgIGNvbnN0IGJ0ID0gTWF0aC5leHAobGdhbW1hKGEgKyBiKSAtIGxnYW1tYShhKSAtIGxnYW1tYShiKSArIGEgKiBNYXRoLmxvZyh4KSArIGIgKiBNYXRoLmxvZygxIC0geCkpO1xuICAgIHJldHVybiB4IDwgKGEgKyAxKSAvIChhICsgYiArIDIpID8gYnQgKiBiZXRhY2YoYSwgYiwgeCkgLyBhIDogMSAtIGJ0ICogYmV0YWNmKGIsIGEsIDEgLSB4KSAvIGI7XG4gIH1cbiAgLy8gdOWIhuW4g+OBrueiuueOh+WvhuW6plxuICBjb25zdCBwZGYgPSAoeCwgdikgPT5cbiAgICBNYXRoLmV4cChsZ2FtbWEoKHYgKyAxKSAvIDIpIC0gbGdhbW1hKHYgLyAyKSkgLyBNYXRoLnNxcnQodiAqIE1hdGguUEkpICpcbiAgICBNYXRoLnBvdygxICsgeCAqIHggLyB2LCAtKHYgKyAxKSAvIDIpO1xuICAvLyDkuKHlgbRQ5YCkXG4gIGNvbnN0IHAyID0gKHQsIHYpID0+IGliZXRhKHYgLyAodiArIHQgKiB0KSwgdiAvIDIsIDAuNSk7XG4gIC8vIOS4oeWBtOaknOWumuOBruiHqOeVjOWApO+8iOS6jOWIhuazle+8iVxuICBjb25zdCBjcml0ID0gKGFscGhhLCB2KSA9PiB7XG4gICAgbGV0IGxvID0gMCwgaGkgPSAxMDA7XG4gICAgZm9yIChsZXQgaSA9IDA7IGkgPCAxMDA7IGkrKykge1xuICAgICAgY29uc3QgbSA9IChsbyArIGhpKSAvIDI7XG4gICAgICBpZiAocDIobSwgdikgPiBhbHBoYSkgbG8gPSBtOyBlbHNlIGhpID0gbTtcbiAgICB9XG4gICAgcmV0dXJuIChsbyArIGhpKSAvIDI7XG4gIH07XG4gIHJldHVybiB7cGRmLCBwMiwgY3JpdH07XG59XG5cbnBWYWx1ZSA9IHRUb29scy5wMih0UCwgZGZQKVxudENyaXQgPSB0VG9vbHMuY3JpdCgwLjA1LCBkZlApXG5cbm1kYOiHqueUseW6piAke2RmUH3jgIB0ID0gJHt0UC50b0ZpeGVkKDEpfeOAgCoqUOWApO+8iOS4oeWBtO+8iT0gJHtwVmFsdWUudG9GaXhlZCgzKX0qKuOAgOiHqOeVjOWApO+8iOS4oeWBtOODuzUl77yJPSDCsSR7dENyaXQudG9GaXhlZCgzKX3jgIDihpLjgIAke3BWYWx1ZSA8IDAuMDUgPyBcIuacieaEj+awtOa6ljUl44Gn5biw54Sh5Luu6Kqs44KSKirmo4TljbTjgZfjgb7jgZkqKlwiIDogXCLmnInmhI/msLTmupY1JeOBp+W4sOeEoeS7ruiqrOOCkioq5qOE5Y2044GX44G+44Gb44KTKipcIn1gXG5cbntcbiAgY29uc3QgeHMgPSBkMy5yYW5nZSgtNiwgNi4wMDEsIDAuMDIpO1xuICBjb25zdCBjdXJ2ZSA9IHhzLm1hcCh4ID0+ICh7eDogeCwgeTogdFRvb2xzLnBkZih4LCBkZlApfSkpO1xuICBjb25zdCByaWdodCA9IGN1cnZlLmZpbHRlcihkID0+IGQueCA+PSB0UCk7XG4gIGNvbnN0IGxlZnQgPSBjdXJ2ZS5maWx0ZXIoZCA9PiBkLnggPD0gLXRQKTtcbiAgcmV0dXJuIFBsb3QucGxvdCh7XG4gICAgeDoge2RvbWFpbjogWy02LCA2XSwgbGFiZWw6IFwidFwifSxcbiAgICB5OiB7ZG9tYWluOiBbMCwgMC40Ml0sIGxhYmVsOiBcIueiuueOh+WvhuW6plwiLCBncmlkOiB0cnVlfSxcbiAgICBtYXJrczogW1xuICAgICAgUGxvdC5hcmVhWShyaWdodCwge3g6IFwieFwiLCB5OiBcInlcIiwgZmlsbDogXCIjRTM2QzA5XCIsIGZpbGxPcGFjaXR5OiAwLjV9KSxcbiAgICAgIFBsb3QuYXJlYVkobGVmdCwge3g6IFwieFwiLCB5OiBcInlcIiwgZmlsbDogXCIjRTM2QzA5XCIsIGZpbGxPcGFjaXR5OiAwLjV9KSxcbiAgICAgIFBsb3QubGluZShjdXJ2ZSwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcInN0ZWVsYmx1ZVwiLCBzdHJva2VXaWR0aDogMi41fSksXG4gICAgICBQbG90LnJ1bGVYKFstdENyaXQsIHRDcml0XSwge3N0cm9rZTogXCJibGFja1wiLCBzdHJva2VXaWR0aDogMS41LCBzdHJva2VEYXNoYXJyYXk6IFwiNCwzXCJ9KSxcbiAgICAgIFBsb3QucnVsZVgoWy10UCwgdFBdLCB7c3Ryb2tlOiBcIiNFMzZDMDlcIiwgc3Ryb2tlV2lkdGg6IDJ9KSxcbiAgICAgIFBsb3QudGV4dChbe3g6IHRQLCBsYWJlbDogYHQgPSAke3RQLnRvRml4ZWQoMSl9YH1dLCB7eDogXCJ4XCIsIHk6IDAuNCwgdGV4dDogXCJsYWJlbFwiLCBmaWxsOiBcIiNFMzZDMDlcIiwgZm9udFNpemU6IDEzLCBkeDogNiwgdGV4dEFuY2hvcjogXCJzdGFydFwifSksXG4gICAgICBQbG90LnJ1bGVZKFswXSlcbiAgICBdXG4gIH0pO1xufVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdkZlAnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndFAnKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            trigger: 'click',
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            positionFixed: true,
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lecB04.html" class="pagination-link" aria-label="母平均の推定">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">母平均の推定</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lecB06.html" class="pagination-link" aria-label="2群の比較">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">2群の比較</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

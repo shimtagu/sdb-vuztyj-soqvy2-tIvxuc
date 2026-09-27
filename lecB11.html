@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="2026年度　前期（A） 後期（B） 時間： 月曜日 3 時限（13:50-15:35） 教室： C 館 地下1階 PC4 教室">
+
+<title>24&nbsp; 質的情報の分析 – 政経データ分析</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lecB12.html" rel="next">
+<link href="./lecB10.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6b436361868395b7681bd6fb8d30040a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta name="robots" content="noindex, nofollow">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecB01.html">後期（B）</a></li><li class="breadcrumb-item"><a href="./lecB11.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">質的情報の分析</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">政経データ分析</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">はじめに</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">前期（A）</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">エクセルの基礎</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データの種類と代表する値</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">データのばらつき</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">記述統計</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">調査データのクロス集計</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">データの可視化</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">相関分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（中間テスト）</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">格差の可視化</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">物価の計算</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">正規分布を用いた推測</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">信頼区間</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（期末テスト）</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">後期（B）</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">基礎的統計手法の確認</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">母集団の推定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">大数の法則・中心極限定理</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">母平均の推定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">母平均の仮説検定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">2群の比較</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（中間テスト）</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><span class="math inline">\(\chi^2\)</span> 検定と相関分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">単回帰分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">重回帰分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB11.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">質的情報の分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">データ分析演習</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（期末テスト）</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#質的データ" id="toc-質的データ" class="nav-link active" data-scroll-target="#質的データ"><span class="header-section-number">24.1</span> 質的データ</a></li>
+  <li><a href="#質的情報の回帰分析" id="toc-質的情報の回帰分析" class="nav-link" data-scroll-target="#質的情報の回帰分析"><span class="header-section-number">24.2</span> 質的情報の回帰分析</a></li>
+  <li><a href="#リッカート尺度" id="toc-リッカート尺度" class="nav-link" data-scroll-target="#リッカート尺度"><span class="header-section-number">24.3</span> リッカート尺度</a></li>
+  <li><a href="#リッカート尺度から変数を作る" id="toc-リッカート尺度から変数を作る" class="nav-link" data-scroll-target="#リッカート尺度から変数を作る"><span class="header-section-number">24.4</span> リッカート尺度から変数を作る</a></li>
+  <li><a href="#ダミー変数" id="toc-ダミー変数" class="nav-link" data-scroll-target="#ダミー変数"><span class="header-section-number">24.5</span> ダミー変数</a></li>
+  <li><a href="#ダミー変数を作る1" id="toc-ダミー変数を作る1" class="nav-link" data-scroll-target="#ダミー変数を作る1"><span class="header-section-number">24.6</span> ダミー変数を作る（1）</a></li>
+  <li><a href="#ダミー変数を作る2" id="toc-ダミー変数を作る2" class="nav-link" data-scroll-target="#ダミー変数を作る2"><span class="header-section-number">24.7</span> ダミー変数を作る（2）</a></li>
+  <li><a href="#ダミー変数を使う際の留意点" id="toc-ダミー変数を使う際の留意点" class="nav-link" data-scroll-target="#ダミー変数を使う際の留意点"><span class="header-section-number">24.8</span> ダミー変数を使う際の留意点</a></li>
+  <li><a href="#エクセルでのダミー変数の作り方" id="toc-エクセルでのダミー変数の作り方" class="nav-link" data-scroll-target="#エクセルでのダミー変数の作り方"><span class="header-section-number">24.9</span> エクセルでのダミー変数の作り方</a></li>
+  <li><a href="#ダミー変数の意味" id="toc-ダミー変数の意味" class="nav-link" data-scroll-target="#ダミー変数の意味"><span class="header-section-number">24.10</span> ダミー変数の意味</a></li>
+  <li><a href="#ダミー変数を含む回帰分析の例" id="toc-ダミー変数を含む回帰分析の例" class="nav-link" data-scroll-target="#ダミー変数を含む回帰分析の例"><span class="header-section-number">24.11</span> ダミー変数を含む回帰分析の例</a></li>
+  <li><a href="#つ以上のカテゴリーのダミー変数の例" id="toc-つ以上のカテゴリーのダミー変数の例" class="nav-link" data-scroll-target="#つ以上のカテゴリーのダミー変数の例"><span class="header-section-number">24.12</span> 3つ以上のカテゴリーのダミー変数の例</a></li>
+  <li><a href="#ダミー変数と連続変数の交差項" id="toc-ダミー変数と連続変数の交差項" class="nav-link" data-scroll-target="#ダミー変数と連続変数の交差項"><span class="header-section-number">24.13</span> ダミー変数と連続変数の交差項</a></li>
+  <li><a href="#交差項を含む回帰分析の例" id="toc-交差項を含む回帰分析の例" class="nav-link" data-scroll-target="#交差項を含む回帰分析の例"><span class="header-section-number">24.14</span> 交差項を含む回帰分析の例</a></li>
+  <li><a href="#ダミー変数と交差項のイメージ" id="toc-ダミー変数と交差項のイメージ" class="nav-link" data-scroll-target="#ダミー変数と交差項のイメージ"><span class="header-section-number">24.15</span> ダミー変数と交差項のイメージ</a></li>
+  <li><a href="#ダミー変数と交差項を確かめよう" id="toc-ダミー変数と交差項を確かめよう" class="nav-link" data-scroll-target="#ダミー変数と交差項を確かめよう"><span class="header-section-number">24.16</span> ダミー変数と交差項を確かめよう</a></li>
+  <li><a href="#エクセルでの計算方法" id="toc-エクセルでの計算方法" class="nav-link" data-scroll-target="#エクセルでの計算方法"><span class="header-section-number">24.17</span> エクセルでの計算方法</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecB01.html">後期（B）</a></li><li class="breadcrumb-item"><a href="./lecB11.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">質的情報の分析</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">質的情報の分析</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>性別や地域のような「数値ではない情報」を、回帰分析にどう入れるか？</p>
+<p>・質的情報を量的情報に変換し、回帰分析する方法<br>
+・ダミー変数を説明変数に含む回帰分析、ダミー変数との交差項を含む回帰分析</p>
+<section id="質的データ" class="level2" data-number="24.1">
+<h2 data-number="24.1" class="anchored" data-anchor-id="質的データ"><span class="header-section-number">24.1</span> 質的データ</h2>
+<p>アンケート調査などでは、所属や性別、「はい・いいえ」のように、数値ではない回答が多く集まります。このような、分類やカテゴリーで表されるデータを<strong>質的データ</strong>（カテゴリカルデータ）と呼びます。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B11-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-1.png" id="fig-B11-1" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.1
+</figcaption>
+</figure>
+</div>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B11-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="70%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-2.png" id="fig-B11-2" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.2
+</figcaption>
+</figure>
+</div>
+<p>これまでの回帰分析では、勉強時間や気温のような数値のデータ（量的データ）を使ってきました。今回は、質的データを回帰分析に入れる方法を学びます。</p>
+</section>
+<section id="質的情報の回帰分析" class="level2" data-number="24.2">
+<h2 data-number="24.2" class="anchored" data-anchor-id="質的情報の回帰分析"><span class="header-section-number">24.2</span> 質的情報の回帰分析</h2>
+<ul>
+<li>質的情報そのものを、直接用いる回帰分析はできません。</li>
+<li>質的情報を量的データに変換すれば、回帰分析が可能になります。</li>
+<li>例えば、アンケートの自由回答をカテゴリーに分類・コード化するといった手法を用います。</li>
+</ul>
+<p><strong>量的データへの変換</strong></p>
+<p>テキスト化された情報（自由回答など）を、あらかじめ定義したカテゴリーに分類し、数値に変換します。変換の方法には、大きく分けて次の2つがあります。</p>
+<ul>
+<li><strong>順序のある数値に変換する</strong>
+<ul>
+<li>例：「不満」「やや満足」「満足」を、それぞれ「0」「1」「2」に置き換えます。</li>
+<li>回答に順序（大小関係）がある場合の方法です。次のリッカート尺度も、この考え方です。</li>
+</ul></li>
+<li><strong>ダミー変数に変換する</strong>
+<ul>
+<li>例：「男性」「女性」を、それぞれ「0」「1」に置き換えます。</li>
+<li>回答に順序がない場合の方法です。</li>
+</ul></li>
+</ul>
+</section>
+<section id="リッカート尺度" class="level2" data-number="24.3">
+<h2 data-number="24.3" class="anchored" data-anchor-id="リッカート尺度"><span class="header-section-number">24.3</span> リッカート尺度</h2>
+<ul>
+<li>アンケートなどで、個人の見解や意識、態度を測定するために使われる手法です。</li>
+<li>回答者は、提示された文に対して「強くそう思う」から「全くそう思わない」までの段階的な選択肢から、最も近いものを選びます。</li>
+<li>例えば、次のように数値の尺度に置き換えて、回帰分析に入れます。</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">全くそう思わない</th>
+<th style="text-align: center;">あまりそう思わない</th>
+<th style="text-align: center;">どちらでもない</th>
+<th style="text-align: center;">そう思う</th>
+<th style="text-align: center;">強くそう思う</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(-2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-1\)</span></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>数字の大きさそのものには意味がなく、<strong>間隔が等しくなっていること</strong>が大切です。上の表の1行目と2行目のどちらを使っても、回帰分析の傾き（係数）は同じになります。</li>
+<li>ただし、「全くそう思わない」と「あまりそう思わない」の差が、「そう思う」と「強くそう思う」の差と本当に同じかどうかは分かりません。リッカート尺度を数値として使うときは、選択肢の間隔が等しいと<strong>みなして</strong>分析している、ということに注意してください。</li>
+</ul>
+</section>
+<section id="リッカート尺度から変数を作る" class="level2" data-number="24.4">
+<h2 data-number="24.4" class="anchored" data-anchor-id="リッカート尺度から変数を作る"><span class="header-section-number">24.4</span> リッカート尺度から変数を作る</h2>
+<p>数字の大きさは、間隔が合っていれば、1, 2, 3, 4, 5 でなくても問題ありません。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B11-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="70%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-3.png" id="fig-B11-3" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.3
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="ダミー変数" class="level2" data-number="24.5">
+<h2 data-number="24.5" class="anchored" data-anchor-id="ダミー変数"><span class="header-section-number">24.5</span> ダミー変数</h2>
+<ul>
+<li><span class="orange">ダミー変数</span>は、性別や曜日のように数値ではないカテゴリカルデータを、統計解析に使えるように「0」か「1」で表現した変数です。</li>
+<li>これにより、質的なデータも回帰分析などの手法に組み込むことが可能になります。
+<ul>
+<li>例：女性ダミー（女性は「1」、男性は「0」と入力された変数）</li>
+<li>例：東京ダミー（東京は「1」、それ以外は「0」と入力された変数）</li>
+</ul></li>
+</ul>
+</section>
+<section id="ダミー変数を作る1" class="level2" data-number="24.6">
+<h2 data-number="24.6" class="anchored" data-anchor-id="ダミー変数を作る1"><span class="header-section-number">24.6</span> ダミー変数を作る（1）</h2>
+<p>性別のように、カテゴリーが2つの場合は、ダミー変数を1つ作ります。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B11-4" class="quarto-float quarto-figure quarto-figure-center anchored" width="70%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-4.png" id="fig-B11-4" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.4
+</figcaption>
+</figure>
+</div>
+<p>同時に男性ダミーを作っても良いですが、分析では使いません（理由は、後の「ダミー変数を使う際の留意点」で説明します）。</p>
+</section>
+<section id="ダミー変数を作る2" class="level2" data-number="24.7">
+<h2 data-number="24.7" class="anchored" data-anchor-id="ダミー変数を作る2"><span class="header-section-number">24.7</span> ダミー変数を作る（2）</h2>
+<p>出身地のように、カテゴリーが3つ以上の場合は、カテゴリーごとにダミー変数を作ります。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B11-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-5.png" id="fig-B11-5" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.5
+</figcaption>
+</figure>
+</div>
+<p>3種類のダミー変数を作りましたが、実際に分析で使うのは2つです（理由は、次の「ダミー変数を使う際の留意点」で説明します）。</p>
+</section>
+<section id="ダミー変数を使う際の留意点" class="level2" data-number="24.8">
+<h2 data-number="24.8" class="anchored" data-anchor-id="ダミー変数を使う際の留意点"><span class="header-section-number">24.8</span> ダミー変数を使う際の留意点</h2>
+<ul>
+<li>カテゴリカル変数のすべてのカテゴリーに対してダミー変数を作成し、回帰分析に加えた場合、ダミー変数の和が常に1になります。
+<ul>
+<li>そのため、切片とダミー変数の間に完全な線形の関係が生じ（完全な多重共線性が生じ）、回帰分析が推計できません。</li>
+<li>何からの変化か（基準）が分からなくなる、ということです。</li>
+</ul></li>
+<li>この問題を解決するには、カテゴリーの数よりも1つ少ない数のダミー変数を使い、残りの1つのカテゴリーを<span class="orange">基準（参照カテゴリー）</span>とします。</li>
+</ul>
+<p><strong>推計できない式</strong>（すべてのダミー変数を入れた場合。基準がないため）</p>
+<p><span class="math display">\[
+y_i = a + b_1\,\text{東京}_i + b_2\,\text{埼玉}_i + b_3\,\text{千葉}_i + \cdots + b_k x_{ki} + e_i
+\]</span></p>
+<p><strong>推計できる式</strong>（東京を基準として、東京ダミーを式に入れない場合）</p>
+<p><span class="math display">\[
+y_i = a + b_2\,\text{埼玉}_i + b_3\,\text{千葉}_i + \cdots + b_k x_{ki} + e_i
+\]</span></p>
+<ul>
+<li><span class="math inline">\(b_2\)</span> の値は、東京と比べて埼玉になった場合の変化量、<span class="math inline">\(b_3\)</span> の値は、東京と比べて千葉になった場合の変化量を表します。</li>
+<li>基準（参照カテゴリー）は自分で決めます。どれを基準にしても、分析全体の当てはまり（決定係数など）は変わりません。変わるのは「何と比べた差として係数を読むか」だけです。</li>
+<li>性別の場合も同じで、女性ダミーだけを入れると、男性が基準になります。</li>
+</ul>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>なぜすべてのダミー変数を入れると推計できないのか？
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>切片を「変数の係数」として書き直す</strong></p>
+<p>回帰式は、ふつう次のように書きます。</p>
+<p><span class="math display">\[
+y_i = a + b_1 x_{1i} + e_i
+\]</span></p>
+<p>ここで、<span class="math inline">\(a\)</span> の後ろには何も掛かっていないように見えますが、実は「1」が掛かっていると考えることができます。</p>
+<p><span class="math display">\[
+y_i = a \times 1 + b_1 x_{1i} + e_i
+\]</span></p>
+<p>この「1」は、どの人についても同じ値1をとる変数です。つまり、回帰分析では、データの中に<strong>すべての行が1になっている見えない列</strong>があり、その列の係数が切片 <span class="math inline">\(a\)</span> だと考えられます。エクセルの分析ツールは、この「すべて1の列」を自動的に加えて計算しているので、私たちが入力しなくても切片が出力されます。</p>
+<p><strong>3つのダミー変数を全部入れると何が起きるか</strong></p>
+<p>5人のデータで、見えない「1の列」も書き出してみます。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">人</th>
+<th style="text-align: center;">切片の列（見えない）</th>
+<th style="text-align: center;">東京</th>
+<th style="text-align: center;">埼玉</th>
+<th style="text-align: center;">千葉</th>
+<th style="text-align: center;">東京 + 埼玉 + 千葉</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">A（東京）</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">B（埼玉）</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">C（東京）</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">D（千葉）</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">E（埼玉）</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>一番右の列（3つのダミー変数の合計）は、誰もが必ずどれか1つに当てはまるので、すべての人で1になります。これは、切片の列とまったく同じです。つまり、すべての人について次の関係が成り立っています。</p>
+<p><span class="math display">\[
+\text{切片の列} = \text{東京} + \text{埼玉} + \text{千葉}
+\]</span></p>
+<p><strong>なぜ推計できなくなるのか</strong></p>
+<p>この関係があると、係数の組み合わせが1つに決まりません。例えば、次の2つの式を比べます。</p>
+<ul>
+<li>式1：<span class="math inline">\(y = 50 + 0 \times \text{東京} - 3 \times \text{埼玉} - 5 \times \text{千葉}\)</span></li>
+<li>式2：<span class="math inline">\(y = 40 + 10 \times \text{東京} + 7 \times \text{埼玉} + 5 \times \text{千葉}\)</span></li>
+</ul>
+<p>式2は、式1の切片を10減らし、3つの係数をすべて10増やしたものです。それぞれの人の予測値を計算すると、次のようにまったく同じになります。</p>
+<ul>
+<li>東京の人：式1は <span class="math inline">\(50 + 0 = 50\)</span>、式2は <span class="math inline">\(40 + 10 = 50\)</span></li>
+<li>埼玉の人：式1は <span class="math inline">\(50 - 3 = 47\)</span>、式2は <span class="math inline">\(40 + 7 = 47\)</span></li>
+<li>千葉の人：式1は <span class="math inline">\(50 - 5 = 45\)</span>、式2は <span class="math inline">\(40 + 5 = 45\)</span></li>
+</ul>
+<p>10でなくても、どんな数でも同じことができるので、「残差の二乗和を最小にする係数」が無数にあり、1つに決められません。これが「推計できない」ということです。</p>
+<p><strong>1つ除くと解決する理由</strong></p>
+<p>例えば東京ダミーを除くと、残るのは「切片の列（すべて1）」「埼玉」「千葉」です。「埼玉 + 千葉」は、東京の人では0、それ以外の人では1になるので、切片の列（すべて1）とは一致しません。そのため、係数が1つに決まります。</p>
+<p>そして、東京の人は埼玉も千葉も0なので、東京の人の予測値は切片 <span class="math inline">\(a\)</span> そのものになり、埼玉と千葉の係数は「東京と比べた差」として読めるようになります。</p>
+<p><strong>補足：切片をなくす方法</strong></p>
+<p>逆に、切片をなくせば、3つのダミー変数をすべて入れて推計することもできます（エクセルの回帰分析で「定数に0を使用」にチェックを入れる方法です）。この場合、3つの係数は、それぞれ東京・埼玉・千葉の平均的な値（他の変数を一定とした場合）になります。ただし、決定係数の計算方法が変わるなど扱いが難しくなるので、この授業では「切片を残して、ダミー変数を1つ除く」方法を基本とします。</p>
+</div>
+</div>
+</section>
+<section id="エクセルでのダミー変数の作り方" class="level2" data-number="24.9">
+<h2 data-number="24.9" class="anchored" data-anchor-id="エクセルでのダミー変数の作り方"><span class="header-section-number">24.9</span> エクセルでのダミー変数の作り方</h2>
+<p>エクセルでダミー変数を作るには、主に次の3つの方法があります。</p>
+<p><strong>方法1：IF 関数を使う（おすすめ）</strong></p>
+<p>性別がB列（B2〜B101）に入力されているとき、女性ダミーを作るには、空いている列の2行目に次の式を入力し、最後の行までコピーします。</p>
+<pre><code>=IF(B2="女性", 1, 0)</code></pre>
+<ul>
+<li>「B2が『女性』なら1、そうでなければ0」という意味です。</li>
+<li>元のデータを書き換えないので、間違えてもやり直せます。</li>
+<li>カテゴリーが3つ以上の場合も、同じように作れます。例えば、アクセス方法がC列に入っているときは、次のようにそれぞれの列を作ります。</li>
+</ul>
+<pre><code>=IF(C2="スマホ", 1, 0)
+=IF(C2="タブレット", 1, 0)</code></pre>
+<ul>
+<li><code>"女性"</code> の部分は、データの文字と完全に一致している必要があります（「女性」と「女性 」（空白付き）は別の文字として扱われます）。</li>
+</ul>
+<p><strong>方法2：フィルター（リスト）を使って値を入力する</strong></p>
+<div style="margin-top: 1.0em;">
+
+</div>
+<div id="fig-B11-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-6.png" id="fig-B11-6" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.6
+</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li>データの見出しの行を選び、「データ」→「フィルター」を選びます。</li>
+<li>性別の列の ▼ をクリックし、「女性」だけを表示します。</li>
+<li>表示された行のダミー変数の列に「1」を入力し、下の行までコピーします。</li>
+<li>次に「男性」だけを表示し、ダミー変数の列に「0」を入力します。</li>
+<li>最後に、フィルターを解除してすべての行を表示し、入力漏れがないか確認します。</li>
+</ol>
+<p><strong>方法3：置換機能を使う</strong></p>
+<div style="margin-top: 1.0em;">
+
+</div>
+<div id="fig-B11-7" class="quarto-float quarto-figure quarto-figure-center anchored" width="70%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-7.png" id="fig-B11-7" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.7
+</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li>変換したい列を<strong>コピーして</strong>、ダミー変数用の新しい列を作ります（元の列を置換すると、元のデータが消えてしまうためです）。</li>
+<li>コピーした列の範囲を選択します。</li>
+<li>「Ctrl + H」で「検索と置換」を表示し、変換前（例：「女性」）と変換後（例：「1」）を入力して、「すべて置換」を押します。</li>
+<li>同じように、「男性」を「0」に置換します。</li>
+</ol>
+</section>
+<section id="ダミー変数の意味" class="level2" data-number="24.10">
+<h2 data-number="24.10" class="anchored" data-anchor-id="ダミー変数の意味"><span class="header-section-number">24.10</span> ダミー変数の意味</h2>
+<p><span class="math display">\[
+\text{点数} = a + b_1\,\text{勉強時間} + b_2\,\text{女性ダミー} + e
+\]</span></p>
+<p><strong>女性ダミーが1の場合（女性の場合）</strong></p>
+<p><span class="math display">\[
+\text{点数} = a + b_1\,\text{勉強時間} + b_2 \times 1 + e = (a + b_2) + b_1\,\text{勉強時間} + e
+\]</span></p>
+<p><strong>女性ダミーが0の場合（男性の場合）</strong></p>
+<p><span class="math display">\[
+\text{点数} = a + b_1\,\text{勉強時間} + b_2 \times 0 + e = a + b_1\,\text{勉強時間} + e
+\]</span></p>
+<ul>
+<li>つまり、男性の切片は <span class="math inline">\(a\)</span> であり、女性の切片は <span class="math inline">\(a + b_2\)</span> となります。傾き（勉強時間の効果 <span class="math inline">\(b_1\)</span>）は、男女で同じです。</li>
+<li>したがって、<strong>勉強時間が同じであれば</strong>、女性の方が <span class="math inline">\(b_2\)</span> だけ平均的に点数が高い（<span class="math inline">\(b_2\)</span> がマイナスなら低い）ということになります。</li>
+</ul>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B11-8" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-8.png" id="fig-B11-8" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.8
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="ダミー変数を含む回帰分析の例" class="level2" data-number="24.11">
+<h2 data-number="24.11" class="anchored" data-anchor-id="ダミー変数を含む回帰分析の例"><span class="header-section-number">24.11</span> ダミー変数を含む回帰分析の例</h2>
+<p>演習ファイルの「練習_1」シートは、ある会社の職場の満足度を調査したデータ（100人）です。満足度を被説明変数、女性ダミーと教育レベルを説明変数として、重回帰分析を行います。</p>
+<ul>
+<li>女性ダミー：女性は1、男性は0（男性が基準）</li>
+<li>教育レベル：高卒は1、大卒は2、院卒は3（順序のある数値に変換）</li>
+</ul>
+<p><span class="orange"><strong>手順1：仮説を設定する</strong></span></p>
+<p>女性ダミーについては、次の仮説を検定します。</p>
+<ul>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：<span class="math inline">\(\beta_{\text{女性}} = 0\)</span>（教育レベルが同じなら、男女で満足度の平均に差はない）</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：<span class="math inline">\(\beta_{\text{女性}} \neq 0\)</span>（教育レベルが同じでも、男女で満足度の平均に差がある）</li>
+</ul>
+<p>教育レベルについても、同じように「<span class="math inline">\(\beta_{\text{教育}} = 0\)</span>（性別が同じなら、教育レベルと満足度は関係しない）」を検定します。</p>
+<p><span class="orange"><strong>手順2：有意水準（臨界値）を決める</strong></span></p>
+<p>有意水準は5%（両側検定）とします。自由度は <span class="math inline">\(n - K = 100 - 3 = 97\)</span> なので、臨界値は1.985です。</p>
+<p><span class="orange"><strong>手順3：検定統計量 <span class="math inline">\(t\)</span> を求める</strong></span></p>
+<p>エクセルの分析ツール「回帰分析」の結果は、次のとおりです。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">係数</th>
+<th style="text-align: center;">標準誤差</th>
+<th style="text-align: center;"><span class="math inline">\(t\)</span></th>
+<th style="text-align: center;">P値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">切片</td>
+<td style="text-align: center;">53.489</td>
+<td style="text-align: center;">1.677</td>
+<td style="text-align: center;">31.896</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">女性ダミー</td>
+<td style="text-align: center;">5.631</td>
+<td style="text-align: center;">1.181</td>
+<td style="text-align: center;">4.769</td>
+<td style="text-align: center;">0.000007</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">教育レベル</td>
+<td style="text-align: center;">4.404</td>
+<td style="text-align: center;">0.682</td>
+<td style="text-align: center;">6.457</td>
+<td style="text-align: center;">0.000000004</td>
+</tr>
+</tbody>
+</table>
+<p>決定係数 <span class="math inline">\(R^2 = 0.388\)</span>、自由度調整済み決定係数 <span class="math inline">\(\bar{R}^2 = 0.375\)</span>、観測数100</p>
+<p><span class="orange"><strong>手順4：検定統計量と臨界値を比較する　手順5：検定の結論を出す</strong></span></p>
+<ul>
+<li><strong>女性ダミー</strong>：<span class="math inline">\(t = 4.769\)</span> は臨界値1.985より大きいので、帰無仮説は棄却されます。教育レベルが同じであれば、女性は男性に比べて、満足度が平均的に5.6ポイント高く、この差は有意です。</li>
+<li><strong>教育レベル</strong>：<span class="math inline">\(t = 6.457\)</span> は臨界値1.985より大きいので、帰無仮説は棄却されます。性別が同じであれば、教育レベルが1段階上がると、満足度は平均的に4.4ポイント高く、この関係は有意です。</li>
+</ul>
+<p>回帰式を男女別に書くと、次のようになります。</p>
+<p><span class="math display">\[
+\text{男性：満足度} = 53.49 + 4.40 \times \text{教育レベル}
+\]</span></p>
+<p><span class="math display">\[
+\text{女性：満足度} = (53.49 + 5.63) + 4.40 \times \text{教育レベル} = 59.12 + 4.40 \times \text{教育レベル}
+\]</span></p>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>教育レベルを「1, 2, 3」とするか、ダミー変数にするか
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>この例では、教育レベルを「高卒 = 1、大卒 = 2、院卒 = 3」という順序のある数値にしています。これは、「高卒から大卒」と「大卒から院卒」で、満足度の変化が同じ（どちらも4.4ポイント）と<strong>仮定</strong>していることになります。</li>
+<li>この仮定を置きたくない場合は、高卒を基準として、大卒ダミーと院卒ダミーの2つを使います。「練習_1」のデータでこの方法で計算すると、大卒は高卒より3.8ポイント、院卒は高卒より8.8ポイント満足度が高い（どちらも有意）という結果になり、1段階ごとの変化が同じとは限らないことが分かります。</li>
+<li>どちらの方法を使うかは、分析の目的とデータに合わせて決めます。</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="つ以上のカテゴリーのダミー変数の例" class="level2" data-number="24.12">
+<h2 data-number="24.12" class="anchored" data-anchor-id="つ以上のカテゴリーのダミー変数の例"><span class="header-section-number">24.12</span> 3つ以上のカテゴリーのダミー変数の例</h2>
+<p>演習ファイルの「練習_2」シートは、あるSNSの利用者の満足度と、性別、アクセス方法（スマホ、タブレット、PC）を調査したデータです。アクセス方法は3つのカテゴリーがあるので、スマホダミー、タブレットダミー、PCダミーの3つを作りますが、分析に入れるのは2つです。</p>
+<p>ここでは、<strong>PCを基準</strong>として、スマホダミーとタブレットダミーを入れて分析します。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">係数</th>
+<th style="text-align: center;">標準誤差</th>
+<th style="text-align: center;"><span class="math inline">\(t\)</span></th>
+<th style="text-align: center;">P値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">切片</td>
+<td style="text-align: center;">70.593</td>
+<td style="text-align: center;">1.592</td>
+<td style="text-align: center;">44.333</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">女性ダミー</td>
+<td style="text-align: center;">2.372</td>
+<td style="text-align: center;">1.364</td>
+<td style="text-align: center;">1.739</td>
+<td style="text-align: center;">0.085</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">スマホ</td>
+<td style="text-align: center;"><span class="math inline">\(-6.246\)</span></td>
+<td style="text-align: center;">1.915</td>
+<td style="text-align: center;"><span class="math inline">\(-3.262\)</span></td>
+<td style="text-align: center;">0.002</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">タブレット</td>
+<td style="text-align: center;"><span class="math inline">\(-5.053\)</span></td>
+<td style="text-align: center;">1.785</td>
+<td style="text-align: center;"><span class="math inline">\(-2.831\)</span></td>
+<td style="text-align: center;">0.006</td>
+</tr>
+</tbody>
+</table>
+<p>自由度 <span class="math inline">\(n - K = 100 - 4 = 96\)</span>、有意水準5%（両側）の臨界値は1.985です。</p>
+<ul>
+<li><strong>スマホ</strong>：性別が同じであれば、PCでアクセスする人に比べて、スマホでアクセスする人は満足度が平均的に6.2ポイント低く、この差は有意です。</li>
+<li><strong>タブレット</strong>：性別が同じであれば、PCでアクセスする人に比べて、タブレットでアクセスする人は満足度が平均的に5.1ポイント低く、この差は有意です。</li>
+<li><strong>女性ダミー</strong>：P値は0.085で、有意水準5%では有意ではありません。つまり、アクセス方法が同じなら、男女で満足度に差があるとはいえません。</li>
+<li>スマホとタブレットの係数は、どちらも「PCと比べた差」です。スマホとタブレットを比べたい場合は、どちらかを基準にして分析し直します（係数の差 <span class="math inline">\(-6.246 - (-5.053) = -1.19\)</span> が、タブレットと比べたスマホの差になります）。</li>
+</ul>
+</section>
+<section id="ダミー変数と連続変数の交差項" class="level2" data-number="24.13">
+<h2 data-number="24.13" class="anchored" data-anchor-id="ダミー変数と連続変数の交差項"><span class="header-section-number">24.13</span> ダミー変数と連続変数の交差項</h2>
+<p>ダミー変数と連続変数を掛け合わせた変数を<span class="orange">交差項</span>（交互作用項）と呼びます。交差項を入れると、男女で傾き（勉強時間の効果）が異なることを表せます。</p>
+<p><span class="math display">\[
+\text{点数} = a + b_1\,\text{勉強時間} + b_2\,\text{女性ダミー} + b_3\,(\text{勉強時間} \times \text{女性ダミー}) + e
+\]</span></p>
+<p><strong>女性ダミーが1の場合（女性の場合）</strong></p>
+<p><span class="math display">\[
+\text{点数} = a + b_1\,\text{勉強時間} + b_2 \times 1 + b_3\,\text{勉強時間} \times 1 + e = (a + b_2) + (b_1 + b_3)\,\text{勉強時間} + e
+\]</span></p>
+<p><strong>女性ダミーが0の場合（男性の場合）</strong></p>
+<p><span class="math display">\[
+\text{点数} = a + b_1\,\text{勉強時間} + b_2 \times 0 + b_3\,\text{勉強時間} \times 0 + e = a + b_1\,\text{勉強時間} + e
+\]</span></p>
+<ul>
+<li>つまり、男性の切片は <span class="math inline">\(a\)</span>、女性の切片は <span class="math inline">\(a + b_2\)</span> となり、さらに、男性の傾きは <span class="math inline">\(b_1\)</span>、女性の傾きは <span class="math inline">\(b_1 + b_3\)</span> となります。</li>
+<li>男性と女性で、傾き（勉強時間の影響）が異なります。女性の方が <span class="math inline">\(b_3\)</span> だけ、勉強時間の影響が大きい（<span class="math inline">\(b_3\)</span> がマイナスなら小さい）ということです。</li>
+<li>交差項を入れた場合、<span class="math inline">\(b_2\)</span> は「勉強時間が0のときの男女の差」を表します。勉強時間によって男女の差が変わるので、<span class="math inline">\(b_2\)</span> だけを見て「女性の方が <span class="math inline">\(b_2\)</span> 点高い」とは言えなくなることに注意してください。</li>
+</ul>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B11-9" class="quarto-float quarto-figure quarto-figure-center anchored" width="70%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-9.png" id="fig-B11-9" class="img-fluid figure-img" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.9
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="交差項を含む回帰分析の例" class="level2" data-number="24.14">
+<h2 data-number="24.14" class="anchored" data-anchor-id="交差項を含む回帰分析の例"><span class="header-section-number">24.14</span> 交差項を含む回帰分析の例</h2>
+<p>演習ファイルの「練習_3」シートは、生徒の成績と、授業時間、家庭学習の有無（有 = 1、無 = 0）、学年のデータです。「授業時間の効果が、家庭学習の有無によって異なるか」を調べるため、交差項（授業時間 × 家庭学習有無）を加えて分析します。</p>
+<p><span class="orange"><strong>手順1：仮説を設定する</strong></span></p>
+<p>交差項については、次の仮説を検定します。</p>
+<ul>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：<span class="math inline">\(\beta_{\text{交差項}} = 0\)</span>（授業時間の効果は、家庭学習の有無によって変わらない）</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：<span class="math inline">\(\beta_{\text{交差項}} \neq 0\)</span>（授業時間の効果は、家庭学習の有無によって変わる）</li>
+</ul>
+<p><span class="orange"><strong>手順2：有意水準（臨界値）を決める</strong></span></p>
+<p>有意水準は5%（両側検定）とします。自由度は <span class="math inline">\(n - K = 100 - 5 = 95\)</span> なので、臨界値は1.985です。</p>
+<p><span class="orange"><strong>手順3：検定統計量 <span class="math inline">\(t\)</span> を求める</strong></span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">係数</th>
+<th style="text-align: center;">標準誤差</th>
+<th style="text-align: center;"><span class="math inline">\(t\)</span></th>
+<th style="text-align: center;">P値</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">切片</td>
+<td style="text-align: center;">46.230</td>
+<td style="text-align: center;">2.192</td>
+<td style="text-align: center;">21.087</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">授業時間</td>
+<td style="text-align: center;">2.199</td>
+<td style="text-align: center;">0.114</td>
+<td style="text-align: center;">19.290</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">家庭学習有無</td>
+<td style="text-align: center;">6.534</td>
+<td style="text-align: center;">2.829</td>
+<td style="text-align: center;">2.309</td>
+<td style="text-align: center;">0.023</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">学年</td>
+<td style="text-align: center;">1.883</td>
+<td style="text-align: center;">0.306</td>
+<td style="text-align: center;">6.162</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">授業時間 × 家庭学習有無</td>
+<td style="text-align: center;">1.465</td>
+<td style="text-align: center;">0.174</td>
+<td style="text-align: center;">8.416</td>
+<td style="text-align: center;">0.000</td>
+</tr>
+</tbody>
+</table>
+<p>決定係数 <span class="math inline">\(R^2 = 0.959\)</span>、自由度調整済み決定係数 <span class="math inline">\(\bar{R}^2 = 0.957\)</span>、観測数100</p>
+<p><span class="orange"><strong>手順4：検定統計量と臨界値を比較する　手順5：検定の結論を出す</strong></span></p>
+<ul>
+<li><strong>交差項</strong>：<span class="math inline">\(t = 8.416\)</span> は臨界値1.985より大きいので、帰無仮説は棄却されます。授業時間の効果は、家庭学習の有無によって有意に異なります。</li>
+</ul>
+<p>家庭学習の有無ごとに回帰式を書くと、次のようになります（学年が同じ生徒で比べた場合）。</p>
+<p><span class="math display">\[
+\text{家庭学習なし：成績} = 46.23 + 2.20 \times \text{授業時間} + 1.88 \times \text{学年}
+\]</span></p>
+<p><span class="math display">\[
+\text{家庭学習あり：成績} = (46.23 + 6.53) + (2.20 + 1.47) \times \text{授業時間} + 1.88 \times \text{学年}
+\]</span></p>
+<ul>
+<li><strong>授業時間</strong>：家庭学習をしていない生徒では、授業時間が1時間増えると、成績は2.2点上がります。</li>
+<li><strong>交差項</strong>：家庭学習をしている生徒では、授業時間1時間あたりの効果が、さらに1.47点大きく、<span class="math inline">\(2.20 + 1.47 = 3.67\)</span> 点になります。</li>
+<li><strong>家庭学習有無</strong>：係数6.53は、「授業時間が0のとき」の家庭学習の有無による差です。授業時間が長いほど差は大きくなり、例えば授業時間が平均の約15時間のときは、<span class="math inline">\(6.53 + 1.47 \times 15.3 = 29.0\)</span> 点の差になります。「家庭学習をすると成績が6.5点上がる」とは読めないことに注意してください。</li>
+<li><strong>学年</strong>：学年が1つ上がると、成績は1.9点上がります。</li>
+</ul>
+</section>
+<section id="ダミー変数と交差項のイメージ" class="level2" data-number="24.15">
+<h2 data-number="24.15" class="anchored" data-anchor-id="ダミー変数と交差項のイメージ"><span class="header-section-number">24.15</span> ダミー変数と交差項のイメージ</h2>
+<p>実際のデータ（選挙の得票率と一人あたりの選挙費用）で、ダミー変数だけを入れた場合と、交差項も入れた場合の違いを見てみましょう。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B11-10" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B11-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B11/B11-10.png" id="fig-B11-10" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B11-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;24.10
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>左の図（ダミー変数のみ）では、2本の直線が平行で、切片だけが違います。</li>
+<li>右の図（交差項あり）では、2本の直線の傾きも違います。「その他」の政党の候補者の方が、選挙費用が得票率に与える影響（傾き）が大きいことが分かります。</li>
+</ul>
+</section>
+<section id="ダミー変数と交差項を確かめよう" class="level2" data-number="24.16">
+<h2 data-number="24.16" class="anchored" data-anchor-id="ダミー変数と交差項を確かめよう"><span class="header-section-number">24.16</span> ダミー変数と交差項を確かめよう</h2>
+<p>男性と女性の「本当の切片の差」と「本当の傾きの差」を決めて、100人分のデータ（勉強時間と点数）を作り、「ダミー変数のみ」と「交差項あり」の2つの方法で分析してみましょう。</p>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="431" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 430;"><span id="cb3-431"><a href="#cb3-431"></a>viewof gapD <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">20</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"本当の切片の差"</span>})</span>
+<span id="cb3-432"><a href="#cb3-432"></a>viewof slopeD <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"本当の傾きの差"</span>})</span>
+<span id="cb3-433"><a href="#cb3-433"></a>viewof modelD <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>([<span class="st">"ダミー変数のみ"</span><span class="op">,</span> <span class="st">"交差項あり"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"ダミー変数のみ"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"分析の方法"</span>})</span>
+<span id="cb3-434"><a href="#cb3-434"></a>viewof goD <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"データを作り直す"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="439" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 438;"><span id="cb4-439"><a href="#cb4-439"></a>dumData <span class="op">=</span> {</span>
+<span id="cb4-440"><a href="#cb4-440"></a>  goD<span class="op">;</span></span>
+<span id="cb4-441"><a href="#cb4-441"></a>  <span class="kw">const</span> randn <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb4-442"><a href="#cb4-442"></a>    <span class="kw">let</span> u <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> v <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-443"><a href="#cb4-443"></a>    <span class="cf">while</span> (u <span class="op">===</span> <span class="dv">0</span>) u <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span></span>
+<span id="cb4-444"><a href="#cb4-444"></a>    <span class="cf">while</span> (v <span class="op">===</span> <span class="dv">0</span>) v <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span></span>
+<span id="cb4-445"><a href="#cb4-445"></a>    <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="op">-</span><span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(u)) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> v)<span class="op">;</span></span>
+<span id="cb4-446"><a href="#cb4-446"></a>  }<span class="op">;</span></span>
+<span id="cb4-447"><a href="#cb4-447"></a>  <span class="cf">return</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb4-448"><a href="#cb4-448"></a>    <span class="kw">const</span> x <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> <span class="dv">20</span><span class="op">;</span></span>
+<span id="cb4-449"><a href="#cb4-449"></a>    <span class="kw">const</span> f <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">&lt;</span> <span class="fl">0.5</span> <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-450"><a href="#cb4-450"></a>    <span class="kw">const</span> y <span class="op">=</span> <span class="dv">40</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> gapD <span class="op">*</span> f <span class="op">+</span> slopeD <span class="op">*</span> x <span class="op">*</span> f <span class="op">+</span> <span class="dv">6</span> <span class="op">*</span> <span class="fu">randn</span>()<span class="op">;</span></span>
+<span id="cb4-451"><a href="#cb4-451"></a>    <span class="cf">return</span> {x<span class="op">,</span> f<span class="op">,</span> y<span class="op">,</span> <span class="dt">sex</span><span class="op">:</span> f <span class="op">===</span> <span class="dv">1</span> <span class="op">?</span> <span class="st">"女性"</span> <span class="op">:</span> <span class="st">"男性"</span>}<span class="op">;</span></span>
+<span id="cb4-452"><a href="#cb4-452"></a>  })<span class="op">;</span></span>
+<span id="cb4-453"><a href="#cb4-453"></a>}</span>
+<span id="cb4-454"><a href="#cb4-454"></a></span>
+<span id="cb4-455"><a href="#cb4-455"></a>dumFit <span class="op">=</span> {</span>
+<span id="cb4-456"><a href="#cb4-456"></a>  <span class="co">// 最小二乗法（正規方程式をガウスの消去法で解く）</span></span>
+<span id="cb4-457"><a href="#cb4-457"></a>  <span class="kw">const</span> cols <span class="op">=</span> modelD <span class="op">===</span> <span class="st">"交差項あり"</span></span>
+<span id="cb4-458"><a href="#cb4-458"></a>    <span class="op">?</span> [d <span class="kw">=&gt;</span> <span class="dv">1</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">f</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">*</span> d<span class="op">.</span><span class="at">f</span>]</span>
+<span id="cb4-459"><a href="#cb4-459"></a>    <span class="op">:</span> [d <span class="kw">=&gt;</span> <span class="dv">1</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span><span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">f</span>]<span class="op">;</span></span>
+<span id="cb4-460"><a href="#cb4-460"></a>  <span class="kw">const</span> k <span class="op">=</span> cols<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb4-461"><a href="#cb4-461"></a>  <span class="kw">const</span> A <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> k}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span></span>
+<span id="cb4-462"><a href="#cb4-462"></a>    <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> k}<span class="op">,</span> (_<span class="op">,</span> j) <span class="kw">=&gt;</span> d3<span class="op">.</span><span class="fu">sum</span>(dumData<span class="op">,</span> d <span class="kw">=&gt;</span> cols[i](d) <span class="op">*</span> cols[j](d))))<span class="op">;</span></span>
+<span id="cb4-463"><a href="#cb4-463"></a>  <span class="kw">const</span> bvec <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> k}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> d3<span class="op">.</span><span class="fu">sum</span>(dumData<span class="op">,</span> d <span class="kw">=&gt;</span> cols[i](d) <span class="op">*</span> d<span class="op">.</span><span class="at">y</span>))<span class="op">;</span></span>
+<span id="cb4-464"><a href="#cb4-464"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> k<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb4-465"><a href="#cb4-465"></a>    <span class="cf">for</span> (<span class="kw">let</span> r <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> r <span class="op">&lt;</span> k<span class="op">;</span> r<span class="op">++</span>) {</span>
+<span id="cb4-466"><a href="#cb4-466"></a>      <span class="kw">const</span> m <span class="op">=</span> A[r][i] <span class="op">/</span> A[i][i]<span class="op">;</span></span>
+<span id="cb4-467"><a href="#cb4-467"></a>      <span class="cf">for</span> (<span class="kw">let</span> c <span class="op">=</span> i<span class="op">;</span> c <span class="op">&lt;</span> k<span class="op">;</span> c<span class="op">++</span>) A[r][c] <span class="op">-=</span> m <span class="op">*</span> A[i][c]<span class="op">;</span></span>
+<span id="cb4-468"><a href="#cb4-468"></a>      bvec[r] <span class="op">-=</span> m <span class="op">*</span> bvec[i]<span class="op">;</span></span>
+<span id="cb4-469"><a href="#cb4-469"></a>    }</span>
+<span id="cb4-470"><a href="#cb4-470"></a>  }</span>
+<span id="cb4-471"><a href="#cb4-471"></a>  <span class="kw">const</span> coef <span class="op">=</span> <span class="kw">new</span> <span class="bu">Array</span>(k)<span class="op">.</span><span class="fu">fill</span>(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb4-472"><a href="#cb4-472"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> k <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&gt;=</span> <span class="dv">0</span><span class="op">;</span> i<span class="op">--</span>) {</span>
+<span id="cb4-473"><a href="#cb4-473"></a>    <span class="kw">let</span> s <span class="op">=</span> bvec[i]<span class="op">;</span></span>
+<span id="cb4-474"><a href="#cb4-474"></a>    <span class="cf">for</span> (<span class="kw">let</span> c <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> c <span class="op">&lt;</span> k<span class="op">;</span> c<span class="op">++</span>) s <span class="op">-=</span> A[i][c] <span class="op">*</span> coef[c]<span class="op">;</span></span>
+<span id="cb4-475"><a href="#cb4-475"></a>    coef[i] <span class="op">=</span> s <span class="op">/</span> A[i][i]<span class="op">;</span></span>
+<span id="cb4-476"><a href="#cb4-476"></a>  }</span>
+<span id="cb4-477"><a href="#cb4-477"></a>  <span class="kw">const</span> [a<span class="op">,</span> b1<span class="op">,</span> b2<span class="op">,</span> b3 <span class="op">=</span> <span class="dv">0</span>] <span class="op">=</span> coef<span class="op">;</span></span>
+<span id="cb4-478"><a href="#cb4-478"></a>  <span class="cf">return</span> {a<span class="op">,</span> b1<span class="op">,</span> b2<span class="op">,</span> b3}<span class="op">;</span></span>
+<span id="cb4-479"><a href="#cb4-479"></a>}</span>
+<span id="cb4-480"><a href="#cb4-480"></a></span>
+<span id="cb4-481"><a href="#cb4-481"></a><span class="fu">md</span><span class="vs">`**推定結果**　a = </span><span class="sc">${</span>dumFit<span class="op">.</span><span class="at">a</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">　b₁（勉強時間）= </span><span class="sc">${</span>dumFit<span class="op">.</span><span class="at">b1</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">　b₂（女性ダミー）= </span><span class="sc">${</span>dumFit<span class="op">.</span><span class="at">b2</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}${</span>modelD <span class="op">===</span> <span class="st">"交差項あり"</span> <span class="op">?</span> <span class="vs">`　b₃（交差項）= </span><span class="sc">${</span>dumFit<span class="op">.</span><span class="at">b3</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span> <span class="op">:</span> <span class="st">""</span><span class="sc">}</span></span>
+<span id="cb4-482"><a href="#cb4-482"></a></span>
+<span id="cb4-483"><a href="#cb4-483"></a><span class="vs">男性：点数 = </span><span class="sc">${</span>dumFit<span class="op">.</span><span class="at">a</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> + </span><span class="sc">${</span>dumFit<span class="op">.</span><span class="at">b1</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> × 勉強時間　　女性：点数 = </span><span class="sc">${</span>(dumFit<span class="op">.</span><span class="at">a</span> <span class="op">+</span> dumFit<span class="op">.</span><span class="at">b2</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> + </span><span class="sc">${</span>(dumFit<span class="op">.</span><span class="at">b1</span> <span class="op">+</span> dumFit<span class="op">.</span><span class="at">b3</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> × 勉強時間`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="485" data-source-offset="-1658"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 484;"><span id="cb5-485"><a href="#cb5-485"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb5-486"><a href="#cb5-486"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">20</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"勉強時間（時間）"</span>}<span class="op">,</span></span>
+<span id="cb5-487"><a href="#cb5-487"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"点数"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb5-488"><a href="#cb5-488"></a>  <span class="dt">color</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"男性"</span><span class="op">,</span> <span class="st">"女性"</span>]<span class="op">,</span> <span class="dt">range</span><span class="op">:</span> [<span class="st">"steelblue"</span><span class="op">,</span> <span class="st">"#E36C09"</span>]<span class="op">,</span> <span class="dt">legend</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb5-489"><a href="#cb5-489"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb5-490"><a href="#cb5-490"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(dumData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"sex"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.6</span>})<span class="op">,</span></span>
+<span id="cb5-491"><a href="#cb5-491"></a>    Plot<span class="op">.</span><span class="fu">line</span>([[<span class="dv">0</span><span class="op">,</span> dumFit<span class="op">.</span><span class="at">a</span>]<span class="op">,</span> [<span class="dv">20</span><span class="op">,</span> dumFit<span class="op">.</span><span class="at">a</span> <span class="op">+</span> dumFit<span class="op">.</span><span class="at">b1</span> <span class="op">*</span> <span class="dv">20</span>]]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
+<span id="cb5-492"><a href="#cb5-492"></a>    Plot<span class="op">.</span><span class="fu">line</span>([[<span class="dv">0</span><span class="op">,</span> dumFit<span class="op">.</span><span class="at">a</span> <span class="op">+</span> dumFit<span class="op">.</span><span class="at">b2</span>]<span class="op">,</span> [<span class="dv">20</span><span class="op">,</span> dumFit<span class="op">.</span><span class="at">a</span> <span class="op">+</span> dumFit<span class="op">.</span><span class="at">b2</span> <span class="op">+</span> (dumFit<span class="op">.</span><span class="at">b1</span> <span class="op">+</span> dumFit<span class="op">.</span><span class="at">b3</span>) <span class="op">*</span> <span class="dv">20</span>]]<span class="op">,</span></span>
+<span id="cb5-493"><a href="#cb5-493"></a>              {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})</span>
+<span id="cb5-494"><a href="#cb5-494"></a>  ]</span>
+<span id="cb5-495"><a href="#cb5-495"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>データは、「男性：点数 = 40 + 2 × 勉強時間」、「女性：点数 = (40 + 切片の差) + (2 + 傾きの差) × 勉強時間」に誤差を加えて作っています。</li>
+<li>「ダミー変数のみ」では、2本の直線は必ず平行になります。「本当の傾きの差」を大きくしても、直線は平行のままなので、データにうまく当てはまりません。</li>
+<li>「交差項あり」に切り替えると、2本の直線の傾きが変わり、データに合うようになります。推定された <span class="math inline">\(b_3\)</span> が、「本当の傾きの差」に近い値になることを確認してください。</li>
+<li>「本当の傾きの差」を0にすると、交差項ありで分析しても <span class="math inline">\(b_3\)</span> はほぼ0になり、2本の直線はほぼ平行になります。</li>
+</ul>
+</section>
+<section id="エクセルでの計算方法" class="level2" data-number="24.17">
+<h2 data-number="24.17" class="anchored" data-anchor-id="エクセルでの計算方法"><span class="header-section-number">24.17</span> エクセルでの計算方法</h2>
+<p><strong>ダミー変数を含む回帰分析（練習_1、練習_2）</strong></p>
+<ol type="1">
+<li>上の「エクセルでのダミー変数の作り方」の方法で、ダミー変数の列を作ります。</li>
+<li>分析に使う説明変数（ダミー変数を含む）の列を、隣り合うように並べます。</li>
+<li>「データ」→「データ分析」→「回帰分析」を選び、「入力 Y 範囲」に被説明変数、「入力 X 範囲」に説明変数の列をまとめて指定します。</li>
+</ol>
+<ul>
+<li>3つ以上のカテゴリーがある場合は、基準にするカテゴリーのダミー変数を「入力 X 範囲」に<strong>含めない</strong>ようにします（例：練習_2 で PC を基準にする場合は、女性ダミー、スマホ、タブレットの3列を指定します）。</li>
+<li>すべてのダミー変数を含めてしまうと、正しく推計されず、係数が0になったり、エラーや意味のない値が表示されたりします。</li>
+</ul>
+<p><strong>交差項を含む回帰分析（練習_3）</strong></p>
+<p>授業時間がB列、家庭学習有無がC列に入力されているとき、交差項の列（例：E列）の2行目に次の式を入力し、最後の行までコピーします。</p>
+<pre><code>=B2*C2</code></pre>
+<ul>
+<li>家庭学習をしていない生徒（C列が0）は、交差項も0になります。家庭学習をしている生徒（C列が1）は、交差項が授業時間と同じ値になります。</li>
+<li>分析ツールの「入力 X 範囲」には、授業時間、家庭学習有無、学年、交差項の4列を指定します。</li>
+<li>交差項を入れるときは、交差項のもとになった2つの変数（授業時間と家庭学習有無）も、必ず式に入れておきます。</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBnYXBEID0gSW5wdXRzLnJhbmdlKFstMjAsIDIwXSwge3N0ZXA6IDEsIHZhbHVlOiAxMCwgbGFiZWw6IFwi5pys5b2T44Gu5YiH54mH44Gu5beuXCJ9KVxudmlld29mIHNsb3BlRCA9IElucHV0cy5yYW5nZShbLTIsIDJdLCB7c3RlcDogMC4xLCB2YWx1ZTogMSwgbGFiZWw6IFwi5pys5b2T44Gu5YK+44GN44Gu5beuXCJ9KVxudmlld29mIG1vZGVsRCA9IElucHV0cy5yYWRpbyhbXCLjg4Djg5/jg7zlpInmlbDjga7jgb9cIiwgXCLkuqTlt67poIXjgYLjgopcIl0sIHt2YWx1ZTogXCLjg4Djg5/jg7zlpInmlbDjga7jgb9cIiwgbGFiZWw6IFwi5YiG5p6Q44Gu5pa55rOVXCJ9KVxudmlld29mIGdvRCA9IElucHV0cy5idXR0b24oXCLjg4fjg7zjgr/jgpLkvZzjgornm7TjgZlcIilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImR1bURhdGEgPSB7XG4gIGdvRDtcbiAgY29uc3QgcmFuZG4gPSAoKSA9PiB7XG4gICAgbGV0IHUgPSAwLCB2ID0gMDtcbiAgICB3aGlsZSAodSA9PT0gMCkgdSA9IE1hdGgucmFuZG9tKCk7XG4gICAgd2hpbGUgKHYgPT09IDApIHYgPSBNYXRoLnJhbmRvbSgpO1xuICAgIHJldHVybiBNYXRoLnNxcnQoLTIgKiBNYXRoLmxvZyh1KSkgKiBNYXRoLmNvcygyICogTWF0aC5QSSAqIHYpO1xuICB9O1xuICByZXR1cm4gQXJyYXkuZnJvbSh7bGVuZ3RoOiAxMDB9LCAoKSA9PiB7XG4gICAgY29uc3QgeCA9IE1hdGgucmFuZG9tKCkgKiAyMDtcbiAgICBjb25zdCBmID0gTWF0aC5yYW5kb20oKSA8IDAuNSA/IDEgOiAwO1xuICAgIGNvbnN0IHkgPSA0MCArIDIgKiB4ICsgZ2FwRCAqIGYgKyBzbG9wZUQgKiB4ICogZiArIDYgKiByYW5kbigpO1xuICAgIHJldHVybiB7eCwgZiwgeSwgc2V4OiBmID09PSAxID8gXCLlpbPmgKdcIiA6IFwi55S35oCnXCJ9O1xuICB9KTtcbn1cblxuZHVtRml0ID0ge1xuICAvLyDmnIDlsI/kuozkuZfms5XvvIjmraPopo/mlrnnqIvlvI/jgpLjgqzjgqbjgrnjga7mtojljrvms5Xjgafop6PjgY/vvIlcbiAgY29uc3QgY29scyA9IG1vZGVsRCA9PT0gXCLkuqTlt67poIXjgYLjgopcIlxuICAgID8gW2QgPT4gMSwgZCA9PiBkLngsIGQgPT4gZC5mLCBkID0+IGQueCAqIGQuZl1cbiAgICA6IFtkID0+IDEsIGQgPT4gZC54LCBkID0+IGQuZl07XG4gIGNvbnN0IGsgPSBjb2xzLmxlbmd0aDtcbiAgY29uc3QgQSA9IEFycmF5LmZyb20oe2xlbmd0aDoga30sIChfLCBpKSA9PlxuICAgIEFycmF5LmZyb20oe2xlbmd0aDoga30sIChfLCBqKSA9PiBkMy5zdW0oZHVtRGF0YSwgZCA9PiBjb2xzW2ldKGQpICogY29sc1tqXShkKSkpKTtcbiAgY29uc3QgYnZlYyA9IEFycmF5LmZyb20oe2xlbmd0aDoga30sIChfLCBpKSA9PiBkMy5zdW0oZHVtRGF0YSwgZCA9PiBjb2xzW2ldKGQpICogZC55KSk7XG4gIGZvciAobGV0IGkgPSAwOyBpIDwgazsgaSsrKSB7XG4gICAgZm9yIChsZXQgciA9IGkgKyAxOyByIDwgazsgcisrKSB7XG4gICAgICBjb25zdCBtID0gQVtyXVtpXSAvIEFbaV1baV07XG4gICAgICBmb3IgKGxldCBjID0gaTsgYyA8IGs7IGMrKykgQVtyXVtjXSAtPSBtICogQVtpXVtjXTtcbiAgICAgIGJ2ZWNbcl0gLT0gbSAqIGJ2ZWNbaV07XG4gICAgfVxuICB9XG4gIGNvbnN0IGNvZWYgPSBuZXcgQXJyYXkoaykuZmlsbCgwKTtcbiAgZm9yIChsZXQgaSA9IGsgLSAxOyBpID49IDA7IGktLSkge1xuICAgIGxldCBzID0gYnZlY1tpXTtcbiAgICBmb3IgKGxldCBjID0gaSArIDE7IGMgPCBrOyBjKyspIHMgLT0gQVtpXVtjXSAqIGNvZWZbY107XG4gICAgY29lZltpXSA9IHMgLyBBW2ldW2ldO1xuICB9XG4gIGNvbnN0IFthLCBiMSwgYjIsIGIzID0gMF0gPSBjb2VmO1xuICByZXR1cm4ge2EsIGIxLCBiMiwgYjN9O1xufVxuXG5tZGAqKuaOqOWumue1kOaenCoq44CAYSA9ICR7ZHVtRml0LmEudG9GaXhlZCgyKX3jgIBi4oKB77yI5YuJ5by35pmC6ZaT77yJPSAke2R1bUZpdC5iMS50b0ZpeGVkKDIpfeOAgGLigoLvvIjlpbPmgKfjg4Djg5/jg7zvvIk9ICR7ZHVtRml0LmIyLnRvRml4ZWQoMil9JHttb2RlbEQgPT09IFwi5Lqk5beu6aCF44GC44KKXCIgPyBg44CAYuKCg++8iOS6pOW3rumghe+8iT0gJHtkdW1GaXQuYjMudG9GaXhlZCgyKX1gIDogXCJcIn1cblxu55S35oCn77ya54K55pWwID0gJHtkdW1GaXQuYS50b0ZpeGVkKDIpfSArICR7ZHVtRml0LmIxLnRvRml4ZWQoMil9IMOXIOWLieW8t+aZgumWk+OAgOOAgOWls+aAp++8mueCueaVsCA9ICR7KGR1bUZpdC5hICsgZHVtRml0LmIyKS50b0ZpeGVkKDIpfSArICR7KGR1bUZpdC5iMSArIGR1bUZpdC5iMykudG9GaXhlZCgyKX0gw5cg5YuJ5by35pmC6ZaTYFxuXG5QbG90LnBsb3Qoe1xuICB4OiB7ZG9tYWluOiBbMCwgMjBdLCBsYWJlbDogXCLli4nlvLfmmYLplpPvvIjmmYLplpPvvIlcIn0sXG4gIHk6IHtsYWJlbDogXCLngrnmlbBcIiwgZ3JpZDogdHJ1ZX0sXG4gIGNvbG9yOiB7ZG9tYWluOiBbXCLnlLfmgKdcIiwgXCLlpbPmgKdcIl0sIHJhbmdlOiBbXCJzdGVlbGJsdWVcIiwgXCIjRTM2QzA5XCJdLCBsZWdlbmQ6IHRydWV9LFxuICBtYXJrczogW1xuICAgIFBsb3QuZG90KGR1bURhdGEsIHt4OiBcInhcIiwgeTogXCJ5XCIsIGZpbGw6IFwic2V4XCIsIHI6IDMsIGZpbGxPcGFjaXR5OiAwLjZ9KSxcbiAgICBQbG90LmxpbmUoW1swLCBkdW1GaXQuYV0sIFsyMCwgZHVtRml0LmEgKyBkdW1GaXQuYjEgKiAyMF1dLCB7c3Ryb2tlOiBcInN0ZWVsYmx1ZVwiLCBzdHJva2VXaWR0aDogMi41fSksXG4gICAgUGxvdC5saW5lKFtbMCwgZHVtRml0LmEgKyBkdW1GaXQuYjJdLCBbMjAsIGR1bUZpdC5hICsgZHVtRml0LmIyICsgKGR1bUZpdC5iMSArIGR1bUZpdC5iMykgKiAyMF1dLFxuICAgICAgICAgICAgICB7c3Ryb2tlOiBcIiNFMzZDMDlcIiwgc3Ryb2tlV2lkdGg6IDIuNX0pXG4gIF1cbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2dhcEQnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnc2xvcGVEJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ21vZGVsRCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdnb0QnKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            trigger: 'click',
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            positionFixed: true,
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lecB10.html" class="pagination-link" aria-label="重回帰分析">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">重回帰分析</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lecB12.html" class="pagination-link" aria-label="データ分析演習">
+        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">データ分析演習</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

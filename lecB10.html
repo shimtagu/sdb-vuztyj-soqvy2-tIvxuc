@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="2026年度　前期（A） 後期（B） 時間： 月曜日 3 時限（13:50-15:35） 教室： C 館 地下1階 PC4 教室">
+
+<title>23&nbsp; 重回帰分析 – 政経データ分析</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lecB11.html" rel="next">
+<link href="./lecB09.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6b436361868395b7681bd6fb8d30040a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta name="robots" content="noindex, nofollow">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecB01.html">後期（B）</a></li><li class="breadcrumb-item"><a href="./lecB10.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">重回帰分析</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">政経データ分析</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">はじめに</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">前期（A）</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">エクセルの基礎</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">データの種類と代表する値</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">データのばらつき</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">記述統計</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">調査データのクロス集計</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">データの可視化</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">相関分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（中間テスト）</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">格差の可視化</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">物価の計算</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">正規分布を用いた推測</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">信頼区間</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecA13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（期末テスト）</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">後期（B）</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB01.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">基礎的統計手法の確認</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">母集団の推定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB03.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">大数の法則・中心極限定理</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB04.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">母平均の推定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB05.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">母平均の仮説検定</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB06.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">2群の比較</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB07.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（中間テスト）</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB08.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title"><span class="math inline">\(\chi^2\)</span> 検定と相関分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB09.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">単回帰分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB10.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">重回帰分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">質的情報の分析</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">データ分析演習</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lecB13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">これまでの理解度の確認（期末テスト）</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#前回の振り返り" id="toc-前回の振り返り" class="nav-link active" data-scroll-target="#前回の振り返り"><span class="header-section-number">23.1</span> 前回の振り返り</a></li>
+  <li><a href="#単回帰分析と重回帰分析" id="toc-単回帰分析と重回帰分析" class="nav-link" data-scroll-target="#単回帰分析と重回帰分析"><span class="header-section-number">23.2</span> 単回帰分析と重回帰分析</a></li>
+  <li><a href="#重回帰分析のイメージ" id="toc-重回帰分析のイメージ" class="nav-link" data-scroll-target="#重回帰分析のイメージ"><span class="header-section-number">23.3</span> 重回帰分析のイメージ</a></li>
+  <li><a href="#回帰モデルregression-model" id="toc-回帰モデルregression-model" class="nav-link" data-scroll-target="#回帰モデルregression-model"><span class="header-section-number">23.4</span> 回帰モデル（regression model）</a></li>
+  <li><a href="#単回帰分析と重回帰分析の違い" id="toc-単回帰分析と重回帰分析の違い" class="nav-link" data-scroll-target="#単回帰分析と重回帰分析の違い"><span class="header-section-number">23.5</span> 単回帰分析と重回帰分析の違い</a></li>
+  <li><a href="#単回帰分析と重回帰分析で何が変わったのか" id="toc-単回帰分析と重回帰分析で何が変わったのか" class="nav-link" data-scroll-target="#単回帰分析と重回帰分析で何が変わったのか"><span class="header-section-number">23.6</span> 単回帰分析と重回帰分析で、何が変わったのか</a></li>
+  <li><a href="#係数が変わる仕組みを確かめよう" id="toc-係数が変わる仕組みを確かめよう" class="nav-link" data-scroll-target="#係数が変わる仕組みを確かめよう"><span class="header-section-number">23.7</span> 係数が変わる仕組みを確かめよう</a></li>
+  <li><a href="#回帰係数の検定" id="toc-回帰係数の検定" class="nav-link" data-scroll-target="#回帰係数の検定"><span class="header-section-number">23.8</span> 回帰係数の検定</a></li>
+  <li><a href="#エクセルの分析結果" id="toc-エクセルの分析結果" class="nav-link" data-scroll-target="#エクセルの分析結果"><span class="header-section-number">23.9</span> エクセルの分析結果</a></li>
+  <li><a href="#自由度調整済み決定係数" id="toc-自由度調整済み決定係数" class="nav-link" data-scroll-target="#自由度調整済み決定係数"><span class="header-section-number">23.10</span> 自由度調整済み決定係数</a></li>
+  <li><a href="#変数間の影響の比較" id="toc-変数間の影響の比較" class="nav-link" data-scroll-target="#変数間の影響の比較"><span class="header-section-number">23.11</span> 変数間の影響の比較</a></li>
+  <li><a href="#標準化" id="toc-標準化" class="nav-link" data-scroll-target="#標準化"><span class="header-section-number">23.12</span> 標準化</a></li>
+  <li><a href="#標準化した重回帰分析" id="toc-標準化した重回帰分析" class="nav-link" data-scroll-target="#標準化した重回帰分析"><span class="header-section-number">23.13</span> 標準化した重回帰分析</a></li>
+  <li><a href="#エクセルでの計算方法" id="toc-エクセルでの計算方法" class="nav-link" data-scroll-target="#エクセルでの計算方法"><span class="header-section-number">23.14</span> エクセルでの計算方法</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lecB01.html">後期（B）</a></li><li class="breadcrumb-item"><a href="./lecB10.html"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">重回帰分析</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">重回帰分析</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>2つ以上の説明変数を使って、それぞれの影響をどう調べるか？</p>
+<p>・二つ以上の独立変数（説明変数）を用いる回帰分析<br>
+・単回帰分析と重回帰分析の違い、自由度調整済み決定係数、係数（影響）の比較方法</p>
+<section id="前回の振り返り" class="level2" data-number="23.1">
+<h2 data-number="23.1" class="anchored" data-anchor-id="前回の振り返り"><span class="header-section-number">23.1</span> 前回の振り返り</h2>
+<p>前回（第9回）は、ビールの出荷量を平均気温で説明する単回帰分析を行いました。その結果、12月は気温が低いのにビールの出荷量が最も多く、平均気温だけではビールの出荷量をうまく説明できませんでした。12月には、年末の忘年会や贈答といった「気温以外の要因」があるからです。</p>
+<p>このように、被説明変数に影響を与える要因が複数ある場合には、それらを同時に説明変数として加えた分析が必要になります。これが、今回学ぶ<strong>重回帰分析</strong>です。</p>
+</section>
+<section id="単回帰分析と重回帰分析" class="level2" data-number="23.2">
+<h2 data-number="23.2" class="anchored" data-anchor-id="単回帰分析と重回帰分析"><span class="header-section-number">23.2</span> 単回帰分析と重回帰分析</h2>
+<ul>
+<li>従属変数・被説明変数（<span class="math inline">\(Y\)</span>）を、一つの独立変数・説明変数（<span class="math inline">\(X\)</span>）で説明する回帰分析を<span class="orange">単回帰分析</span>と呼びます。</li>
+<li>それに対して、二つ以上の独立変数・説明変数（<span class="math inline">\(X\)</span>）を使う回帰分析を<span class="orange">重回帰分析</span>と呼びます。</li>
+<li>重回帰分析は、複数の単回帰分析を同時に行なっているのではありません。</li>
+<li>重回帰分析の係数は、<strong>他の説明変数をコントロールしたとき</strong>に、その説明変数が被説明変数に与える影響の大きさを示しています。</li>
+</ul>
+</section>
+<section id="重回帰分析のイメージ" class="level2" data-number="23.3">
+<h2 data-number="23.3" class="anchored" data-anchor-id="重回帰分析のイメージ"><span class="header-section-number">23.3</span> 重回帰分析のイメージ</h2>
+<ul>
+<li><span class="math inline">\(Y\)</span> と <span class="math inline">\(X\)</span> の関係を式で表すという点は、単回帰分析と同じです。重回帰分析では <span class="math inline">\(X\)</span> の数が増えます。</li>
+<li>単回帰分析では、平面上の点の真ん中を通る「直線」を引きました。重回帰分析では、多次元の空間の中にデータが散らばり、そのちょうど真ん中を通るように「面」を作るイメージです。</li>
+<li>一つの式の中に複数の <span class="math inline">\(X\)</span> を入れることにより、他の <span class="math inline">\(X\)</span> の影響を制御した場合の変化を求めることができます。</li>
+</ul>
+<p><span class="math display">\[
+Y_i = a + b_1 x_{1i} + b_2 x_{2i} + \cdots + b_k x_{ki} + e_i
+\]</span></p>
+<ul>
+<li>例えば <span class="math inline">\(b_2\)</span> は、「他の <span class="math inline">\(x\)</span> を一定とした場合の、<span class="math inline">\(x_2\)</span> が1単位増えたときの <span class="math inline">\(y\)</span> の変化量」を表します。</li>
+</ul>
+<p>重回帰分析の「面」のイメージは、次のサイトで動かしながら確認できます。</p>
+<ul>
+<li><a href="https://www.geogebra.org/m/apcknxyf">GeoGebra（重回帰分析の回帰平面）</a></li>
+<li><a href="https://qiita.com/karaage0703/items/f38d18afc1569fcc0418">Pythonで基礎から機械学習「重回帰分析」（Qiita）</a></li>
+</ul>
+</section>
+<section id="回帰モデルregression-model" class="level2" data-number="23.4">
+<h2 data-number="23.4" class="anchored" data-anchor-id="回帰モデルregression-model"><span class="header-section-number">23.4</span> 回帰モデル（regression model）</h2>
+<p>確率変数 <span class="math inline">\(Y\)</span> が、別の変数 <span class="math inline">\(X\)</span> に依存して変動する場合の確率モデルを、回帰モデルと呼びます。</p>
+<ul>
+<li>変数 <span class="math inline">\(X\)</span> が一つの場合、<span class="orange">単回帰モデル</span>と呼ばれます。</li>
+</ul>
+<p><span class="math display">\[
+y_i = a + b x_i + e_i
+\]</span></p>
+<ul>
+<li>変数 <span class="math inline">\(X\)</span> が二つ以上の場合、<span class="orange">重回帰モデル</span>と呼ばれます。</li>
+</ul>
+<p><span class="math display">\[
+y_i = a + b_1 x_{1i} + b_2 x_{2i} + b_3 x_{3i} + \cdots + b_k x_{ki} + e_i
+\]</span></p>
+<ul>
+<li><span class="math inline">\(X\)</span>：原因変数、説明変数、独立変数（independent variable）</li>
+<li><span class="math inline">\(Y\)</span>：結果変数、被説明変数、従属変数（dependent variable）</li>
+</ul>
+<p>「原因変数」「結果変数」は、因果関係を想定した呼び方です。前回説明したとおり、回帰分析で分かるのは変数の間の関係であり、因果関係はあくまで「想定」であることに注意してください。</p>
+<p>ここで、<span class="math inline">\(k\)</span> は説明変数の数、<span class="math inline">\(n\)</span> はデータの数（標本サイズ）です。</p>
+</section>
+<section id="単回帰分析と重回帰分析の違い" class="level2" data-number="23.5">
+<h2 data-number="23.5" class="anchored" data-anchor-id="単回帰分析と重回帰分析の違い"><span class="header-section-number">23.5</span> 単回帰分析と重回帰分析の違い</h2>
+<p><strong>単回帰分析</strong></p>
+<p>成績と授業の出席率の関係を考えます（演習ファイルの「練習_1」シート、100人分のデータ）。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B10-1" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B10-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B10/B10-1.png" id="fig-B10-1" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B10-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;23.1
+</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\text{成績} = a + b \times \text{出席率} + e
+\]</span></p>
+<p><span class="math display">\[
+\text{成績} = 89.75 + 0.45 \times \text{出席率} + e
+\]</span></p>
+<p>この結果は、「出席率が1%上がると、成績が0.45点上がる」という関係を表しています。</p>
+<p>しかし、この関係には、他の要素が含まれているのではないでしょうか。例えば、授業に休まず出席する人は、授業外でもしっかりと勉強するので、だから成績が良いのではないか、と考えることができます。</p>
+<p>そうであれば、学習時間の効果を一定にしたうえで、出席率の効果を確認する必要があります。そこで、学習時間も変数として加えた重回帰分析を行います。</p>
+<p><strong>重回帰分析</strong></p>
+<p>成績と授業の出席率、学習時間の関係を考えます（演習ファイルの「練習_2」シート）。一つの式に2つ以上の変数を入れることにより、他の影響を制御（コントロール）した状態での影響を推計することができます。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B10-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B10-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B10/B10-2.png" id="fig-B10-2" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B10-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;23.2
+</figcaption>
+</figure>
+</div>
+<p><span class="math display">\[
+\text{成績} = a + b_1 \times \text{出席率} + b_2 \times \text{学習時間} + e
+\]</span></p>
+<p><span class="math display">\[
+\text{成績} = 26.59 + 0.57 \times \text{出席率} + 5.06 \times \text{学習時間} + e
+\]</span></p>
+<ul>
+<li>学習時間の影響（多い少ない）を制御した状態で（学習時間の影響を考慮した上で）、出席率が1%上がると、成績は0.57点上がります。</li>
+<li>逆に、出席率の影響を制御した状態で、学習時間が1時間増えると、成績は5.06点上がります。</li>
+</ul>
+</section>
+<section id="単回帰分析と重回帰分析で何が変わったのか" class="level2" data-number="23.6">
+<h2 data-number="23.6" class="anchored" data-anchor-id="単回帰分析と重回帰分析で何が変わったのか"><span class="header-section-number">23.6</span> 単回帰分析と重回帰分析で、何が変わったのか</h2>
+<p>「練習_1」（単回帰分析）と「練習_2」（重回帰分析）の出席率の結果を比べると、次のようになります。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">単回帰分析（練習_1）</th>
+<th style="text-align: center;">重回帰分析（練習_2）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">出席率の係数</td>
+<td style="text-align: center;">0.451</td>
+<td style="text-align: center;">0.571</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">出席率の係数の標準誤差</td>
+<td style="text-align: center;">0.275</td>
+<td style="text-align: center;">0.084</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">出席率の係数の <span class="math inline">\(t\)</span> 値</td>
+<td style="text-align: center;">1.639</td>
+<td style="text-align: center;">6.816</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">出席率の係数のP値</td>
+<td style="text-align: center;">0.104</td>
+<td style="text-align: center;">0.000000001 未満</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">決定係数 <span class="math inline">\(R^2\)</span></td>
+<td style="text-align: center;">0.027</td>
+<td style="text-align: center;">0.911</td>
+</tr>
+</tbody>
+</table>
+<p>ここから、2つのことが分かります。</p>
+<p><strong>1. 係数の値の変化</strong></p>
+<ul>
+<li>出席率の係数は、0.451から0.571に変わりました。</li>
+<li>実は、このデータでは、出席率と学習時間の相関係数は <span class="math inline">\(-0.046\)</span> で、ほとんど相関がありません。そのため、「出席する人ほどよく勉強する」という効果が出席率の係数に含まれていたわけではなく、係数の変化は小さくなっています。</li>
+<li>もし出席率と学習時間に強い正の相関があれば、単回帰分析の出席率の係数には学習時間の効果が含まれてしまい、重回帰分析の係数よりずっと大きくなります（下の「係数が変わる仕組みを確かめよう」で確認できます）。</li>
+</ul>
+<p><strong>2. 係数の精度の変化</strong></p>
+<ul>
+<li>単回帰分析では、出席率の係数のP値は0.104で、有意水準5%で<strong>有意ではありません</strong>でした。</li>
+<li>重回帰分析では、P値が非常に小さくなり、<strong>有意</strong>になりました。</li>
+<li>これは、学習時間が成績のばらつきの大部分を説明する（決定係数が0.027から0.911に上がった）ため、説明できない部分（残差）が小さくなり、出席率の係数の標準誤差が0.275から0.084に小さくなったからです。</li>
+<li>つまり、被説明変数に大きな影響を与える変数を加えると、他の係数をより正確に推定できるようになります。</li>
+</ul>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>単回帰分析の係数と重回帰分析の係数の関係
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>単回帰分析の出席率の係数は、次のように分解できます。</p>
+<p><span class="math display">\[
+\underbrace{0.451}_{\text{単回帰の係数}} = \underbrace{0.571}_{\text{重回帰の出席率の係数}} + \underbrace{5.057}_{\text{重回帰の学習時間の係数}} \times \underbrace{(-0.024)}_{\text{学習時間を出席率で回帰した係数}}
+\]</span></p>
+<ul>
+<li>最後の <span class="math inline">\(-0.024\)</span> は、「出席率が1%高い人は、学習時間が平均して何時間多いか」を表します（学習時間を出席率に回帰した単回帰分析の係数）。</li>
+<li>このデータでは、この値がほぼ0（わずかにマイナス）なので、単回帰の係数（0.451）は、重回帰の係数（0.571）とそれほど変わりませんでした。</li>
+<li>もし出席率が高い人ほど学習時間が長ければ（この値がプラスなら）、単回帰の係数は、学習時間の効果（5.057 × この値）の分だけ大きくなります。これが「出席率の効果に、学習時間の効果が含まれてしまう」ということの意味です。</li>
+<li>このように、関係のある変数を式に入れずに分析すると、係数が偏ってしまうことを、<span class="orange">除外変数バイアス（omitted variable bias）</span>といいます。</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="係数が変わる仕組みを確かめよう" class="level2" data-number="23.7">
+<h2 data-number="23.7" class="anchored" data-anchor-id="係数が変わる仕組みを確かめよう"><span class="header-section-number">23.7</span> 係数が変わる仕組みを確かめよう</h2>
+<p>出席率と学習時間の相関の強さを変えて、100人分のデータを作り、単回帰分析と重回帰分析の出席率の係数を比べてみましょう。データは、「本当の関係」を <span class="math inline">\(\text{成績} = 26.59 + 0.57 \times \text{出席率} + 5.06 \times \text{学習時間} + \text{誤差}\)</span> として作っています。</p>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="164" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 163;"><span id="cb1-164"><a href="#cb1-164"></a>viewof rhoOV <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="op">-</span><span class="fl">0.8</span><span class="op">,</span> <span class="fl">0.8</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="fl">0.6</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"出席率と学習時間の相関"</span>})</span>
+<span id="cb1-165"><a href="#cb1-165"></a>viewof goOV <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">button</span>(<span class="st">"データを作り直す"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="170" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 169;"><span id="cb2-170"><a href="#cb2-170"></a>ovSim <span class="op">=</span> {</span>
+<span id="cb2-171"><a href="#cb2-171"></a>  goOV<span class="op">;</span></span>
+<span id="cb2-172"><a href="#cb2-172"></a>  <span class="kw">const</span> n <span class="op">=</span> <span class="dv">100</span><span class="op">,</span> b0 <span class="op">=</span> <span class="fl">26.59</span><span class="op">,</span> b1 <span class="op">=</span> <span class="fl">0.57</span><span class="op">,</span> b2 <span class="op">=</span> <span class="fl">5.06</span><span class="op">;</span></span>
+<span id="cb2-173"><a href="#cb2-173"></a>  <span class="kw">const</span> randn <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb2-174"><a href="#cb2-174"></a>    <span class="kw">let</span> u <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> v <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-175"><a href="#cb2-175"></a>    <span class="cf">while</span> (u <span class="op">===</span> <span class="dv">0</span>) u <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span></span>
+<span id="cb2-176"><a href="#cb2-176"></a>    <span class="cf">while</span> (v <span class="op">===</span> <span class="dv">0</span>) v <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>()<span class="op">;</span></span>
+<span id="cb2-177"><a href="#cb2-177"></a>    <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="op">-</span><span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(u)) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> v)<span class="op">;</span></span>
+<span id="cb2-178"><a href="#cb2-178"></a>  }<span class="op">;</span></span>
+<span id="cb2-179"><a href="#cb2-179"></a>  <span class="kw">const</span> rows <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb2-180"><a href="#cb2-180"></a>  <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> n<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb2-181"><a href="#cb2-181"></a>    <span class="kw">const</span> z1 <span class="op">=</span> <span class="fu">randn</span>()<span class="op">,</span> z2 <span class="op">=</span> <span class="fu">randn</span>()<span class="op">;</span></span>
+<span id="cb2-182"><a href="#cb2-182"></a>    <span class="kw">const</span> t <span class="op">=</span> <span class="fl">10.6</span> <span class="op">+</span> <span class="fl">5.78</span> <span class="op">*</span> z1<span class="op">;</span></span>
+<span id="cb2-183"><a href="#cb2-183"></a>    <span class="kw">const</span> att <span class="op">=</span> <span class="fl">79.9</span> <span class="op">+</span> <span class="fl">11.23</span> <span class="op">*</span> (rhoOV <span class="op">*</span> z1 <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">1</span> <span class="op">-</span> rhoOV <span class="op">**</span> <span class="dv">2</span>) <span class="op">*</span> z2)<span class="op">;</span></span>
+<span id="cb2-184"><a href="#cb2-184"></a>    <span class="kw">const</span> y <span class="op">=</span> b0 <span class="op">+</span> b1 <span class="op">*</span> att <span class="op">+</span> b2 <span class="op">*</span> t <span class="op">+</span> <span class="fl">9.34</span> <span class="op">*</span> <span class="fu">randn</span>()<span class="op">;</span></span>
+<span id="cb2-185"><a href="#cb2-185"></a>    rows<span class="op">.</span><span class="fu">push</span>({att<span class="op">,</span> t<span class="op">,</span> y})<span class="op">;</span></span>
+<span id="cb2-186"><a href="#cb2-186"></a>  }</span>
+<span id="cb2-187"><a href="#cb2-187"></a>  <span class="kw">const</span> ma <span class="op">=</span> d3<span class="op">.</span><span class="fu">mean</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">att</span>)<span class="op">,</span> mt <span class="op">=</span> d3<span class="op">.</span><span class="fu">mean</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">t</span>)<span class="op">,</span> my <span class="op">=</span> d3<span class="op">.</span><span class="fu">mean</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
+<span id="cb2-188"><a href="#cb2-188"></a>  <span class="kw">const</span> saa <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> (d<span class="op">.</span><span class="at">att</span> <span class="op">-</span> ma) <span class="op">**</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-189"><a href="#cb2-189"></a>  <span class="kw">const</span> stt <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> (d<span class="op">.</span><span class="at">t</span> <span class="op">-</span> mt) <span class="op">**</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-190"><a href="#cb2-190"></a>  <span class="kw">const</span> sat <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> (d<span class="op">.</span><span class="at">att</span> <span class="op">-</span> ma) <span class="op">*</span> (d<span class="op">.</span><span class="at">t</span> <span class="op">-</span> mt))<span class="op">;</span></span>
+<span id="cb2-191"><a href="#cb2-191"></a>  <span class="kw">const</span> say <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> (d<span class="op">.</span><span class="at">att</span> <span class="op">-</span> ma) <span class="op">*</span> (d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> my))<span class="op">;</span></span>
+<span id="cb2-192"><a href="#cb2-192"></a>  <span class="kw">const</span> sty <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> (d<span class="op">.</span><span class="at">t</span> <span class="op">-</span> mt) <span class="op">*</span> (d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> my))<span class="op">;</span></span>
+<span id="cb2-193"><a href="#cb2-193"></a>  <span class="co">// 単回帰分析（成績を出席率で回帰）</span></span>
+<span id="cb2-194"><a href="#cb2-194"></a>  <span class="kw">const</span> bS <span class="op">=</span> say <span class="op">/</span> saa<span class="op">,</span> aS <span class="op">=</span> my <span class="op">-</span> bS <span class="op">*</span> ma<span class="op">;</span></span>
+<span id="cb2-195"><a href="#cb2-195"></a>  <span class="kw">const</span> sseS <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> (d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> aS <span class="op">-</span> bS <span class="op">*</span> d<span class="op">.</span><span class="at">att</span>) <span class="op">**</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-196"><a href="#cb2-196"></a>  <span class="kw">const</span> seS <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(sseS <span class="op">/</span> (n <span class="op">-</span> <span class="dv">2</span>) <span class="op">/</span> saa)<span class="op">;</span></span>
+<span id="cb2-197"><a href="#cb2-197"></a>  <span class="co">// 重回帰分析（成績を出席率と学習時間で回帰）</span></span>
+<span id="cb2-198"><a href="#cb2-198"></a>  <span class="kw">const</span> det <span class="op">=</span> saa <span class="op">*</span> stt <span class="op">-</span> sat <span class="op">*</span> sat<span class="op">;</span></span>
+<span id="cb2-199"><a href="#cb2-199"></a>  <span class="kw">const</span> bM1 <span class="op">=</span> (say <span class="op">*</span> stt <span class="op">-</span> sty <span class="op">*</span> sat) <span class="op">/</span> det<span class="op">;</span></span>
+<span id="cb2-200"><a href="#cb2-200"></a>  <span class="kw">const</span> bM2 <span class="op">=</span> (sty <span class="op">*</span> saa <span class="op">-</span> say <span class="op">*</span> sat) <span class="op">/</span> det<span class="op">;</span></span>
+<span id="cb2-201"><a href="#cb2-201"></a>  <span class="kw">const</span> aM <span class="op">=</span> my <span class="op">-</span> bM1 <span class="op">*</span> ma <span class="op">-</span> bM2 <span class="op">*</span> mt<span class="op">;</span></span>
+<span id="cb2-202"><a href="#cb2-202"></a>  <span class="kw">const</span> sseM <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(rows<span class="op">,</span> d <span class="kw">=&gt;</span> (d<span class="op">.</span><span class="at">y</span> <span class="op">-</span> aM <span class="op">-</span> bM1 <span class="op">*</span> d<span class="op">.</span><span class="at">att</span> <span class="op">-</span> bM2 <span class="op">*</span> d<span class="op">.</span><span class="at">t</span>) <span class="op">**</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-203"><a href="#cb2-203"></a>  <span class="kw">const</span> seM1 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(sseM <span class="op">/</span> (n <span class="op">-</span> <span class="dv">3</span>) <span class="op">*</span> stt <span class="op">/</span> det)<span class="op">;</span></span>
+<span id="cb2-204"><a href="#cb2-204"></a>  <span class="kw">const</span> r <span class="op">=</span> sat <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(saa <span class="op">*</span> stt)<span class="op">;</span></span>
+<span id="cb2-205"><a href="#cb2-205"></a>  <span class="cf">return</span> {rows<span class="op">,</span> bS<span class="op">,</span> seS<span class="op">,</span> bM1<span class="op">,</span> seM1<span class="op">,</span> bM2<span class="op">,</span> r}<span class="op">;</span></span>
+<span id="cb2-206"><a href="#cb2-206"></a>}</span>
+<span id="cb2-207"><a href="#cb2-207"></a></span>
+<span id="cb2-208"><a href="#cb2-208"></a><span class="fu">md</span><span class="vs">`実際の相関係数：</span><span class="sc">${</span>ovSim<span class="op">.</span><span class="at">r</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">　**単回帰分析**の出席率の係数：**</span><span class="sc">${</span>ovSim<span class="op">.</span><span class="at">bS</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">**（標準誤差 </span><span class="sc">${</span>ovSim<span class="op">.</span><span class="at">seS</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">）　**重回帰分析**の出席率の係数：**</span><span class="sc">${</span>ovSim<span class="op">.</span><span class="at">bM1</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">**（標準誤差 </span><span class="sc">${</span>ovSim<span class="op">.</span><span class="at">seM1</span><span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">）`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="210" data-source-offset="-1705"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 209;"><span id="cb3-210"><a href="#cb3-210"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-211"><a href="#cb3-211"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">180</span><span class="op">,</span></span>
+<span id="cb3-212"><a href="#cb3-212"></a>  <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">110</span><span class="op">,</span></span>
+<span id="cb3-213"><a href="#cb3-213"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"出席率の係数（点は推定値、線は95%信頼区間の目安）"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb3-214"><a href="#cb3-214"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="st">"単回帰分析"</span><span class="op">,</span> <span class="st">"重回帰分析"</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
+<span id="cb3-215"><a href="#cb3-215"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-216"><a href="#cb3-216"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="fl">0.57</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
+<span id="cb3-217"><a href="#cb3-217"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#999"</span>})<span class="op">,</span></span>
+<span id="cb3-218"><a href="#cb3-218"></a>    Plot<span class="op">.</span><span class="fu">link</span>([</span>
+<span id="cb3-219"><a href="#cb3-219"></a>      {<span class="dt">m</span><span class="op">:</span> <span class="st">"単回帰分析"</span><span class="op">,</span> <span class="dt">lo</span><span class="op">:</span> ovSim<span class="op">.</span><span class="at">bS</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> ovSim<span class="op">.</span><span class="at">seS</span><span class="op">,</span> <span class="dt">hi</span><span class="op">:</span> ovSim<span class="op">.</span><span class="at">bS</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> ovSim<span class="op">.</span><span class="at">seS</span>}<span class="op">,</span></span>
+<span id="cb3-220"><a href="#cb3-220"></a>      {<span class="dt">m</span><span class="op">:</span> <span class="st">"重回帰分析"</span><span class="op">,</span> <span class="dt">lo</span><span class="op">:</span> ovSim<span class="op">.</span><span class="at">bM1</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> ovSim<span class="op">.</span><span class="at">seM1</span><span class="op">,</span> <span class="dt">hi</span><span class="op">:</span> ovSim<span class="op">.</span><span class="at">bM1</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> ovSim<span class="op">.</span><span class="at">seM1</span>}</span>
+<span id="cb3-221"><a href="#cb3-221"></a>    ]<span class="op">,</span> {<span class="dt">x1</span><span class="op">:</span> <span class="st">"lo"</span><span class="op">,</span> <span class="dt">x2</span><span class="op">:</span> <span class="st">"hi"</span><span class="op">,</span> <span class="dt">y1</span><span class="op">:</span> <span class="st">"m"</span><span class="op">,</span> <span class="dt">y2</span><span class="op">:</span> <span class="st">"m"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">3</span>})<span class="op">,</span></span>
+<span id="cb3-222"><a href="#cb3-222"></a>    Plot<span class="op">.</span><span class="fu">dot</span>([</span>
+<span id="cb3-223"><a href="#cb3-223"></a>      {<span class="dt">m</span><span class="op">:</span> <span class="st">"単回帰分析"</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> ovSim<span class="op">.</span><span class="at">bS</span>}<span class="op">,</span></span>
+<span id="cb3-224"><a href="#cb3-224"></a>      {<span class="dt">m</span><span class="op">:</span> <span class="st">"重回帰分析"</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span> ovSim<span class="op">.</span><span class="at">bM1</span>}</span>
+<span id="cb3-225"><a href="#cb3-225"></a>    ]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"b"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"m"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">6</span>})</span>
+<span id="cb3-226"><a href="#cb3-226"></a>  ]</span>
+<span id="cb3-227"><a href="#cb3-227"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<details class="code-fold hidden">
+<summary>コードを表示</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="229" data-source-offset="-2418"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 228;"><span id="cb4-229"><a href="#cb4-229"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb4-230"><a href="#cb4-230"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">260</span><span class="op">,</span></span>
+<span id="cb4-231"><a href="#cb4-231"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"出席率（%）"</span>}<span class="op">,</span></span>
+<span id="cb4-232"><a href="#cb4-232"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"学習時間（時間）"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb4-233"><a href="#cb4-233"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb4-234"><a href="#cb4-234"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(ovSim<span class="op">.</span><span class="at">rows</span><span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"att"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"t"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">r</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.7</span>})</span>
+<span id="cb4-235"><a href="#cb4-235"></a>  ]</span>
+<span id="cb4-236"><a href="#cb4-236"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>上の図の黒の点線が、本当の出席率の係数（0.57）です。</li>
+<li><strong>相関をプラスにすると</strong>：単回帰分析の係数は0.57より大きくなります。出席率の高い人ほど学習時間も長いので、学習時間の効果が出席率の係数に含まれてしまうからです。重回帰分析の係数は、相関を変えても0.57の近くにとどまります。</li>
+<li><strong>相関をマイナスにすると</strong>：単回帰分析の係数は0.57より小さくなり、場合によってはマイナスになります。</li>
+<li><strong>相関を <span class="math inline">\(-0.05\)</span> 付近にすると</strong>：演習ファイルのデータと同じような状況になります。係数の違いは小さいですが、単回帰分析の信頼区間（オレンジの線）がとても長く、0を含むことが多いのに対して、重回帰分析の信頼区間はとても短くなります。</li>
+<li>下の図は、作ったデータの出席率と学習時間の散布図です。</li>
+</ul>
+</section>
+<section id="回帰係数の検定" class="level2" data-number="23.8">
+<h2 data-number="23.8" class="anchored" data-anchor-id="回帰係数の検定"><span class="header-section-number">23.8</span> 回帰係数の検定</h2>
+<p>重回帰分析でも、単回帰分析と同じように、それぞれの係数が0かどうかを検定します。</p>
+<p><span class="orange"><strong>手順1：仮説を設定する</strong></span></p>
+<p>それぞれの説明変数について、次の仮説を検定します。</p>
+<ul>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：<span class="math inline">\(\beta_j = 0\)</span>（他の説明変数を一定としたとき、<span class="math inline">\(x_j\)</span> は <span class="math inline">\(y\)</span> と関係しない）</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：<span class="math inline">\(\beta_j \neq 0\)</span>（他の説明変数を一定としたとき、<span class="math inline">\(x_j\)</span> は <span class="math inline">\(y\)</span> と関係する）</li>
+</ul>
+<p>ここで、<span class="math inline">\(\beta_j\)</span> は母集団の回帰式の、<span class="math inline">\(j\)</span> 番目の説明変数の係数です。</p>
+<p><span class="orange"><strong>手順2：有意水準（臨界値）を決める</strong></span></p>
+<p>有意水準は5%（両側検定）とします。</p>
+<p><span class="orange"><strong>手順3：検定統計量 <span class="math inline">\(t\)</span> を求める</strong></span></p>
+<p><span class="math display">\[
+t = \frac{b_j}{SE(b_j)}
+\]</span></p>
+<p>これが、自由度 <span class="math inline">\(n - K\)</span> の <span class="math inline">\(t\)</span> 分布に従うことを使って検定します。ここで、<span class="math inline">\(K\)</span> は切片を含めた係数の数（説明変数の数 <span class="math inline">\(k\)</span> + 1）です。この例では、<span class="math inline">\(n = 100\)</span>、<span class="math inline">\(K = 3\)</span> なので、自由度は97です。</p>
+</section>
+<section id="エクセルの分析結果" class="level2" data-number="23.9">
+<h2 data-number="23.9" class="anchored" data-anchor-id="エクセルの分析結果"><span class="header-section-number">23.9</span> エクセルの分析結果</h2>
+<p>成績を被説明変数、出席率と学習時間を説明変数として、エクセルの分析ツール「回帰分析」で分析した結果です（演習ファイルの「練習_2」シート）。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B10-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B10-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B10/B10-3.png" id="fig-B10-3" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B10-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;23.3
+</figcaption>
+</figure>
+</div>
+<p><span class="orange"><strong>手順4：検定統計量と臨界値を比較する　手順5：検定の結論を出す</strong></span></p>
+<p>自由度97、有意水準5%（両側）の臨界値は1.985です。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">係数</th>
+<th style="text-align: center;">標準誤差</th>
+<th style="text-align: center;"><span class="math inline">\(t\)</span></th>
+<th style="text-align: center;">P値</th>
+<th style="text-align: center;">結論（有意水準5%）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">切片</td>
+<td style="text-align: center;">26.595</td>
+<td style="text-align: center;">7.049</td>
+<td style="text-align: center;">3.773</td>
+<td style="text-align: center;">0.0003</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">出席率</td>
+<td style="text-align: center;">0.571</td>
+<td style="text-align: center;">0.084</td>
+<td style="text-align: center;">6.816</td>
+<td style="text-align: center;">0.000000001 未満</td>
+<td style="text-align: center;">有意</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">学習時間</td>
+<td style="text-align: center;">5.057</td>
+<td style="text-align: center;">0.163</td>
+<td style="text-align: center;">31.078</td>
+<td style="text-align: center;">0.000000001 未満</td>
+<td style="text-align: center;">有意</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>出席率</strong>：<span class="math inline">\(t = 6.816\)</span> は臨界値1.985より大きいので、帰無仮説は棄却されます。学習時間を一定としたとき、出席率が1%高いと成績は0.57点高く、この関係は有意です。</li>
+<li><strong>学習時間</strong>：<span class="math inline">\(t = 31.078\)</span> は臨界値1.985より大きいので、帰無仮説は棄却されます。出席率を一定としたとき、学習時間が1時間多いと成績は5.06点高く、この関係は有意です。</li>
+<li><strong>切片</strong>：出席率も学習時間も0のときの成績の予測値ですが、そのような学生はデータにいないので、切片そのものに大きな意味はありません。</li>
+<li><strong>有意 F</strong>：「すべての説明変数の係数が0である（どの説明変数も成績と関係しない）」という帰無仮説の検定のP値です。重回帰分析では、各係数の検定とは別に、回帰式全体が意味を持つかどうかを示します。この例では非常に小さいので、回帰式全体として有意です。</li>
+</ul>
+</section>
+<section id="自由度調整済み決定係数" class="level2" data-number="23.10">
+<h2 data-number="23.10" class="anchored" data-anchor-id="自由度調整済み決定係数"><span class="header-section-number">23.10</span> 自由度調整済み決定係数</h2>
+<ul>
+<li>重回帰分析のデータへの当てはまりの指標には、単回帰分析の場合と同様に、決定係数が使われます。</li>
+<li>重回帰分析の場合、<span class="math inline">\(y\)</span> と1つの <span class="math inline">\(x\)</span> との相関係数を2乗しても、決定係数にはなりません。
+<ul>
+<li>決定係数は、「<span class="math inline">\(y\)</span> と予測値 <span class="math inline">\(\hat{y}\)</span> の相関係数」の2乗になります。エクセルの出力の「重相関 R」は、この相関係数のことです（この例では <span class="math inline">\(0.955^2 = 0.911\)</span>）。</li>
+</ul></li>
+<li>決定係数は、説明変数の数が増えるにつれて大きくなり、1に近づくという性質を持ちます（説明する材料が増えるので、関係のない変数を加えても、説明力は少しずつ大きくなります）。</li>
+<li>そこで、説明変数が増えた分を考慮した次の決定係数を考え、これを<span class="orange">自由度調整済み決定係数</span>と呼びます（エクセルの出力の「補正 R2」）。</li>
+</ul>
+<p><span class="math display">\[
+\bar{R}^2 = 1 - \frac{\dfrac{\displaystyle\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{n - K}}{\dfrac{\displaystyle\sum_{i=1}^{n}(y_i - \bar{y})^2}{n - 1}} = 1 - \frac{n - 1}{n - K} \cdot \frac{\displaystyle\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\displaystyle\sum_{i=1}^{n}(y_i - \bar{y})^2}
+\]</span></p>
+<p>ここで、<span class="math inline">\(K\)</span> は切片を含めた係数の数（説明変数の数 + 1）です。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B10-4" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B10-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B10/B10-4.png" id="fig-B10-4" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B10-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;23.4
+</figcaption>
+</figure>
+</div>
+<p><strong>計算例（練習_2）</strong></p>
+<p><span class="math inline">\(n = 100\)</span>、<span class="math inline">\(K = 3\)</span>（切片、出席率、学習時間）、残差変動8466.57、全変動95310.23なので、</p>
+<p><span class="math display">\[
+\bar{R}^2 = 1 - \frac{100 - 1}{100 - 3} \times \frac{8466.57}{95310.23} = 1 - \frac{99}{97} \times 0.0888 = 0.909
+\]</span></p>
+<p>となり、エクセルの出力の「補正 R2」（0.909）と一致します。</p>
+<ul>
+<li>説明変数の数が異なる回帰式を比べるときは、決定係数ではなく、自由度調整済み決定係数を使います。</li>
+<li>自由度調整済み決定係数は、関係のない変数を加えると、小さくなることがあります。</li>
+</ul>
+</section>
+<section id="変数間の影響の比較" class="level2" data-number="23.11">
+<h2 data-number="23.11" class="anchored" data-anchor-id="変数間の影響の比較"><span class="header-section-number">23.11</span> 変数間の影響の比較</h2>
+<p><span class="math display">\[
+\text{成績} = 26.59 + 0.57 \times \text{出席率} + 5.06 \times \text{学習時間} + e
+\]</span></p>
+<ul>
+<li>出席率が1%増えたときに、成績が0.57点上がります。</li>
+<li>学習時間が1時間増えたときに、成績が5.06点上がります。</li>
+</ul>
+<p>では、出席率と学習時間では、どちらの影響が大きいといえるでしょうか。「1%」と「1時間」は単位が違うので、係数の大きさをそのまま比べることはできません。</p>
+<p>係数（影響）の大きさを比較したい場合には、各説明変数を<span class="orange">標準化</span>します。エクセルでは、<code>STANDARDIZE</code> 関数を使います。</p>
+<pre><code>=STANDARDIZE(X, AVERAGE(Xの値全部), STDEV.S(Xの値全部))</code></pre>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B10-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="90%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B10-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B10/B10-5.png" id="fig-B10-5" class="img-fluid figure-img" style="width:90.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B10-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;23.5
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="標準化" class="level2" data-number="23.12">
+<h2 data-number="23.12" class="anchored" data-anchor-id="標準化"><span class="header-section-number">23.12</span> 標準化</h2>
+<p>単位が違うデータ同士を比べられるように、平均0、分散1（標準偏差1）となるように変換することを<span class="orange">標準化</span>といいます。</p>
+<p><span class="math display">\[
+z_i = \frac{x_i - \bar{x}}{s_x}
+\]</span></p>
+<p>標準化しても、分布の形は変わりません。平均が0に、ばらつきの大きさ（標準偏差）が1にそろうだけです。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B10-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B10-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B10/B10-6.png" id="fig-B10-6" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B10-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;23.6
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="標準化した重回帰分析" class="level2" data-number="23.13">
+<h2 data-number="23.13" class="anchored" data-anchor-id="標準化した重回帰分析"><span class="header-section-number">23.13</span> 標準化した重回帰分析</h2>
+<p>出席率と学習時間を標準化してから、重回帰分析を行います（演習ファイルの「練習_3」シート）。</p>
+<div style="margin-top: 1.5em;">
+
+</div>
+<div id="fig-B10-7" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B10-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B10/B10-7.png" id="fig-B10-7" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B10-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;23.7
+</figcaption>
+</figure>
+</div>
+<p><strong>標準化前</strong></p>
+<p><span class="math display">\[
+\text{成績} = 26.59 + 0.57 \times \text{出席率} + 5.06 \times \text{学習時間} + e
+\]</span></p>
+<ul>
+<li>出席率が1%増えると、成績が0.57点上がります。</li>
+<li>学習時間が1時間増えると、成績が5.06点上がります。</li>
+</ul>
+<p><strong>標準化後</strong></p>
+<p><span class="math display">\[
+\text{成績} = 125.83 + 6.41 \times \text{出席率（標準化）} + 29.21 \times \text{学習時間（標準化）} + e
+\]</span></p>
+<ul>
+<li>出席率が1標準偏差増えると、成績が6.41点上がります。</li>
+<li>学習時間が1標準偏差増えると、成績が29.21点上がります。</li>
+<li>したがって、学習時間の方が、成績への影響が大きいといえます。</li>
+</ul>
+<p>分かりにくい人は、次のように考えましょう（偏差値は、平均50、標準偏差10になるように変換した値です）。</p>
+<ul>
+<li>出席率の偏差値が10増えると、成績が6.41点上がります。</li>
+<li>学習時間の偏差値が10増えると、成績が29.21点上がります。</li>
+</ul>
+<p><strong>標準化で変わること・変わらないこと</strong></p>
+<ul>
+<li>標準化したのは説明変数（出席率と学習時間）だけで、成績は標準化していません。そのため、係数の単位は「点」のままです。</li>
+<li>切片の125.83は、説明変数がすべて平均値（標準化した値が0）のときの成績の予測値で、成績の平均値と同じになります。</li>
+<li>標準化後の係数は、標準化前の係数に、その変数の標準偏差を掛けたものです。
+<ul>
+<li>出席率：<span class="math inline">\(0.571 \times 11.23 = 6.41\)</span></li>
+<li>学習時間：<span class="math inline">\(5.057 \times 5.78 = 29.21\)</span></li>
+</ul></li>
+<li>標準化しても、各係数の <span class="math inline">\(t\)</span> 値、P値、決定係数は変わりません。変わるのは係数の「単位」だけです。</li>
+</ul>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>被説明変数も標準化する場合（標準化偏回帰係数）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>成績（被説明変数）も標準化してから重回帰分析を行うと、係数は「説明変数が1標準偏差増えると、成績が何標準偏差上がるか」を表すようになります。これを<span class="orange">標準化偏回帰係数</span>といいます。</li>
+<li>この例では、出席率が0.21、学習時間が0.94になります（標準化後の係数6.41と29.21を、成績の標準偏差31.03で割った値）。</li>
+<li>どちらの方法でも、「どちらの説明変数の影響が大きいか」という比較の結論は同じです。</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="エクセルでの計算方法" class="level2" data-number="23.14">
+<h2 data-number="23.14" class="anchored" data-anchor-id="エクセルでの計算方法"><span class="header-section-number">23.14</span> エクセルでの計算方法</h2>
+<p>演習ファイルの「練習」シートのように、A列にNo.、B列に成績（B2〜B101）、C列に出席率（C2〜C101）、D列に学習時間（D2〜D101）が入力されているとします（1行目は見出し）。</p>
+<p><strong>分析ツールの「回帰分析」で重回帰分析を行う方法（練習_2）</strong></p>
+<ol type="1">
+<li>「データ」→「データ分析」→「回帰分析」を選びます。</li>
+<li>「入力 Y 範囲」に成績の範囲（B1:B101）を指定します。</li>
+<li>「入力 X 範囲」に、出席率と学習時間の<strong>2列をまとめて</strong>（C1:D101）指定します。</li>
+<li>見出しの行も含めて指定したので、「ラベル」にチェックを入れます。</li>
+<li>出力先を指定して「OK」を押します。</li>
+</ol>
+<ul>
+<li>分析ツールでは、説明変数の列が<strong>隣り合って並んでいる必要があります</strong>。説明変数にしたい列が離れている場合は、列をコピーして隣り合うように並べ直してから指定します。</li>
+<li>説明変数は、最大16個まで指定できます。</li>
+<li>単回帰分析（練習_1）の場合は、「入力 X 範囲」に出席率の列（C1:C101）だけを指定します。</li>
+</ul>
+<p><strong>標準化した変数を作る方法（練習_3）</strong></p>
+<ol type="1">
+<li>F1セルに「出席率」、G1セルに「学習時間」と見出しを入力します。</li>
+<li>F2セルに次の式を入力し、F101までコピーします。</li>
+</ol>
+<pre><code>=STANDARDIZE(C2, AVERAGE($C$2:$C$101), STDEV.S($C$2:$C$101))</code></pre>
+<ol start="3" type="1">
+<li>G2セルに次の式を入力し、G101までコピーします。</li>
+</ol>
+<pre><code>=STANDARDIZE(D2, AVERAGE($D$2:$D$101), STDEV.S($D$2:$D$101))</code></pre>
+<ol start="4" type="1">
+<li>分析ツールの「回帰分析」で、「入力 Y 範囲」に成績（B1:B101）、「入力 X 範囲」に標準化した2列（F1:G101）を指定して分析します。</li>
+</ol>
+<ul>
+<li><code>AVERAGE</code> と <code>STDEV.S</code> の範囲には、<code>$</code> を付けて絶対参照にします。付けないと、式をコピーしたときに範囲がずれてしまいます。</li>
+</ul>
+<p><strong>説明変数どうしの相関を確認する方法</strong></p>
+<p>分析ツールの「相関」で、出席率と学習時間（C1:D101）の相関係数を求めると、<span class="math inline">\(-0.046\)</span> となります。重回帰分析を行う前に、説明変数どうしの相関を確認しておくと、単回帰分析と重回帰分析で係数がどのくらい変わりそうかの見当がつきます。</p>
+<ul>
+<li>説明変数どうしの相関が非常に強い（例えば0.9以上）場合は、それぞれの係数の標準誤差が大きくなり、係数を正確に推定できなくなります。これを<span class="orange">多重共線性</span>（マルチコ）といいます。</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiByaG9PViA9IElucHV0cy5yYW5nZShbLTAuOCwgMC44XSwge3N0ZXA6IDAuMDUsIHZhbHVlOiAwLjYsIGxhYmVsOiBcIuWHuuW4reeOh+OBqOWtpue/kuaZgumWk+OBruebuOmWolwifSlcbnZpZXdvZiBnb09WID0gSW5wdXRzLmJ1dHRvbihcIuODh+ODvOOCv+OCkuS9nOOCiuebtOOBmVwiKVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoib3ZTaW0gPSB7XG4gIGdvT1Y7XG4gIGNvbnN0IG4gPSAxMDAsIGIwID0gMjYuNTksIGIxID0gMC41NywgYjIgPSA1LjA2O1xuICBjb25zdCByYW5kbiA9ICgpID0+IHtcbiAgICBsZXQgdSA9IDAsIHYgPSAwO1xuICAgIHdoaWxlICh1ID09PSAwKSB1ID0gTWF0aC5yYW5kb20oKTtcbiAgICB3aGlsZSAodiA9PT0gMCkgdiA9IE1hdGgucmFuZG9tKCk7XG4gICAgcmV0dXJuIE1hdGguc3FydCgtMiAqIE1hdGgubG9nKHUpKSAqIE1hdGguY29zKDIgKiBNYXRoLlBJICogdik7XG4gIH07XG4gIGNvbnN0IHJvd3MgPSBbXTtcbiAgZm9yIChsZXQgaSA9IDA7IGkgPCBuOyBpKyspIHtcbiAgICBjb25zdCB6MSA9IHJhbmRuKCksIHoyID0gcmFuZG4oKTtcbiAgICBjb25zdCB0ID0gMTAuNiArIDUuNzggKiB6MTtcbiAgICBjb25zdCBhdHQgPSA3OS45ICsgMTEuMjMgKiAocmhvT1YgKiB6MSArIE1hdGguc3FydCgxIC0gcmhvT1YgKiogMikgKiB6Mik7XG4gICAgY29uc3QgeSA9IGIwICsgYjEgKiBhdHQgKyBiMiAqIHQgKyA5LjM0ICogcmFuZG4oKTtcbiAgICByb3dzLnB1c2goe2F0dCwgdCwgeX0pO1xuICB9XG4gIGNvbnN0IG1hID0gZDMubWVhbihyb3dzLCBkID0+IGQuYXR0KSwgbXQgPSBkMy5tZWFuKHJvd3MsIGQgPT4gZC50KSwgbXkgPSBkMy5tZWFuKHJvd3MsIGQgPT4gZC55KTtcbiAgY29uc3Qgc2FhID0gZDMuc3VtKHJvd3MsIGQgPT4gKGQuYXR0IC0gbWEpICoqIDIpO1xuICBjb25zdCBzdHQgPSBkMy5zdW0ocm93cywgZCA9PiAoZC50IC0gbXQpICoqIDIpO1xuICBjb25zdCBzYXQgPSBkMy5zdW0ocm93cywgZCA9PiAoZC5hdHQgLSBtYSkgKiAoZC50IC0gbXQpKTtcbiAgY29uc3Qgc2F5ID0gZDMuc3VtKHJvd3MsIGQgPT4gKGQuYXR0IC0gbWEpICogKGQueSAtIG15KSk7XG4gIGNvbnN0IHN0eSA9IGQzLnN1bShyb3dzLCBkID0+IChkLnQgLSBtdCkgKiAoZC55IC0gbXkpKTtcbiAgLy8g5Y2Y5Zue5biw5YiG5p6Q77yI5oiQ57i+44KS5Ye65bit546H44Gn5Zue5biw77yJXG4gIGNvbnN0IGJTID0gc2F5IC8gc2FhLCBhUyA9IG15IC0gYlMgKiBtYTtcbiAgY29uc3Qgc3NlUyA9IGQzLnN1bShyb3dzLCBkID0+IChkLnkgLSBhUyAtIGJTICogZC5hdHQpICoqIDIpO1xuICBjb25zdCBzZVMgPSBNYXRoLnNxcnQoc3NlUyAvIChuIC0gMikgLyBzYWEpO1xuICAvLyDph43lm57luLDliIbmnpDvvIjmiJDnuL7jgpLlh7rluK3njofjgajlrabnv5LmmYLplpPjgaflm57luLDvvIlcbiAgY29uc3QgZGV0ID0gc2FhICogc3R0IC0gc2F0ICogc2F0O1xuICBjb25zdCBiTTEgPSAoc2F5ICogc3R0IC0gc3R5ICogc2F0KSAvIGRldDtcbiAgY29uc3QgYk0yID0gKHN0eSAqIHNhYSAtIHNheSAqIHNhdCkgLyBkZXQ7XG4gIGNvbnN0IGFNID0gbXkgLSBiTTEgKiBtYSAtIGJNMiAqIG10O1xuICBjb25zdCBzc2VNID0gZDMuc3VtKHJvd3MsIGQgPT4gKGQueSAtIGFNIC0gYk0xICogZC5hdHQgLSBiTTIgKiBkLnQpICoqIDIpO1xuICBjb25zdCBzZU0xID0gTWF0aC5zcXJ0KHNzZU0gLyAobiAtIDMpICogc3R0IC8gZGV0KTtcbiAgY29uc3QgciA9IHNhdCAvIE1hdGguc3FydChzYWEgKiBzdHQpO1xuICByZXR1cm4ge3Jvd3MsIGJTLCBzZVMsIGJNMSwgc2VNMSwgYk0yLCByfTtcbn1cblxubWRg5a6f6Zqb44Gu55u46Zai5L+C5pWw77yaJHtvdlNpbS5yLnRvRml4ZWQoMyl944CAKirljZjlm57luLDliIbmnpAqKuOBruWHuuW4reeOh+OBruS/guaVsO+8mioqJHtvdlNpbS5iUy50b0ZpeGVkKDMpfSoq77yI5qiZ5rqW6Kqk5beuICR7b3ZTaW0uc2VTLnRvRml4ZWQoMyl977yJ44CAKirph43lm57luLDliIbmnpAqKuOBruWHuuW4reeOh+OBruS/guaVsO+8mioqJHtvdlNpbS5iTTEudG9GaXhlZCgzKX0qKu+8iOaomea6luiqpOW3riAke292U2ltLnNlTTEudG9GaXhlZCgzKX3vvIlgXG5cblBsb3QucGxvdCh7XG4gIGhlaWdodDogMTgwLFxuICBtYXJnaW5MZWZ0OiAxMTAsXG4gIHg6IHtkb21haW46IFstMiwgNV0sIGxhYmVsOiBcIuWHuuW4reeOh+OBruS/guaVsO+8iOeCueOBr+aOqOWumuWApOOAgee3muOBrzk1JeS/oemgvOWMuumWk+OBruebruWuie+8iVwiLCBncmlkOiB0cnVlfSxcbiAgeToge2RvbWFpbjogW1wi5Y2Y5Zue5biw5YiG5p6QXCIsIFwi6YeN5Zue5biw5YiG5p6QXCJdLCBsYWJlbDogbnVsbH0sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5ydWxlWChbMC41N10sIHtzdHJva2U6IFwiYmxhY2tcIiwgc3Ryb2tlV2lkdGg6IDEuNSwgc3Ryb2tlRGFzaGFycmF5OiBcIjQsM1wifSksXG4gICAgUGxvdC5ydWxlWChbMF0sIHtzdHJva2U6IFwiIzk5OVwifSksXG4gICAgUGxvdC5saW5rKFtcbiAgICAgIHttOiBcIuWNmOWbnuW4sOWIhuaekFwiLCBsbzogb3ZTaW0uYlMgLSAxLjk2ICogb3ZTaW0uc2VTLCBoaTogb3ZTaW0uYlMgKyAxLjk2ICogb3ZTaW0uc2VTfSxcbiAgICAgIHttOiBcIumHjeWbnuW4sOWIhuaekFwiLCBsbzogb3ZTaW0uYk0xIC0gMS45NiAqIG92U2ltLnNlTTEsIGhpOiBvdlNpbS5iTTEgKyAxLjk2ICogb3ZTaW0uc2VNMX1cbiAgICBdLCB7eDE6IFwibG9cIiwgeDI6IFwiaGlcIiwgeTE6IFwibVwiLCB5MjogXCJtXCIsIHN0cm9rZTogXCIjRTM2QzA5XCIsIHN0cm9rZVdpZHRoOiAzfSksXG4gICAgUGxvdC5kb3QoW1xuICAgICAge206IFwi5Y2Y5Zue5biw5YiG5p6QXCIsIGI6IG92U2ltLmJTfSxcbiAgICAgIHttOiBcIumHjeWbnuW4sOWIhuaekFwiLCBiOiBvdlNpbS5iTTF9XG4gICAgXSwge3g6IFwiYlwiLCB5OiBcIm1cIiwgZmlsbDogXCIjRTM2QzA5XCIsIHI6IDZ9KVxuICBdXG59KVxuXG5QbG90LnBsb3Qoe1xuICBoZWlnaHQ6IDI2MCxcbiAgeDoge2xhYmVsOiBcIuWHuuW4reeOh++8iCXvvIlcIn0sXG4gIHk6IHtsYWJlbDogXCLlrabnv5LmmYLplpPvvIjmmYLplpPvvIlcIiwgZ3JpZDogdHJ1ZX0sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5kb3Qob3ZTaW0ucm93cywge3g6IFwiYXR0XCIsIHk6IFwidFwiLCBmaWxsOiBcInN0ZWVsYmx1ZVwiLCByOiAzLCBmaWxsT3BhY2l0eTogMC43fSlcbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgncmhvT1YnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZ29PVicpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+        for (let i=0; i<annoteTargets.length; i++) {
+          const annoteTarget = annoteTargets[i];
+          const targetCell = annoteTarget.getAttribute("data-target-cell");
+          const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+          const contentFn = () => {
+            const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            if (content) {
+              const tipContent = content.cloneNode(true);
+              tipContent.classList.add("code-annotation-tip-content");
+              return tipContent.outerHTML;
+            }
+          }
+          const config = {
+            allowHTML: true,
+            content: contentFn,
+            onShow: (instance) => {
+              selectCodeLines(instance.reference);
+              instance.reference.classList.add('code-annotation-active');
+              window.tippy.hideAll();
+            },
+            onHide: (instance) => {
+              unselectCodeLines();
+              instance.reference.classList.remove('code-annotation-active');
+            },
+            maxWidth: 300,
+            delay: [50, 0],
+            duration: [200, 0],
+            offset: [5, 10],
+            arrow: true,
+            trigger: 'click',
+            appendTo: function(el) {
+              return el.parentElement.parentElement.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'quarto',
+            placement: 'right',
+            positionFixed: true,
+            popperOptions: {
+              modifiers: [
+              {
+                name: 'flip',
+                options: {
+                  flipVariations: false, // true by default
+                  allowedAutoPlacements: ['right'],
+                  fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                },
+              },
+              {
+                name: 'preventOverflow',
+                options: {
+                  mainAxis: false,
+                  altAxis: false
+                }
+              }
+              ]        
+            }      
+          };
+          window.tippy(annoteTarget, config); 
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lecB09.html" class="pagination-link" aria-label="単回帰分析">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">単回帰分析</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lecB11.html" class="pagination-link" aria-label="質的情報の分析">
+        <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">質的情報の分析</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
