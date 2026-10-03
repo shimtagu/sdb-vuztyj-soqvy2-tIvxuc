@@ -348,7 +348,7 @@ window.Quarto = {
   <li><a href="#標本抽出サンプリング" id="toc-標本抽出サンプリング" class="nav-link" data-scroll-target="#標本抽出サンプリング"><span class="header-section-number">15.3</span> 標本抽出（サンプリング）</a></li>
   <li><a href="#推定の考え方" id="toc-推定の考え方" class="nav-link" data-scroll-target="#推定の考え方"><span class="header-section-number">15.4</span> 推定の考え方</a></li>
   <li><a href="#標本平均" id="toc-標本平均" class="nav-link" data-scroll-target="#標本平均"><span class="header-section-number">15.5</span> 標本平均</a></li>
-  <li><a href="#標本分散" id="toc-標本分散" class="nav-link" data-scroll-target="#標本分散"><span class="header-section-number">15.6</span> 標本分散</a>
+  <li><a href="#不偏分散" id="toc-不偏分散" class="nav-link" data-scroll-target="#不偏分散"><span class="header-section-number">15.6</span> 不偏分散</a>
   <ul class="collapse">
   <li><a href="#そもそも分散とは復習" id="toc-そもそも分散とは復習" class="nav-link" data-scroll-target="#そもそも分散とは復習"><span class="header-section-number">15.6.1</span> そもそも分散とは？（復習）</a></li>
   <li><a href="#分散を求める際に-n-1-で割る理由イメージ" id="toc-分散を求める際に-n-1-で割る理由イメージ" class="nav-link" data-scroll-target="#分散を求める際に-n-1-で割る理由イメージ"><span class="header-section-number">15.6.2</span> 分散を求める際に <span class="math inline">\(n-1\)</span> で割る理由（イメージ）</a></li>
@@ -356,7 +356,7 @@ window.Quarto = {
   <li><a href="#標本調査の例" id="toc-標本調査の例" class="nav-link" data-scroll-target="#標本調査の例"><span class="header-section-number">15.7</span> 標本調査の例</a></li>
   <li><a href="#標本統計量の分布" id="toc-標本統計量の分布" class="nav-link" data-scroll-target="#標本統計量の分布"><span class="header-section-number">15.8</span> 標本統計量の分布</a></li>
   <li><a href="#標本平均の分布" id="toc-標本平均の分布" class="nav-link" data-scroll-target="#標本平均の分布"><span class="header-section-number">15.9</span> 標本平均<span class="orange">の</span>分布</a></li>
-  <li><a href="#標本普遍分散の分布" id="toc-標本普遍分散の分布" class="nav-link" data-scroll-target="#標本普遍分散の分布"><span class="header-section-number">15.10</span> 標本（普遍）分散<span class="orange">の</span>分布</a></li>
+  <li><a href="#不偏分散と分散の期待値" id="toc-不偏分散と分散の期待値" class="nav-link" data-scroll-target="#不偏分散と分散の期待値"><span class="header-section-number">15.10</span> 不偏分散と分散<span class="orange">の</span>期待値</a></li>
   <li><a href="#標準誤差" id="toc-標準誤差" class="nav-link" data-scroll-target="#標準誤差"><span class="header-section-number">15.11</span> 標準誤差</a></li>
   <li><a href="#データ分析ツール" id="toc-データ分析ツール" class="nav-link" data-scroll-target="#データ分析ツール"><span class="header-section-number">15.12</span> データ分析ツール</a></li>
   <li><a href="#復習用youtube" id="toc-復習用youtube" class="nav-link" data-scroll-target="#復習用youtube"><span class="header-section-number">15.13</span> 復習用YouTube</a></li>
@@ -386,21 +386,19 @@ window.Quarto = {
 
 
 <ul>
-<li>母集団と標本、推定の考え方<br>
-</li>
-<li>母集団と標本、母集団の推定、標本平均、標本平均の分布、標準誤差</li>
+<li>母集団と標本、標本抽出、推定の考え方、標本平均と不偏分散、標本平均の分布、標準誤差</li>
 </ul>
 <section id="データの分類" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="データの分類"><span class="header-section-number">15.1</span> データの分類</h2>
 <p>分析に使用するデータは、その収集方法によって大きく3つに分類されます。</p>
 <ul>
 <li><strong>業務統計</strong><br>
-　日々の売り上げや仕入れなど、日常業務で自然に蓄積されるデータ。</li>
+日々の売り上げや仕入れなど、日常業務で自然に蓄積されるデータ。</li>
 <li><strong>ビッグデータ</strong><br>
-　業務統計などが膨大に蓄積されたもの。</li>
+業務統計などが膨大に蓄積されたもの。</li>
 <li><strong>調査統計</strong><br>
-　特定の目的のためにアンケートなどで集めたデータ。<br>
-　これには「全数調査」と「標本調査」があります。</li>
+特定の目的のためにアンケートなどで集めたデータ。<br>
+これには「全数調査」と「標本調査」があります。</li>
 </ul>
 </section>
 <section id="母集団と標本" class="level2" data-number="15.2">
@@ -410,13 +408,12 @@ window.Quarto = {
 <p>調査対象となる集合全体のことです。</p>
 <ul>
 <li><strong>有限母集団</strong><br>
-　人口や世帯数など、規模が明らかなもの。</li>
+人口や世帯数など、規模が明らかなもの。</li>
 <li><strong>無限母集団</strong><br>
-　コイン投げを無限に繰り返す場合など、規模が不明なもの。</li>
+コイン投げを無限に繰り返す場合など、規模が不明なもの。</li>
 <li><strong>全数調査（悉皆調査、センサス：census）</strong><br>
-　母集団のすべてを調べること<br>
-　例：国勢調査（1920年から5年に一度実施）<br>
-
+母集団のすべてを調べること<br>
+例：国勢調査（1920年から5年に一度実施）
 <div style="margin-top: 1.5em;">
 
 </div>
@@ -428,9 +425,8 @@ window.Quarto = {
 <p>母集団の中から抽出された一部のデータのことです。</p>
 <ul>
 <li>調査対象である母集団の一部を調査 → <strong>標本調査</strong>（sample survey）</li>
-<li>実際に調査される母集団の一部 → <strong>標本</strong>（sample）<br>
-</li>
-<li>標本に含まれる観測値数を <span class="math inline">\(n\)</span> で表し、<strong>標本サイズ</strong>（sample size）と呼びます。</li>
+<li>実際に調査される母集団の一部 → <strong>標本</strong>（sample）</li>
+<li>標本に含まれる観測値数を <span class="math inline">\(n\)</span> で表し、<strong>標本サイズ</strong>（sample size）と呼びます。（母集団の大きさは <span class="math inline">\(N\)</span> で表します。）</li>
 <li>標本に含まれる観測値は <span class="math inline">\(x_i \ (i = 1, 2, \cdots, n)\)</span> や、<span class="math inline">\(\{x_i\}_{i=1}^{n}\)</span> などで表します。</li>
 </ul>
 </section>
@@ -449,8 +445,7 @@ window.Quarto = {
 <li><strong>系統抽出</strong>（systematic sampling）
 <ul>
 <li>一番目の要素を無作為に抽出し、そこから一定の間隔（<span class="math inline">\(N/n\)</span>）で抽出する</li>
-<li>母集団のリストの並び順に留意が必要<br>
-（無作為に並んでいるのか、または何らかの順番で並んでいるか）</li>
+<li>母集団のリストの並び順に留意が必要 （無作為に並んでいるのか、または何らかの順番で並んでいるか）</li>
 </ul></li>
 <li><strong>層別抽出</strong>（stratified sampling）
 <ul>
@@ -479,34 +474,62 @@ window.Quarto = {
 <section id="標本平均" class="level2" data-number="15.5">
 <h2 data-number="15.5" class="anchored" data-anchor-id="標本平均"><span class="header-section-number">15.5</span> 標本平均</h2>
 <ul>
-<li>母集団から取り出した大きさ <span class="math inline">\(n\)</span> の標本を「<span class="math inline">\(X_1, X_2, X_3, \cdots, X_n\)</span>」とすると、標本平均は以下のように表されます。</li>
+<li>母集団から取り出した大きさ <span class="math inline">\(n\)</span> の標本を「<span class="math inline">\(x_1, x_2, x_3, \cdots, x_n\)</span>」とすると、標本平均は以下のように表されます。</li>
 </ul>
 <p><span class="math display">\[
-\bar{X} = \frac{1}{n}(X_1 + X_2 + X_3 + \cdots + X_n) = \frac{1}{n}\sum_{i=1}^{n} X_i
+\bar{x} = \frac{1}{n}(x_1 + x_2 + x_3 + \cdots + x_n) = \frac{1}{n}\sum_{i=1}^{n} x_i
 \]</span></p>
 </section>
-<section id="標本分散" class="level2" data-number="15.6">
-<h2 data-number="15.6" class="anchored" data-anchor-id="標本分散"><span class="header-section-number">15.6</span> 標本分散</h2>
+<section id="不偏分散" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="不偏分散"><span class="header-section-number">15.6</span> 不偏分散</h2>
 <ul>
-<li>母集団から取り出した大きさ <span class="math inline">\(n\)</span> の標本を「<span class="math inline">\(X_1, X_2, X_3, \cdots, X_n\)</span>」とすると、標本分散は以下のように表されます。<span class="math inline">\(n-1\)</span>で割る理由は以下参照。</li>
+<li>母集団から取り出した大きさ <span class="math inline">\(n\)</span> の標本を「<span class="math inline">\(x_1, x_2, x_3, \cdots, x_n\)</span>」とします。標本から母分散を推定するときは、<span class="math inline">\(n-1\)</span> で割った<strong>不偏分散</strong>（標本（不偏）分散ともいいます）を使います。<span class="math inline">\(n-1\)</span>で割る理由は以下参照。</li>
 </ul>
 <p><span class="math display">\[
-s_x^2 = \frac{1}{\color{#E36C09}{n-1}}\left\{(X_1 - \bar{X})^2 + (X_2 - \bar{X})^2 + \cdots + (X_n - \bar{X})^2\right\}
+s^2 = \frac{1}{\color{#E36C09}{n-1}}\left\{(x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + \cdots + (x_n - \bar{x})^2\right\}
 \]</span></p>
 <ul>
-<li>ちなみに、母分散はこれまで通り以下のように表されます。 <span class="math display">\[
-\sigma_x^2 = \frac{1}{\color{#E36C09}{n}}\left\{(X_1 - \mu)^2 + (X_2 - \mu)^2 + \cdots + (X_n - \mu)^2\right\}
-\]</span></li>
+<li><p>ちなみに、母分散は、母集団（大きさ <span class="math inline">\(N\)</span>）のすべての値と母平均 <span class="math inline">\(\mu\)</span> との差から、これまで通り <span class="math inline">\(N\)</span> で割って求めます。 <span class="math display">\[
+\sigma^2 = \frac{1}{\color{#E36C09}{N}}\left\{(x_1 - \mu)^2 + (x_2 - \mu)^2 + \cdots + (x_N - \mu)^2\right\}
+\]</span></p></li>
+<li><p>前期に学んだ「分散」（<span class="math inline">\(n\)</span> で割るもの）と、不偏分散（<span class="math inline">\(n-1\)</span> で割るもの）は、Excelでは以下の関数で求めます。</p></li>
+</ul>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>割る数</th>
+<th>分散</th>
+<th>標準偏差</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>分散（前期と同じ）</td>
+<td><span class="math inline">\(n\)</span></td>
+<td><code>VAR.P</code></td>
+<td><code>STDEV.P</code></td>
+</tr>
+<tr class="even">
+<td>不偏分散</td>
+<td><span class="math inline">\(n-1\)</span></td>
+<td><code>VAR.S</code></td>
+<td><code>STDEV.S</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Excelの分析ツール（基本統計量）が出力する「分散」「標準偏差」は、<span class="math inline">\(n-1\)</span> で割った不偏分散とその平方根です。</li>
 </ul>
 <section id="そもそも分散とは復習" class="level3" data-number="15.6.1">
 <h3 data-number="15.6.1" class="anchored" data-anchor-id="そもそも分散とは復習"><span class="header-section-number">15.6.1</span> そもそも分散とは？（復習）</h3>
 <p><strong>分布が平均に集中している程度を表す指標</strong></p>
-<p>分布の平均への集中度を計算するには、各観測値（<span class="math inline">\(X_1, X_2, \cdots, X_n\)</span>）が、平均からどれだけ離れているか（偏差：平均との差）を計算し、この平均を比較すれば良いように思われます。しかし、これを計算すると以下のように 0 になってしまいます。</p>
+<p>分布の平均への集中度を計算するには、各観測値（<span class="math inline">\(x_1, x_2, \cdots, x_n\)</span>）が、平均からどれだけ離れているか（偏差：平均との差）を計算し、この平均を比較すれば良いように思われます。しかし、これを計算すると以下のように 0 になってしまいます。</p>
 <p><span class="math display">\[
 \begin{aligned}
-&amp;\frac{1}{n}\left\{(X_1 - \bar{X}) + (X_2 - \bar{X}) + \cdots + (X_n - \bar{X})\right\} \\
-&amp;= \frac{1}{n}\left\{(X_1 + X_2 + \cdots + X_n) - n\bar{X}\right\} \\
-&amp;= \frac{X_1 + X_2 + \cdots + X_n}{n} - \bar{X} \\
+&amp;\frac{1}{n}\left\{(x_1 - \bar{x}) + (x_2 - \bar{x}) + \cdots + (x_n - \bar{x})\right\} \\
+&amp;= \frac{1}{n}\left\{(x_1 + x_2 + \cdots + x_n) - n\bar{x}\right\} \\
+&amp;= \frac{x_1 + x_2 + \cdots + x_n}{n} - \bar{x} \\
 &amp;= 0
 \end{aligned}
 \]</span></p>
@@ -529,18 +552,19 @@ s_x^2 = \frac{1}{\color{#E36C09}{n-1}}\left\{(X_1 - \bar{X})^2 + (X_2 - \bar{X})
 <section id="分散を求める際に-n-1-で割る理由イメージ" class="level3" data-number="15.6.2">
 <h3 data-number="15.6.2" class="anchored" data-anchor-id="分散を求める際に-n-1-で割る理由イメージ"><span class="header-section-number">15.6.2</span> 分散を求める際に <span class="math inline">\(n-1\)</span> で割る理由（イメージ）</h3>
 <ul>
-<li>標本分散を求める際、母平均 <span class="math inline">\(\mu\)</span> は未知なので標本平均を使う必要があります。</li>
-<li>つまり、標本分散の計算前には、標本平均値が分かっている必要があります。</li>
+<li>標本から分散を求める際、母平均 <span class="math inline">\(\mu\)</span> は未知なので標本平均 <span class="math inline">\(\bar{x}\)</span> を使う必要があります。</li>
+<li>つまり、分散の計算前には、標本平均値が分かっている必要があります。</li>
 <li>さらに、標本平均値を求めるには、標本合計が分かっている必要があります。</li>
-<li>したがって、標本分散を求める時点では、<span class="math inline">\(x_1, \cdots, x_n\)</span> のうち、一つの値は既に決まっていて、実質的なデータの数は <span class="math inline">\(n-1\)</span> 個なので、推測統計の際（標本から母集団を推測する際）には、実質的なデータの数 <span class="math inline">\(n-1\)</span> で割ります。</li>
+<li>上の復習で見たように、偏差の合計は必ず 0 になります。そのため、<span class="math inline">\(n\)</span> 個の偏差 <span class="math inline">\((x_1 - \bar{x}), \cdots, (x_n - \bar{x})\)</span> のうち、<span class="math inline">\(n-1\)</span> 個が決まれば最後の1個は自動的に決まってしまい、自由に動ける偏差は <span class="math inline">\(n-1\)</span> 個しかありません。そこで、推測統計の際（標本から母集団を推測する際）には、実質的なデータの数 <span class="math inline">\(n-1\)</span> で割ります。</li>
 <li>この <span class="math inline">\(n-1\)</span> を分散の自由度（degree of freedom）といいます。</li>
-<li>例えば、a, b, c, d, e, f という6つのデータ（数字）と、それらの合計 s が分かっていたとすると、6つ目のデータ f は、s − (a+b+c+d+e) と表され、自由な値を取れない（独立していない）データとなり、母集団を推測する際に役に立たないと考えられるからです。</li>
+<li>例えば、a, b, c, d, e, f という6つのデータ（数字）と、それらの合計 <span class="math inline">\(T\)</span> が分かっていたとすると、6つ目のデータ f は、<span class="math inline">\(T\)</span> − (a+b+c+d+e) と表され、自由な値を取れません（独立していません）。</li>
+<li>別の見方をすると、標本平均 <span class="math inline">\(\bar{x}\)</span> は標本のちょうど真ん中にあるので、各データと <span class="math inline">\(\bar{x}\)</span> との差（偏差）は、母平均 <span class="math inline">\(\mu\)</span> との差よりも小さめに出ます。そのため、<span class="math inline">\(n\)</span> で割ると母分散を小さく見積もりすぎてしまいます（下の「不偏分散と分散の期待値」参照）。</li>
 </ul>
 </section>
 </section>
 <section id="標本調査の例" class="level2" data-number="15.7">
 <h2 data-number="15.7" class="anchored" data-anchor-id="標本調査の例"><span class="header-section-number">15.7</span> 標本調査の例</h2>
-<p>日本の医療品製造企業21社（母集団）の2016年の売上高から標本（<span class="math inline">\(n=10\)</span>）を抽出し標本平均を求めます。</p>
+<p>日本の医薬品製造企業21社（母集団）の2016年の売上高から標本（<span class="math inline">\(n=10\)</span>）を抽出し標本平均を求めます。</p>
 <div style="margin-top: 3.0em;">
 
 </div>
@@ -556,7 +580,7 @@ s_x^2 = \frac{1}{\color{#E36C09}{n-1}}\left\{(X_1 - \bar{X})^2 + (X_2 - \bar{X})
 </div>
 <p>（本来であれば、全ての会社の売上高や母平均を調査できないため標本調査を行うわけですが、今回は説明のため最初から全てわかる状態にしています。）</p>
 <p>この21社から<span class="marker">無作為に</span>10社を抽出します。</p>
-<p>エクセルで「=RAND()」と入力し、大きい/小さい順に並び替えます。</p>
+<p>エクセルで「=RAND()」と入力し、その列をコピーして「値として貼り付け」てから、大きい/小さい順に並び替え、上から10社を標本にします。（RANDは並べ替えなどの操作のたびに再計算されるので、値として貼り付けておかないと並び順が変わってしまいます。）</p>
 <div style="margin-top: 3.0em;">
 
 </div>
@@ -570,8 +594,7 @@ s_x^2 = \frac{1}{\color{#E36C09}{n-1}}\left\{(X_1 - \bar{X})^2 + (X_2 - \bar{X})
 </figcaption>
 </figure>
 </div>
-<p>上記のように、標本の取り方によりいくつもの標本平均が作られます。<br>
-（つまり、標本平均そのものも分布します。）</p>
+<p>上記のように、標本の取り方によりいくつもの標本平均が作られます。 （つまり、標本平均そのものも分布します。）</p>
 </section>
 <section id="標本統計量の分布" class="level2" data-number="15.8">
 <h2 data-number="15.8" class="anchored" data-anchor-id="標本統計量の分布"><span class="header-section-number">15.8</span> 標本統計量の分布</h2>
@@ -606,6 +629,7 @@ s_x^2 = \frac{1}{\color{#E36C09}{n-1}}\left\{(X_1 - \bar{X})^2 + (X_2 - \bar{X})
 </section>
 <section id="標本平均の分布" class="level2" data-number="15.9">
 <h2 data-number="15.9" class="anchored" data-anchor-id="標本平均の分布"><span class="header-section-number">15.9</span> 標本平均<span class="orange">の</span>分布</h2>
+<p>標本平均は標本ごとに変わる値（確率変数）なので、ここからは大文字の <span class="math inline">\(\bar{X}\)</span> で表します。</p>
 <p>標本平均<span class="orange">の</span>期待値（期待される平均的な数値）は、以下の計算の通り、<span class="math inline">\(\mu\)</span> （母平均）に一致します。</p>
 <div style="margin-top: 1.5em;">
 
@@ -619,7 +643,7 @@ E(\bar{X}) &amp;= E\left(\frac{X_1 + X_2 + \cdots + X_n}{n}\right) \\
 \end{aligned}
 \]</span></p>
 <p><br></p>
-<p>標本平均<span class="orange">の</span>分散は、母分散 <span class="math inline">\(\sigma^2\)</span> を <span class="math inline">\(n\)</span> で割ったものになります。母分散 <span class="math inline">\(\sigma^2\)</span> が未知の場合は、標本分散 <span class="math inline">\(s^2\)</span> を <span class="math inline">\(n\)</span> で割ったもので置き換えます。</p>
+<p>標本平均<span class="orange">の</span>分散は、母分散 <span class="math inline">\(\sigma^2\)</span> を <span class="math inline">\(n\)</span> で割ったものになります。</p>
 <div style="margin-top: 1.5em;">
 
 </div>
@@ -628,36 +652,44 @@ E(\bar{X}) &amp;= E\left(\frac{X_1 + X_2 + \cdots + X_n}{n}\right) \\
 V(\bar{X}) &amp;= V\left(\frac{1}{n}(X_1 + X_2 + \cdots + X_n)\right) \\
 &amp;= \frac{1}{n^2}\left\{V(X_1) + V(X_2) + \cdots + V(X_n)\right\} \\
 &amp;= \frac{1}{n^2}n\sigma^2 \\
-&amp;= \color{#E36C09}{\frac{\sigma^2}{n}} \ \text{または} \ \color{#E36C09}{\frac{s^2}{n}}
+&amp;= \color{#E36C09}{\frac{\sigma^2}{n}}
 \end{aligned}
 \]</span></p>
+<p>母分散 <span class="math inline">\(\sigma^2\)</span> が未知の場合は、不偏分散 <span class="math inline">\(s^2\)</span> を <span class="math inline">\(n\)</span> で割った <span class="math inline">\(\color{#E36C09}{\dfrac{s^2}{n}}\)</span> で推定します。</p>
 <p><br></p>
-<p>標本平均<span class="orange">の</span>標準偏差は、<span class="math inline">\(\color{#E36C09}{\dfrac{\sigma}{\sqrt{n}}}\)</span> または <span class="math inline">\(\color{#E36C09}{\dfrac{s}{\sqrt{n}}}\)</span> で置き換えたものです。</p>
+<p>標本平均<span class="orange">の</span>標準偏差は <span class="math inline">\(\color{#E36C09}{\dfrac{\sigma}{\sqrt{n}}}\)</span> です。<span class="math inline">\(\sigma\)</span> が未知の場合は <span class="math inline">\(\color{#E36C09}{\dfrac{s}{\sqrt{n}}}\)</span> で推定し、これを<strong>標準誤差</strong>と呼びます（下の「標準誤差」参照）。</p>
 <p><br></p>
-<p>つまり、標本平均<span style="color: #E36C09;">の</span>分布は、平均 <span class="math inline">\(\mu\)</span>、分散 <span class="math inline">\(\dfrac{\sigma^2}{n}\)</span> の<span style="color: #E36C09;">正規分布 <span class="math inline">\(N\left(\mu, \dfrac{\sigma^2}{n}\right)\)</span></span> に近づきます。</p>
-<p>母分散 <span class="math inline">\(\sigma^2\)</span> が未知の場合、標本分散 <span class="math inline">\(\color{#E36C09}{\dfrac{s^2}{n}}\)</span> で置き換え標準化すると、正規分布ではなく、（母集団が正規分布の場合）<span class="orange">自由度 <span class="math inline">\(n-1\)</span> の <span class="math inline">\(t\)</span> 分布</span>に従います。</p>
+<p>つまり、標本平均<span style="color: #E36C09;">の</span>分布は、<span class="math inline">\(n\)</span> が大きくなると、平均 <span class="math inline">\(\mu\)</span>、分散 <span class="math inline">\(\dfrac{\sigma^2}{n}\)</span> の<span style="color: #E36C09;">正規分布 <span class="math inline">\(N\left(\mu, \dfrac{\sigma^2}{n}\right)\)</span></span> に近づきます（中心極限定理、次回）。</p>
+<p>母分散 <span class="math inline">\(\sigma^2\)</span> が未知の場合、<span class="math inline">\(\sigma^2\)</span> を不偏分散 <span class="math inline">\(s^2\)</span> で置き換えて（標準誤差 <span class="math inline">\(\dfrac{s}{\sqrt{n}}\)</span> を使って）標準化すると、正規分布ではなく、（母集団が正規分布の場合）<span class="orange">自由度 <span class="math inline">\(n-1\)</span> の <span class="math inline">\(t\)</span> 分布</span>に従います（詳しくは後期第4回）。</p>
 </section>
-<section id="標本普遍分散の分布" class="level2" data-number="15.10">
-<h2 data-number="15.10" class="anchored" data-anchor-id="標本普遍分散の分布"><span class="header-section-number">15.10</span> 標本（普遍）分散<span class="orange">の</span>分布</h2>
-<p>標本（不偏）分散（<span class="math inline">\(n-1\)</span> で割ったもの・小文字の <span class="math inline">\(s\)</span> で表す）は、<span class="math inline">\(E(s^2) = \color{#E36C09}{\sigma^2}\)</span></p>
-<p>標本分散（<span class="math inline">\(n\)</span> で割ったもの・大文字の <span class="math inline">\(S\)</span> で表す）は、<span class="math inline">\(E(S^2) = \color{#E36C09}{\dfrac{n-1}{n}}\,\sigma^2\)</span>（<span class="math inline">\(n = 10\)</span> 程度ならば1割程度の過小評価となる）</p>
+<section id="不偏分散と分散の期待値" class="level2" data-number="15.10">
+<h2 data-number="15.10" class="anchored" data-anchor-id="不偏分散と分散の期待値"><span class="header-section-number">15.10</span> 不偏分散と分散<span class="orange">の</span>期待値</h2>
+<p>不偏分散（<span class="math inline">\(n-1\)</span> で割ったもの・小文字の <span class="math inline">\(s^2\)</span> で表す）は、<span class="math inline">\(E(s^2) = \color{#E36C09}{\sigma^2}\)</span></p>
+<p>分散（<span class="math inline">\(n\)</span> で割ったもの・大文字の <span class="math inline">\(S^2\)</span> で表す。前期に学んだ「分散」と同じ）は、<span class="math inline">\(E(S^2) = \color{#E36C09}{\dfrac{n-1}{n}}\,\sigma^2\)</span>（<span class="math inline">\(n = 10\)</span> 程度ならば1割程度の過小評価となる）</p>
 </section>
 <section id="標準誤差" class="level2" data-number="15.11">
 <h2 data-number="15.11" class="anchored" data-anchor-id="標準誤差"><span class="header-section-number">15.11</span> 標準誤差</h2>
 <ul>
 <li>標本の統計量は、抽出された標本ごとに存在すると考えられるので、標本の統計量には、ばらつきがあると考えられます。</li>
-<li>そして、推定の誤差が大きいほど、標準偏差が大きくなることも予想できます。</li>
+<li>そして、標本平均のばらつき（標準偏差）が大きいほど、1回の標本から求めた平均が母平均から外れやすくなります。</li>
 <li>そこで、このばらつき（標本の統計量の標準偏差）を推定量の誤差を示すと考えて、<strong>標準誤差</strong>と呼びます。</li>
 <li>標準誤差は、標本統計量が母集団の真の値からどれだけばらつくかを示しており、小さいほどばらつきが小さく、推定の精度が高いことを意味します。</li>
+<li>標本平均の標準誤差は、以下のように求めます。</li>
+</ul>
+<p><span class="math display">\[
+\text{標準誤差} = \color{#E36C09}{\frac{s}{\sqrt{n}}} \quad （\text{不偏分散の平方根} \div \text{標本サイズの平方根}）
+\]</span></p>
+<ul>
+<li>Excelでは <code>=STDEV.S(範囲)/SQRT(COUNT(範囲))</code> で求められます。</li>
 </ul>
 </section>
 <section id="データ分析ツール" class="level2" data-number="15.12">
 <h2 data-number="15.12" class="anchored" data-anchor-id="データ分析ツール"><span class="header-section-number">15.12</span> データ分析ツール</h2>
 <ul>
-<li>Excelのデータ分析ツールを使うと、標準誤差を含む他統計量が一度に出力されます。</li>
-<li>「分析ツール」が表示されていない場合は以下の操作でリボンに表示させます。（大学のパソコンはシャットダウンの度に初期化されるので毎回この操作を行う必要があります。</li>
+<li>Excelのデータ分析ツールを使うと、標準誤差を含む各種の統計量が一度に出力されます。</li>
+<li>「分析ツール」が表示されていない場合は、以下の操作でリボンに表示させます（大学のパソコンはシャットダウンの度に初期化されるので、毎回この操作を行う必要があります）。</li>
 </ul>
-<p>　ファイル→その他→オプション→アドイン→分析ツール→設定→OK</p>
+<p>　ファイル → その他 → オプション → アドイン → 下の「管理」で「Excel アドイン」を選んで「設定」→「分析ツール」にチェック → OK</p>
 <div style="margin-top: 1.5em;">
 
 </div>
