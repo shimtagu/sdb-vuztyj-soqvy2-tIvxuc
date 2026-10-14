@@ -383,8 +383,9 @@ window.Quarto = {
   <li><a href="#様々な信頼区間" id="toc-様々な信頼区間" class="nav-link" data-scroll-target="#様々な信頼区間"><span class="header-section-number">17.5</span> 様々な信頼区間</a></li>
   <li><a href="#疑問問題点" id="toc-疑問問題点" class="nav-link" data-scroll-target="#疑問問題点"><span class="header-section-number">17.6</span> 疑問・問題点</a></li>
   <li><a href="#母分散が未知の場合" id="toc-母分散が未知の場合" class="nav-link" data-scroll-target="#母分散が未知の場合"><span class="header-section-number">17.7</span> 母分散が未知の場合</a></li>
-  <li><a href="#エクセルの関数" id="toc-エクセルの関数" class="nav-link" data-scroll-target="#エクセルの関数"><span class="header-section-number">17.8</span> エクセルの関数</a></li>
-  <li><a href="#データ分析ツール" id="toc-データ分析ツール" class="nav-link" data-scroll-target="#データ分析ツール"><span class="header-section-number">17.9</span> データ分析ツール</a></li>
+  <li><a href="#計算例" id="toc-計算例" class="nav-link" data-scroll-target="#計算例"><span class="header-section-number">17.8</span> 計算例</a></li>
+  <li><a href="#エクセルの関数" id="toc-エクセルの関数" class="nav-link" data-scroll-target="#エクセルの関数"><span class="header-section-number">17.9</span> エクセルの関数</a></li>
+  <li><a href="#データ分析ツール" id="toc-データ分析ツール" class="nav-link" data-scroll-target="#データ分析ツール"><span class="header-section-number">17.10</span> データ分析ツール</a></li>
   </ul>
 </nav>
     </div>
@@ -459,18 +460,30 @@ window.Quarto = {
 <section id="信頼区間" class="level2" data-number="17.3">
 <h2 data-number="17.3" class="anchored" data-anchor-id="信頼区間"><span class="header-section-number">17.3</span> 信頼区間</h2>
 <p>「真の値がどれくらいの範囲に含まれるか」を確率的に示すのが<strong>信頼区間</strong>です。</p>
-<p><strong>95%信頼区間</strong></p>
-<p>母平均 <span class="math inline">\(\mu\)</span> を標本平均から推定する際、95%の確率で母平均 <span class="math inline">\(\mu\)</span> を含むような範囲のことをいいます。</p>
+<div id="fig-B04-confidence" class="quarto-float quarto-figure quarto-figure-center anchored" width="100%">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-B04-confidence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/B04/B04-confidence.png" id="fig-B04-confidence" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B04-confidence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+図&nbsp;17.3
+</figcaption>
+</figure>
+</div>
 <div style="margin-top: 2.0em;">
 
 </div>
-<div id="fig-B04-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<p><strong>95%信頼区間</strong></p>
+<p>母平均 <span class="math inline">\(\mu\)</span> を標本平均から推定する際、95%の確率で母平均 <span class="math inline">\(\mu\)</span> を含むような範囲のことをいいます。</p>
+<p>理論的には、標本を100回取得し、95%信頼区間を100回つくると95本が母平均 <span class="math inline">\(\mu\)</span> を含み、5本が外れます。</p>
+<p>以下の図は説明のため、外れる区間がちょうど理論どおり5本になるように作っています。実際に100回行うと、外れる本数は3本や7本など毎回少し変わります。</p>
+<div id="fig-B04-3" class="quarto-float quarto-figure quarto-figure-center anchored" width="70%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B04-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B04/B04-3.png" id="fig-B04-3" class="img-fluid figure-img" style="width:60.0%">
+<img src="images/B04/B04-3.png" id="fig-B04-3" class="img-fluid figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B04-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;17.3
+図&nbsp;17.4
 </figcaption>
 </figure>
 </div>
@@ -506,8 +519,21 @@ P\left\{{\color{#E36C09}{-1.96}} \leqq \frac{\bar{X} - {\color{#E36C09}{\mu}}}{\
 P\left\{\bar{X} - 1.96\frac{\sigma}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq \bar{X} + 1.96\frac{\sigma}{\sqrt{n}}\right\} = 0.95
 \]</span></p>
 <ul>
-<li>つまり、<span class="math inline">\(\left[\bar{X} - 1.96\dfrac{\sigma}{\sqrt{n}},\ \ \bar{X} + 1.96\dfrac{\sigma}{\sqrt{n}}\right]\)</span> は、95%の信頼（確率）で、母平均 <span class="orange"><span class="math inline">\(\mu\)</span></span> を含みます。</li>
+<li>実際の計算では、手元の標本から求めた標本平均（観測値）<span class="math inline">\(\bar{x}\)</span> を代入します。つまり、<span class="math inline">\(\left[\bar{x} - 1.96\dfrac{\sigma}{\sqrt{n}},\ \ \bar{x} + 1.96\dfrac{\sigma}{\sqrt{n}}\right]\)</span> が、母平均 <span class="orange"><span class="math inline">\(\mu\)</span></span> の95%信頼区間です。</li>
 </ul>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>前回（世論調査の誤差）とのつながり
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>前回の課題で求めた「支持率 <span class="math inline">\(\pm 1.96 \times\)</span> 標準誤差 <span class="math inline">\(\left(\dfrac{\sigma}{\sqrt{n}}\right)\)</span>」は、まさにこの95%信頼区間です。今回は、それを母平均の推定として一般的な形で整理します。</p>
+</div>
+</div>
 <div class="my-note callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -531,7 +557,7 @@ P\left\{\bar{X} - 1.96\frac{\sigma}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq
 <img src="images/B04/B04-4.png" id="fig-B04-4" class="img-fluid figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B04-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;17.4
+図&nbsp;17.5
 </figcaption>
 </figure>
 </div>
@@ -549,7 +575,7 @@ P\left\{\bar{X} - 1.96\frac{\sigma}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq
 <img src="images/B04/B04-5.png" id="fig-B04-5" class="img-fluid figure-img" style="width:60.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B04-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;17.5
+図&nbsp;17.6
 </figcaption>
 </figure>
 </div>
@@ -574,20 +600,21 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 <li>90% 信頼区間</li>
 </ul>
 <p><span class="math display">\[
-\bar{X} - 1.64\frac{\sigma}{\sqrt{n}} &lt; {\color{#E36C09}{\mu}} &lt; \bar{X} + 1.64\frac{\sigma}{\sqrt{n}}
+\bar{x} - 1.64\frac{\sigma}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq \bar{x} + 1.64\frac{\sigma}{\sqrt{n}}
 \]</span></p>
 <ul>
 <li>95% 信頼区間</li>
 </ul>
 <p><span class="math display">\[
-\bar{X} - 1.96\frac{\sigma}{\sqrt{n}} &lt; {\color{#E36C09}{\mu}} &lt; \bar{X} + 1.96\frac{\sigma}{\sqrt{n}}
+\bar{x} - 1.96\frac{\sigma}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq \bar{x} + 1.96\frac{\sigma}{\sqrt{n}}
 \]</span></p>
 <ul>
 <li>99% 信頼区間</li>
 </ul>
 <p><span class="math display">\[
-\bar{X} - 2.58\frac{\sigma}{\sqrt{n}} &lt; {\color{#E36C09}{\mu}} &lt; \bar{X} + 2.58\frac{\sigma}{\sqrt{n}}
+\bar{x} - 2.58\frac{\sigma}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq \bar{x} + 2.58\frac{\sigma}{\sqrt{n}}
 \]</span></p>
+<p>1.64 と 2.58 は、それぞれ 1.645（<code>=NORM.S.INV(0.95)</code>）と 2.576（<code>=NORM.S.INV(0.995)</code>）を丸めた値です。</p>
 </section>
 <section id="疑問問題点" class="level2" data-number="17.6">
 <h2 data-number="17.6" class="anchored" data-anchor-id="疑問問題点"><span class="header-section-number">17.6</span> 疑問・問題点</h2>
@@ -599,13 +626,13 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 <div style="margin-top: 1.5em;">
 
 </div>
-<div id="fig-B04-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<div id="fig-B04-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="70%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B04-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B04/B04-6.png" id="fig-B04-6" class="img-fluid figure-img" style="width:60.0%">
+<img src="images/B04/B04-6.png" id="fig-B04-6" class="img-fluid figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B04-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;17.6
+図&nbsp;17.7
 </figcaption>
 </figure>
 </div>
@@ -618,7 +645,7 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 <img src="images/B04/B04-7.png" id="fig-B04-7" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B04-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;17.7
+図&nbsp;17.8
 </figcaption>
 </figure>
 </div>
@@ -626,15 +653,15 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 </section>
 <section id="母分散が未知の場合" class="level2" data-number="17.7">
 <h2 data-number="17.7" class="anchored" data-anchor-id="母分散が未知の場合"><span class="header-section-number">17.7</span> 母分散が未知の場合</h2>
-<p>母分散 <span class="math inline">\(\sigma^2\)</span> が未知なので、代わりに標本（不偏）分散 <span class="orange"><span class="math inline">\(s^2\)</span></span> を使いますが、<span class="math inline">\(\sigma\)</span> の代わりに <span class="math inline">\(s\)</span> を使って標準化した値は、正規分布 <span class="math inline">\(N(0, 1)\)</span> には従いません。</p>
-<p>代わりに、標本平均 <span class="math inline">\(\bar{X}\)</span> を母平均と標本（不偏）分散を使い標準化した値 <span class="math inline">\(\left(\dfrac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}}\right)\)</span> は、<span class="orange">自由度 <span class="math inline">\(n-1\)</span> の <span class="math inline">\(t\)</span> 分布</span>（<span class="math inline">\(t(n-1)\)</span> と書く）と呼ばれる分布に従います。</p>
+<p>母分散 <span class="math inline">\(\sigma^2\)</span> が未知なので、代わりに不偏分散 <span class="orange"><span class="math inline">\(s^2\)</span></span> を使いますが、<span class="math inline">\(\sigma\)</span> の代わりに <span class="math inline">\(s\)</span> を使って標準化した値は、正規分布 <span class="math inline">\(N(0, 1)\)</span> には従いません。</p>
+<p>代わりに、標本平均 <span class="math inline">\(\bar{X}\)</span> を、不偏分散から求めた標準偏差 <span class="math inline">\(s\)</span>（<span class="math inline">\(s = \sqrt{s^2}\)</span>）を使って標準化した値 <span class="math inline">\(\left(\dfrac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}}\right)\)</span> は、<span class="orange">自由度 <span class="math inline">\(n-1\)</span> の <span class="math inline">\(t\)</span> 分布</span>（<span class="math inline">\(t(n-1)\)</span> と書く）と呼ばれる分布に従います。</p>
 <p>つまり、標本サイズ <span class="math inline">\(n\)</span>（自由度 <span class="math inline">\(n-1\)</span>）により分布の形が決まります。</p>
 <p><span class="math inline">\(t\)</span> 分布は正規分布よりも山が低く、裾が広い（両端の値が出やすい）分布で、<span class="math inline">\(n\)</span> が大きくなると、正規分布に近づきます。</p>
 <p>自由度を変えて、<span class="math inline">\(t\)</span> 分布（オレンジ）と正規分布 <span class="math inline">\(N(0, 1)\)</span>（黒の点線）を比べてみましょう。</p>
 <div class="cell">
 <details class="code-fold hidden">
 <summary>コードを表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="162" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 161;"><span id="cb1-162"><a href="#cb1-162"></a>viewof df <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"自由度 n−1"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="177" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 176;"><span id="cb1-177"><a href="#cb1-177"></a>viewof df <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"自由度 n−1"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="declaration">
@@ -645,40 +672,40 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 <div class="cell">
 <details class="code-fold hidden">
 <summary>コードを表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="167" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 166;"><span id="cb2-167"><a href="#cb2-167"></a>{</span>
-<span id="cb2-168"><a href="#cb2-168"></a>  <span class="co">// 対数ガンマ関数（Lanczos近似）</span></span>
-<span id="cb2-169"><a href="#cb2-169"></a>  <span class="kw">function</span> <span class="fu">lgamma</span>(z) {</span>
-<span id="cb2-170"><a href="#cb2-170"></a>    <span class="kw">const</span> g <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
-<span id="cb2-171"><a href="#cb2-171"></a>    <span class="kw">const</span> c <span class="op">=</span> [<span class="fl">0.99999999999980993</span><span class="op">,</span> <span class="fl">676.5203681218851</span><span class="op">,</span> <span class="op">-</span><span class="fl">1259.1392167224028</span><span class="op">,</span></span>
-<span id="cb2-172"><a href="#cb2-172"></a>      <span class="fl">771.32342877765313</span><span class="op">,</span> <span class="op">-</span><span class="fl">176.61502916214059</span><span class="op">,</span> <span class="fl">12.507343278686905</span><span class="op">,</span></span>
-<span id="cb2-173"><a href="#cb2-173"></a>      <span class="op">-</span><span class="fl">0.13857109526572012</span><span class="op">,</span> <span class="fl">9.9843695780195716e-6</span><span class="op">,</span> <span class="fl">1.5056327351493116e-7</span>]<span class="op">;</span></span>
-<span id="cb2-174"><a href="#cb2-174"></a>    <span class="cf">if</span> (z <span class="op">&lt;</span> <span class="fl">0.5</span>) <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> z)) <span class="op">-</span> <span class="fu">lgamma</span>(<span class="dv">1</span> <span class="op">-</span> z)<span class="op">;</span></span>
-<span id="cb2-175"><a href="#cb2-175"></a>    z <span class="op">-=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb2-176"><a href="#cb2-176"></a>    <span class="kw">let</span> x <span class="op">=</span> c[<span class="dv">0</span>]<span class="op">;</span></span>
-<span id="cb2-177"><a href="#cb2-177"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> g <span class="op">+</span> <span class="dv">2</span><span class="op">;</span> i<span class="op">++</span>) x <span class="op">+=</span> c[i] <span class="op">/</span> (z <span class="op">+</span> i)<span class="op">;</span></span>
-<span id="cb2-178"><a href="#cb2-178"></a>    <span class="kw">const</span> t <span class="op">=</span> z <span class="op">+</span> g <span class="op">+</span> <span class="fl">0.5</span><span class="op">;</span></span>
-<span id="cb2-179"><a href="#cb2-179"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">+</span> (z <span class="op">+</span> <span class="fl">0.5</span>) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(t) <span class="op">-</span> t <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(x)<span class="op">;</span></span>
-<span id="cb2-180"><a href="#cb2-180"></a>  }</span>
-<span id="cb2-181"><a href="#cb2-181"></a>  <span class="co">// t分布と正規分布の確率密度</span></span>
-<span id="cb2-182"><a href="#cb2-182"></a>  <span class="kw">const</span> tpdf <span class="op">=</span> (x<span class="op">,</span> v) <span class="kw">=&gt;</span></span>
-<span id="cb2-183"><a href="#cb2-183"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="fu">lgamma</span>((v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">-</span> <span class="fu">lgamma</span>(v <span class="op">/</span> <span class="dv">2</span>)) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(v <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">*</span></span>
-<span id="cb2-184"><a href="#cb2-184"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">1</span> <span class="op">+</span> x <span class="op">*</span> x <span class="op">/</span> v<span class="op">,</span> <span class="op">-</span>(v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb2-185"><a href="#cb2-185"></a>  <span class="kw">const</span> npdf <span class="op">=</span> x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>x <span class="op">*</span> x <span class="op">/</span> <span class="dv">2</span>) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)<span class="op">;</span></span>
-<span id="cb2-186"><a href="#cb2-186"></a></span>
-<span id="cb2-187"><a href="#cb2-187"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="fl">5.001</span><span class="op">,</span> <span class="fl">0.02</span>)<span class="op">;</span></span>
-<span id="cb2-188"><a href="#cb2-188"></a>  <span class="kw">const</span> tData <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">tpdf</span>(x<span class="op">,</span> df)}))<span class="op">;</span></span>
-<span id="cb2-189"><a href="#cb2-189"></a>  <span class="kw">const</span> nData <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">npdf</span>(x)}))<span class="op">;</span></span>
-<span id="cb2-190"><a href="#cb2-190"></a></span>
-<span id="cb2-191"><a href="#cb2-191"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb2-192"><a href="#cb2-192"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"値"</span>}<span class="op">,</span></span>
-<span id="cb2-193"><a href="#cb2-193"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="fl">0.42</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"確率密度"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
-<span id="cb2-194"><a href="#cb2-194"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb2-195"><a href="#cb2-195"></a>      Plot<span class="op">.</span><span class="fu">line</span>(nData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
-<span id="cb2-196"><a href="#cb2-196"></a>      Plot<span class="op">.</span><span class="fu">line</span>(tData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
-<span id="cb2-197"><a href="#cb2-197"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
-<span id="cb2-198"><a href="#cb2-198"></a>    ]</span>
-<span id="cb2-199"><a href="#cb2-199"></a>  })<span class="op">;</span></span>
-<span id="cb2-200"><a href="#cb2-200"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="182" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 181;"><span id="cb2-182"><a href="#cb2-182"></a>{</span>
+<span id="cb2-183"><a href="#cb2-183"></a>  <span class="co">// 対数ガンマ関数（Lanczos近似）</span></span>
+<span id="cb2-184"><a href="#cb2-184"></a>  <span class="kw">function</span> <span class="fu">lgamma</span>(z) {</span>
+<span id="cb2-185"><a href="#cb2-185"></a>    <span class="kw">const</span> g <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb2-186"><a href="#cb2-186"></a>    <span class="kw">const</span> c <span class="op">=</span> [<span class="fl">0.99999999999980993</span><span class="op">,</span> <span class="fl">676.5203681218851</span><span class="op">,</span> <span class="op">-</span><span class="fl">1259.1392167224028</span><span class="op">,</span></span>
+<span id="cb2-187"><a href="#cb2-187"></a>      <span class="fl">771.32342877765313</span><span class="op">,</span> <span class="op">-</span><span class="fl">176.61502916214059</span><span class="op">,</span> <span class="fl">12.507343278686905</span><span class="op">,</span></span>
+<span id="cb2-188"><a href="#cb2-188"></a>      <span class="op">-</span><span class="fl">0.13857109526572012</span><span class="op">,</span> <span class="fl">9.9843695780195716e-6</span><span class="op">,</span> <span class="fl">1.5056327351493116e-7</span>]<span class="op">;</span></span>
+<span id="cb2-189"><a href="#cb2-189"></a>    <span class="cf">if</span> (z <span class="op">&lt;</span> <span class="fl">0.5</span>) <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> z)) <span class="op">-</span> <span class="fu">lgamma</span>(<span class="dv">1</span> <span class="op">-</span> z)<span class="op">;</span></span>
+<span id="cb2-190"><a href="#cb2-190"></a>    z <span class="op">-=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-191"><a href="#cb2-191"></a>    <span class="kw">let</span> x <span class="op">=</span> c[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb2-192"><a href="#cb2-192"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> g <span class="op">+</span> <span class="dv">2</span><span class="op">;</span> i<span class="op">++</span>) x <span class="op">+=</span> c[i] <span class="op">/</span> (z <span class="op">+</span> i)<span class="op">;</span></span>
+<span id="cb2-193"><a href="#cb2-193"></a>    <span class="kw">const</span> t <span class="op">=</span> z <span class="op">+</span> g <span class="op">+</span> <span class="fl">0.5</span><span class="op">;</span></span>
+<span id="cb2-194"><a href="#cb2-194"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">+</span> (z <span class="op">+</span> <span class="fl">0.5</span>) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(t) <span class="op">-</span> t <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(x)<span class="op">;</span></span>
+<span id="cb2-195"><a href="#cb2-195"></a>  }</span>
+<span id="cb2-196"><a href="#cb2-196"></a>  <span class="co">// t分布と正規分布の確率密度</span></span>
+<span id="cb2-197"><a href="#cb2-197"></a>  <span class="kw">const</span> tpdf <span class="op">=</span> (x<span class="op">,</span> v) <span class="kw">=&gt;</span></span>
+<span id="cb2-198"><a href="#cb2-198"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="fu">lgamma</span>((v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">-</span> <span class="fu">lgamma</span>(v <span class="op">/</span> <span class="dv">2</span>)) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(v <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">*</span></span>
+<span id="cb2-199"><a href="#cb2-199"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">1</span> <span class="op">+</span> x <span class="op">*</span> x <span class="op">/</span> v<span class="op">,</span> <span class="op">-</span>(v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-200"><a href="#cb2-200"></a>  <span class="kw">const</span> npdf <span class="op">=</span> x <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>x <span class="op">*</span> x <span class="op">/</span> <span class="dv">2</span>) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>)<span class="op">;</span></span>
+<span id="cb2-201"><a href="#cb2-201"></a></span>
+<span id="cb2-202"><a href="#cb2-202"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="fl">5.001</span><span class="op">,</span> <span class="fl">0.02</span>)<span class="op">;</span></span>
+<span id="cb2-203"><a href="#cb2-203"></a>  <span class="kw">const</span> tData <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">tpdf</span>(x<span class="op">,</span> df)}))<span class="op">;</span></span>
+<span id="cb2-204"><a href="#cb2-204"></a>  <span class="kw">const</span> nData <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">npdf</span>(x)}))<span class="op">;</span></span>
+<span id="cb2-205"><a href="#cb2-205"></a></span>
+<span id="cb2-206"><a href="#cb2-206"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-207"><a href="#cb2-207"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">5</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"値"</span>}<span class="op">,</span></span>
+<span id="cb2-208"><a href="#cb2-208"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="fl">0.42</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"確率密度"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb2-209"><a href="#cb2-209"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-210"><a href="#cb2-210"></a>      Plot<span class="op">.</span><span class="fu">line</span>(nData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
+<span id="cb2-211"><a href="#cb2-211"></a>      Plot<span class="op">.</span><span class="fu">line</span>(tData<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
+<span id="cb2-212"><a href="#cb2-212"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
+<span id="cb2-213"><a href="#cb2-213"></a>    ]</span>
+<span id="cb2-214"><a href="#cb2-214"></a>  })<span class="op">;</span></span>
+<span id="cb2-215"><a href="#cb2-215"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-2" data-nodetype="expression">
@@ -753,26 +780,43 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 <li>90% 信頼区間</li>
 </ul>
 <p><span class="math display">\[
-\bar{X} - t_{0.05}(n-1)\frac{s}{\sqrt{n}} &lt; \color{#E36C09}{\mu} &lt; \bar{X} + t_{0.05}(n-1)\frac{s}{\sqrt{n}}
+\bar{x} - t_{0.05}(n-1)\frac{s}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq \bar{x} + t_{0.05}(n-1)\frac{s}{\sqrt{n}}
 \]</span></p>
 <ul>
 <li>95% 信頼区間</li>
 </ul>
 <p><span class="math display">\[
-\bar{X} - t_{0.025}(n-1)\frac{s}{\sqrt{n}} &lt; \color{#E36C09}{\mu} &lt; \bar{X} + t_{0.025}(n-1)\frac{s}{\sqrt{n}}
+\bar{x} - t_{0.025}(n-1)\frac{s}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq \bar{x} + t_{0.025}(n-1)\frac{s}{\sqrt{n}}
 \]</span></p>
 <ul>
 <li>99% 信頼区間</li>
 </ul>
 <p><span class="math display">\[
-\bar{X} - t_{0.005}(n-1)\frac{s}{\sqrt{n}} &lt; \color{#E36C09}{\mu} &lt; \bar{X} + t_{0.005}(n-1)\frac{s}{\sqrt{n}}
+\bar{x} - t_{0.005}(n-1)\frac{s}{\sqrt{n}} \leqq {\color{#E36C09}{\mu}} \leqq \bar{x} + t_{0.005}(n-1)\frac{s}{\sqrt{n}}
 \]</span></p>
 <p><br></p>
-<p><span class="math inline">\(t_{\alpha}(n-1)\)</span> は <span class="math inline">\(t\)</span> 分布表から探します（またはエクセルの関数を使う方法もあります）。<br>
-<a href="https://bellcurve.jp/statistics/course/8970.html">t分布表（統計WEB）</a></p>
+<p><span class="math inline">\(t_{\alpha}(n-1)\)</span> は、自由度 <span class="math inline">\(n-1\)</span> の <span class="math inline">\(t\)</span> 分布で、右側（上側）の面積が <span class="math inline">\(\alpha\)</span> になる境目の値です。95%信頼区間では左右に2.5%ずつ残すので、<span class="math inline">\(t_{0.025}(n-1)\)</span> を使います。</p>
+<ul>
+<li><strong><span class="math inline">\(t\)</span> 分布表で探す</strong>：行が「自由度 <span class="math inline">\(n-1\)</span>」、列が「上側確率 <span class="math inline">\(\alpha\)</span>」のところを読みます。例えば <span class="math inline">\(n=10\)</span> の95%信頼区間なら、自由度9・上側確率0.025 の欄で 2.262 です。<br>
+<a href="https://bellcurve.jp/statistics/course/8970.html">t分布表（統計WEB）</a></li>
+<li><strong>エクセルで求める</strong>：<code>=T.INV.2T(0.05, 9)</code> と入力すると 2.262 になります。1つ目の引数は左右<strong>両側を合わせた</strong>確率（95%信頼区間なら 0.05、90%なら 0.10、99%なら 0.01）、2つ目の引数は自由度 <span class="math inline">\(n-1\)</span> です。</li>
+</ul>
 </section>
-<section id="エクセルの関数" class="level2" data-number="17.8">
-<h2 data-number="17.8" class="anchored" data-anchor-id="エクセルの関数"><span class="header-section-number">17.8</span> エクセルの関数</h2>
+<section id="計算例" class="level2" data-number="17.8">
+<h2 data-number="17.8" class="anchored" data-anchor-id="計算例"><span class="header-section-number">17.8</span> 計算例</h2>
+<p>ある製品の重さを10個調べたところ、標本平均 <span class="math inline">\(\bar{x} = 100.03\)</span> g、不偏分散から求めた標準偏差 <span class="math inline">\(s = 1.49\)</span> g でした。母平均 <span class="math inline">\(\mu\)</span> の95%信頼区間を求めます。</p>
+<ol type="1">
+<li>自由度は <span class="math inline">\(n - 1 = 10 - 1 = 9\)</span>、<span class="math inline">\(t_{0.025}(9) = 2.262\)</span></li>
+<li>標準誤差は <span class="math inline">\(\dfrac{s}{\sqrt{n}} = \dfrac{1.49}{\sqrt{10}} = 0.471\)</span></li>
+<li>幅は <span class="math inline">\(2.262 \times 0.471 = 1.07\)</span></li>
+</ol>
+<p><span class="math display">\[
+100.03 - 1.07 \leqq {\color{#E36C09}{\mu}} \leqq 100.03 + 1.07 \quad\Longrightarrow\quad 98.96 \leqq {\color{#E36C09}{\mu}} \leqq 101.10
+\]</span></p>
+<p>つまり、この製品の重さの母平均は、95%の信頼で 98.96 g から 101.10 g の間にあると推定できます。</p>
+</section>
+<section id="エクセルの関数" class="level2" data-number="17.9">
+<h2 data-number="17.9" class="anchored" data-anchor-id="エクセルの関数"><span class="header-section-number">17.9</span> エクセルの関数</h2>
 <p>エクセルを使い信頼区間を求める方法</p>
 <ul>
 <li>母分散が分かっている時：CONFIDENCE.NORM(α, 標準偏差, 標本数)
@@ -783,10 +827,12 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 <ul>
 <li><span class="math inline">\(t\)</span> 分布を使って計算されます。</li>
 </ul></li>
-<li>両関数とも <span class="orange">確率値 <span class="math inline">\(\times \dfrac{\text{標準偏差}}{\sqrt{n}}\)</span></span> の部分が計算されます。
+<li>両関数とも <span class="orange">確率値 <span class="math inline">\(\times \dfrac{\text{標準偏差}}{\sqrt{n}}\)</span></span> の部分（区間の幅の半分）が計算されます。
 <ul>
 <li>信頼区間は、「標本平均 <span class="math inline">\(-\)</span> 関数の値」から「標本平均 <span class="math inline">\(+\)</span> 関数の値」までの範囲になります。</li>
+<li>上の計算例では、<code>=CONFIDENCE.T(0.05, 1.49, 10)</code> が約 1.07 になります。</li>
 </ul></li>
+<li><span class="math inline">\(t\)</span> 分布の値そのものは <code>T.INV.2T(α, 自由度)</code> で求められます（例：<code>=T.INV.2T(0.05, 9)</code> → 2.262）。</li>
 <li>両関数の書式には次の引数があります。
 <ul>
 <li>α：信頼度を計算するために使用する有意水準を指定します。<br>
@@ -800,11 +846,15 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 </ul></li>
 </ul>
 </section>
-<section id="データ分析ツール" class="level2" data-number="17.9">
-<h2 data-number="17.9" class="anchored" data-anchor-id="データ分析ツール"><span class="header-section-number">17.9</span> データ分析ツール</h2>
+<section id="データ分析ツール" class="level2" data-number="17.10">
+<h2 data-number="17.10" class="anchored" data-anchor-id="データ分析ツール"><span class="header-section-number">17.10</span> データ分析ツール</h2>
 <ul>
 <li>Excelのデータ分析ツールの「基本統計量」を使うと、標準誤差など、他の統計量も一度に出力されます。</li>
-<li>「平均の信頼度の出力」にチェックを入れると、「信頼度（95.0%）」が出力されます。これは <code>CONFIDENCE.T</code> 関数の値と同じで、信頼区間は「平均 <span class="math inline">\(\pm\)</span> 信頼度」で求められます。</li>
+<li>「平均の信頼区間の出力」にチェックを入れると、「信頼区間(95.0%)」という行が出力されます。
+<ul>
+<li>名前は「信頼区間」ですが、区間そのものではなく、平均に足し引きする幅で、<code>CONFIDENCE.T</code> 関数の値と同じです。信頼区間は「平均 <span class="math inline">\(\pm\)</span> この値」で求められます。</li>
+<li>同じ出力の「標準誤差」は <span class="math inline">\(\dfrac{s}{\sqrt{n}}\)</span> の値です（前回の標準誤差と同じ考え方です）。</li>
+</ul></li>
 <li>「分析ツール」が表示されていない場合は、以下の操作でリボンに表示させます（大学のパソコンはシャットダウンの度に初期化されるので、毎回この操作を行う必要があります）。</li>
 </ul>
 <p>　ファイル → その他 → オプション → アドイン → 下の「管理」で「Excel アドイン」を選んで「設定」→「分析ツール」にチェック → OK</p>
@@ -817,7 +867,7 @@ P\left\{-1.96 \leqq \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \leqq 1.96\rig
 <img src="images/B02/B02-8.png" id="fig-B02-8" class="img-fluid figure-img" style="width:100.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B02-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-図&nbsp;17.8
+図&nbsp;17.9
 </figcaption>
 </figure>
 </div>
