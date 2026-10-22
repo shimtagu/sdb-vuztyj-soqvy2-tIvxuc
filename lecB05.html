@@ -426,8 +426,8 @@ window.Quarto = {
 ・帰無仮説と対立仮説、有意水準と棄却域、検定統計量とP値、エクセルでの計算方法</p>
 <section id="仮説検定の目的" class="level2" data-number="18.1">
 <h2 data-number="18.1" class="anchored" data-anchor-id="仮説検定の目的"><span class="header-section-number">18.1</span> 仮説検定の目的</h2>
-<p>あなたは東京の飲食店でアルバイトをしています。時給は 1,000円 です。大学の友人と話をしていたら、時給が1,200円の人、900円の人と様々でした。自分の時給が、東京都内で働く大学生の平均時給とは違うのではないかと考えました。</p>
-<p>そこで、（東京でバイトしている大学生の時給を全て調べることはできないので）東京でバイトしている大学生から無作為に標本（サンプル）を抽出して調べることにしました。この標本から得られた推定量（標本平均）を使い、自分の時給（1,000円）が、東京で働く大学生の平均時給と違うかどうかを調べます（<strong>検定</strong>します）。</p>
+<p>あなたは東京の飲食店でアルバイトをしています。時給は 1,000円 です。店長からは東京都の飲食店で働く大学生の平均の時給にしていると言われました。しかしながら、大学の友人と話をしていたら、時給が1,200円の人、900円の人と様々でした。自分の時給が、東京都の飲食店で働く大学生の平均時給とは違うのではないかと考え始めました。</p>
+<p>そこで、（東京でバイトしている大学生の時給を全て調べることはできないので）東京でバイトしている大学生から無作為に標本（サンプル）を抽出して調べることにしました。この標本から得られた推定量（標本平均）を使い、自分の時給（1,000円）が、東京でバイトしている大学生の平均時給と違うかどうかを調べます（<strong>検定</strong>します）。</p>
 </section>
 <section id="仮説検定の手順" class="level2" data-number="18.2">
 <h2 data-number="18.2" class="anchored" data-anchor-id="仮説検定の手順"><span class="header-section-number">18.2</span> 仮説検定の手順</h2>
@@ -436,7 +436,7 @@ window.Quarto = {
 <ul>
 <li>自分が証明したいことの仮説を設定します。</li>
 </ul></li>
-<li><strong>有意水準（臨界値 critical value）を決める。</strong>
+<li><strong>有意水準を決める（これで臨界値 critical value が決まる）。</strong>
 <ul>
 <li>どの程度の確からしさで結論を出すかを決めます。</li>
 </ul></li>
@@ -455,18 +455,18 @@ window.Quarto = {
 <section id="帰無仮説と対立仮説" class="level2" data-number="18.3">
 <h2 data-number="18.3" class="anchored" data-anchor-id="帰無仮説と対立仮説"><span class="header-section-number">18.3</span> 帰無仮説と対立仮説</h2>
 <p><span class="orange"><strong>手順1：仮説を設定する</strong></span></p>
-<p>自分の時給（1,000円）が、東京で働く大学生の平均時給と違うかどうかを調べます（検定します）。</p>
+<p>自分の時給（1,000円）が、東京でバイトしている大学生の平均時給と違うかどうかを調べます（検定します）。</p>
 <ul>
 <li><strong>帰無仮説</strong>
 <ul>
-<li>東京都内の大学生の平均時給が1,000円であると仮定します。</li>
+<li>東京でバイトしている大学生の平均時給が1,000円であると仮定します。</li>
 <li>これを<span class="orange">帰無仮説（null hypothesis, <span class="math inline">\(H_0\)</span>）</span>といいます。</li>
-<li>あえて自分が主張したいことと反対のことを帰無仮説として提示し、その仮説が正しくないことを示す（つまり仮説を無に帰す）ことで、自分の主張の正当性を示します。</li>
+<li>あえて自分が主張したいことと反対のこと（大学生の平均時給が1,000円である）を帰無仮説として提示し、その仮説が正しくないことを示す（つまり仮説を無に帰す）ことで、自分の主張の正当性を示します。</li>
 <li>そして、この仮説が正しいかどうかを検証（検定）します。</li>
 </ul></li>
 <li><strong>対立仮説</strong>
 <ul>
-<li>東京都内の大学生の平均時給は1,000円ではない、とします。</li>
+<li>東京でバイトしている大学生の平均時給は1,000円ではない、とします。</li>
 <li>これを<span class="orange">対立仮説（alternative hypothesis, <span class="math inline">\(H_1\)</span>）</span>といいます。</li>
 <li>帰無仮説が正しくなかった場合（帰無仮説が棄却された場合）に、対立仮説が正しいと判断されます。</li>
 </ul></li>
@@ -476,16 +476,16 @@ window.Quarto = {
 <h2 data-number="18.4" class="anchored" data-anchor-id="仮説検定の論理"><span class="header-section-number">18.4</span> 仮説検定の論理</h2>
 <p>対立仮説（<span class="math inline">\(H_1\)</span>）の正しさを主張するために、対立仮説とは反対の帰無仮説（<span class="math inline">\(H_0\)</span>）の正しさを否定します。</p>
 <ul>
-<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京都内の大学生の平均時給は1,000円である</li>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京でバイトしている大学生の平均時給は1,000円である</li>
 </ul>
 <p><span class="math display">\[
-H_0: \mu = \mu_0 \quad \rightarrow \quad \mu = 1{,}000
+H_0: \mu = \mu_0 \quad \text{つまり} \quad \mu = 1{,}000
 \]</span></p>
 <ul>
-<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円ではない</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京でバイトしている大学生の平均時給は1,000円ではない</li>
 </ul>
 <p><span class="math display">\[
-H_1: \mu \neq \mu_0 \quad \rightarrow \quad \mu \neq 1{,}000
+H_1: \mu \neq \mu_0 \quad \text{つまり} \quad \mu \neq 1{,}000
 \]</span></p>
 <p>ここで、<span class="math inline">\(\mu_0\)</span> は帰無仮説で仮定する母平均の値（ここでは1,000）を表します。</p>
 <div class="my-note callout callout-style-default callout-note callout-titled">
@@ -500,14 +500,14 @@ H_1: \mu \neq \mu_0 \quad \rightarrow \quad \mu \neq 1{,}000
 <div class="callout-body-container callout-body">
 <p>帰無仮説では母数（母平均）に一つの値を仮定し、対立仮説では一つの値を仮定しません。</p>
 <ul>
-<li><span class="math inline">\(H_0: \mu = \mu_0 \ \rightarrow \ \mu = 1{,}000\)</span>（母平均は1,000である）</li>
-<li><span class="math inline">\(H_1: \mu \neq \mu_0 \ \rightarrow \ \mu \neq 1{,}000\)</span>（母平均は1,000以外である）</li>
+<li><span class="math inline">\(H_0: \mu = \mu_0 \ \text{つまり} \ \mu = 1{,}000\)</span>（母平均は1,000である）</li>
+<li><span class="math inline">\(H_1: \mu \neq \mu_0 \ \text{つまり} \ \mu \neq 1{,}000\)</span>（母平均は1,000以外である）</li>
 </ul>
 <p>したがって、帰無仮説が棄却されても、母平均が一つの値に分かるわけではありません。</p>
 <p>それなら、以下のように帰無仮説と対立仮説を入れ替えて検定すれば良い、と考えることもできます。</p>
 <ul>
-<li><span class="math inline">\(H_0: \mu \neq \mu_0 \ \rightarrow \ \mu \neq 1{,}000\)</span>（母平均は1,000以外である）</li>
-<li><span class="math inline">\(H_1: \mu = \mu_0 \ \rightarrow \ \mu = 1{,}000\)</span>（母平均は1,000である）</li>
+<li><span class="math inline">\(H_0: \mu \neq \mu_0 \ \text{つまり} \ \mu \neq 1{,}000\)</span>（母平均は1,000以外である）</li>
+<li><span class="math inline">\(H_1: \mu = \mu_0 \ \text{つまり} \ \mu = 1{,}000\)</span>（母平均は1,000である）</li>
 </ul>
 <p>しかし、これだと母平均が1,000以外である無数の場合をすべて検証しなければならなくなり、これは不可能です。帰無仮説には、計算の基準にできる「一つの値」を置く必要があります。</p>
 </div>
@@ -538,10 +538,10 @@ H_1: \mu \neq \mu_0 \quad \rightarrow \quad \mu \neq 1{,}000
 <div style="margin-top: 2.0em;">
 
 </div>
-<div id="fig-B05-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<div id="fig-B05-2" class="quarto-float quarto-figure quarto-figure-center anchored" width="70%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B05-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B05/B05-2.png" id="fig-B05-2" class="img-fluid figure-img" style="width:50.0%">
+<img src="images/B05/B05-2.png" id="fig-B05-2" class="img-fluid figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 図&nbsp;18.2
@@ -559,10 +559,11 @@ t = \frac{\bar{X} - \color{#E36C09}{\mu}}{\frac{s}{\sqrt{n}}}
 <p><span class="math display">\[
 t = \frac{\bar{X} - \color{#E36C09}{1{,}000}}{\frac{s}{\sqrt{n}}}
 \]</span></p>
-<p>この <span class="math inline">\(t\)</span> が分布のどこにあるかを確認し、これがどの程度あり得ることかを判定します。</p>
+<p>実際の計算では、手元の標本から求めた標本平均（観測値）<span class="math inline">\(\bar{x}\)</span> を代入します（前回と同じく、確率変数は大文字 <span class="math inline">\(\bar{X}\)</span>、観測値は小文字 <span class="math inline">\(\bar{x}\)</span> で書きます）。</p>
+<p>この <span class="math inline">\(t\)</span> が分布のどこにあるかを確認し、これがどの程度あり得ることかを判定します。（つまり、母平均が1,000円だったと仮定した際に、起こり得る確率を求め、母平均が1,000円という仮説を棄却できるかを判定します。）</p>
 <ul>
-<li>標本から得られた <span class="math inline">\(\bar{X}\)</span> と、我々が母平均と仮定した 1,000 が近ければ、<span class="math inline">\(t\)</span> は分布の真ん中（ゼロ）に近くなります。この場合は十分あり得ることと考えられるので、帰無仮説は棄却されません。</li>
-<li>逆に、<span class="math inline">\(\bar{X}\)</span> と 1,000 が遠い場合は、<span class="math inline">\(t\)</span> が分布の端に近くなります。この場合はあまりないことだと考えられるので、その原因は帰無仮説が間違っていることにあると考え、帰無仮説を棄却し、対立仮説が正しいと判断します。</li>
+<li>標本から得られた標本平均 <span class="math inline">\(\bar{x}\)</span> と、我々が母平均と仮定した 1,000 が近ければ、<span class="math inline">\(t\)</span> は分布の真ん中（ゼロ）に近くなります。この場合は十分あり得ることと考えられるので、帰無仮説は棄却されません。</li>
+<li>逆に、<span class="math inline">\(\bar{x}\)</span> と 1,000 が遠い場合は、<span class="math inline">\(t\)</span> が分布の端に近くなります。この場合はあまりないことだと考えられるので、その原因は帰無仮説が間違っていることにあると考え、帰無仮説を棄却し、対立仮説が正しいと判断します。</li>
 </ul>
 <div style="margin-top: 2.0em;">
 
@@ -582,28 +583,32 @@ t = \frac{\bar{X} - \color{#E36C09}{1{,}000}}{\frac{s}{\sqrt{n}}}
 <h2 data-number="18.7" class="anchored" data-anchor-id="具体的な計算"><span class="header-section-number">18.7</span> 具体的な計算</h2>
 <p>仮に、標本サイズ <span class="math inline">\(n = 4\)</span> の標本から、以下のような推定量が得られたとします。</p>
 <ul>
-<li>標本平均 <span class="math inline">\(\bar{X} = 1{,}020\)</span></li>
+<li>標本平均 <span class="math inline">\(\bar{x} = 1{,}020\)</span></li>
 <li>標本（不偏）分散 <span class="math inline">\(s^2 = 100\)</span>（したがって <span class="math inline">\(s = 10\)</span>）</li>
 </ul>
 <p>このとき、検定統計量は次のようになります。</p>
 <p><span class="math display">\[
-t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\frac{10}{\sqrt{4}}} = \frac{20}{\frac{10}{2}} = \frac{20}{5} = 4
+t = \frac{\bar{x} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\frac{10}{\sqrt{4}}} = \frac{20}{\frac{10}{2}} = \frac{20}{5} = 4
 \]</span></p>
 <p>そして、これは自由度 <span class="math inline">\(n - 1 = 4 - 1 = 3\)</span> の <span class="math inline">\(t\)</span> 分布に従うはずなので、自由度3の <span class="math inline">\(t\)</span> 分布でその位置（<span class="math inline">\(t = 4\)</span>）を確認すると、下の図のようにかなり端になります。</p>
-<p>これはあまりないことだと考えられるので、帰無仮説が間違っていたと判断されます。つまり、母平均は1,000ではないと判断されます。</p>
 <div style="margin-top: 2.0em;">
 
 </div>
-<div id="fig-B05-4" class="quarto-float quarto-figure quarto-figure-center anchored" width="50%">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-B05-4" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="70%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B05-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B05/B05-4.png" id="fig-B05-4" class="img-fluid figure-img" style="width:50.0%">
+<img src="lecB05_files/figure-html/fig-B05-4-1.png" id="fig-B05-4" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:70.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 図&nbsp;18.4
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<p>これはあまりないことだと考えられるので、帰無仮説が間違っていたと判断されます。つまり、母平均は1,000ではないと判断されます。</p>
 <p>では、「かなり端」とは、どこから先のことでしょうか。これを決めるのが、次の棄却域と有意水準です。</p>
 </section>
 <section id="棄却域" class="level2" data-number="18.8">
@@ -613,10 +618,10 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <div style="margin-top: 2.0em;">
 
 </div>
-<div id="fig-B05-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<div id="fig-B05-5" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B05-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B05/B05-5.png" id="fig-B05-5" class="img-fluid figure-img" style="width:60.0%">
+<img src="images/B05/B05-5.png" id="fig-B05-5" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 図&nbsp;18.5
@@ -634,10 +639,10 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <div style="margin-top: 2.0em;">
 
 </div>
-<div id="fig-B05-9" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<div id="fig-B05-9" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B05-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B05/B05-9.png" id="fig-B05-9" class="img-fluid figure-img" style="width:60.0%">
+<img src="images/B05/B05-9.png" id="fig-B05-9" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 図&nbsp;18.6
@@ -655,10 +660,10 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <div style="margin-top: 1.5em;">
 
 </div>
-<div id="fig-B05-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<div id="fig-B05-6" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B05-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B05/B05-6.png" id="fig-B05-6" class="img-fluid figure-img" style="width:60.0%">
+<img src="images/B05/B05-6.png" id="fig-B05-6" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 図&nbsp;18.7
@@ -676,10 +681,10 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <div style="margin-top: 1.5em;">
 
 </div>
-<div id="fig-B05-7" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<div id="fig-B05-7" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B05-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B05/B05-7.png" id="fig-B05-7" class="img-fluid figure-img" style="width:60.0%">
+<img src="images/B05/B05-7.png" id="fig-B05-7" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 図&nbsp;18.8
@@ -697,10 +702,10 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <div style="margin-top: 1.5em;">
 
 </div>
-<div id="fig-B05-8" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<div id="fig-B05-8" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B05-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B05/B05-8.png" id="fig-B05-8" class="img-fluid figure-img" style="width:60.0%">
+<img src="images/B05/B05-8.png" id="fig-B05-8" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 図&nbsp;18.9
@@ -716,7 +721,7 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <li><strong>P値</strong>
 <ul>
 <li>帰無仮説が正しいと仮定したときに、実際に計算した <span class="math inline">\(t\)</span> 値と同じか、それよりも極端な値が得られる確率です。</li>
-<li>両側検定の場合は、分布の <span class="math inline">\(-|t|\)</span> より左側と、<span class="math inline">\(|t|\)</span> より右側の面積を合計したものになります（下の図の斜線部分）。</li>
+<li>両側検定の場合は、分布の <span class="math inline">\(-|t|\)</span> より左側と、<span class="math inline">\(|t|\)</span> より右側の面積を合計したものになります（下の図のオレンジ部分）。</li>
 </ul></li>
 <li><strong>判断の方法</strong>
 <ul>
@@ -732,24 +737,28 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <div style="margin-top: 2.0em;">
 
 </div>
-<div id="fig-B05-10" class="quarto-float quarto-figure quarto-figure-center anchored" width="60%">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-B05-10" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="98%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-B05-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/B05/B05-10.png" id="fig-B05-10" class="img-fluid figure-img" style="width:60.0%">
+<img src="lecB05_files/figure-html/fig-B05-10-1.png" id="fig-B05-10" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" style="width:98.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-B05-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 図&nbsp;18.10
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
 <p><br></p>
 <p><strong>「具体的な計算」の例で確かめてみましょう</strong></p>
-<p><span class="math inline">\(n = 4\)</span>（自由度3）で <span class="math inline">\(t = 4\)</span> だった例について、P値の部分を塗ったのが下の図です。オレンジの斜線部分の面積がP値、点線は有意水準5%の臨界値です。自由度や <span class="math inline">\(t\)</span> 値を変えて、P値や臨界値がどう変わるかも確かめてみましょう。</p>
+<p><span class="math inline">\(n = 4\)</span>（自由度3）で <span class="math inline">\(t = 4\)</span> だった例について、P値の部分を塗ったのが下の図です。オレンジの部分の面積がP値、点線は有意水準5%の臨界値です。自由度や <span class="math inline">\(t\)</span> 値を変えて、P値や臨界値がどう変わるかも確かめてみましょう。</p>
 <div class="cell">
 <details class="code-fold hidden">
 <summary>コードを表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="239" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 238;"><span id="cb1-239"><a href="#cb1-239"></a>viewof dfP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"自由度"</span>})</span>
-<span id="cb1-240"><a href="#cb1-240"></a>viewof tP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"t 値"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="295" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 294;"><span id="cb1-295"><a href="#cb1-295"></a>viewof dfP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">5</span><span class="op">,</span> <span class="dv">10</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"自由度"</span>})</span>
+<span id="cb1-296"><a href="#cb1-296"></a>viewof tP <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span> {<span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"t 値"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -769,71 +778,71 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <div class="cell">
 <details class="code-fold hidden">
 <summary>コードを表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="245" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 244;"><span id="cb2-245"><a href="#cb2-245"></a>tTools <span class="op">=</span> {</span>
-<span id="cb2-246"><a href="#cb2-246"></a>  <span class="co">// 対数ガンマ関数（Lanczos近似）</span></span>
-<span id="cb2-247"><a href="#cb2-247"></a>  <span class="kw">function</span> <span class="fu">lgamma</span>(z) {</span>
-<span id="cb2-248"><a href="#cb2-248"></a>    <span class="kw">const</span> g <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
-<span id="cb2-249"><a href="#cb2-249"></a>    <span class="kw">const</span> c <span class="op">=</span> [<span class="fl">0.99999999999980993</span><span class="op">,</span> <span class="fl">676.5203681218851</span><span class="op">,</span> <span class="op">-</span><span class="fl">1259.1392167224028</span><span class="op">,</span></span>
-<span id="cb2-250"><a href="#cb2-250"></a>      <span class="fl">771.32342877765313</span><span class="op">,</span> <span class="op">-</span><span class="fl">176.61502916214059</span><span class="op">,</span> <span class="fl">12.507343278686905</span><span class="op">,</span></span>
-<span id="cb2-251"><a href="#cb2-251"></a>      <span class="op">-</span><span class="fl">0.13857109526572012</span><span class="op">,</span> <span class="fl">9.9843695780195716e-6</span><span class="op">,</span> <span class="fl">1.5056327351493116e-7</span>]<span class="op">;</span></span>
-<span id="cb2-252"><a href="#cb2-252"></a>    <span class="cf">if</span> (z <span class="op">&lt;</span> <span class="fl">0.5</span>) <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> z)) <span class="op">-</span> <span class="fu">lgamma</span>(<span class="dv">1</span> <span class="op">-</span> z)<span class="op">;</span></span>
-<span id="cb2-253"><a href="#cb2-253"></a>    z <span class="op">-=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb2-254"><a href="#cb2-254"></a>    <span class="kw">let</span> x <span class="op">=</span> c[<span class="dv">0</span>]<span class="op">;</span></span>
-<span id="cb2-255"><a href="#cb2-255"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> g <span class="op">+</span> <span class="dv">2</span><span class="op">;</span> i<span class="op">++</span>) x <span class="op">+=</span> c[i] <span class="op">/</span> (z <span class="op">+</span> i)<span class="op">;</span></span>
-<span id="cb2-256"><a href="#cb2-256"></a>    <span class="kw">const</span> t <span class="op">=</span> z <span class="op">+</span> g <span class="op">+</span> <span class="fl">0.5</span><span class="op">;</span></span>
-<span id="cb2-257"><a href="#cb2-257"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">+</span> (z <span class="op">+</span> <span class="fl">0.5</span>) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(t) <span class="op">-</span> t <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(x)<span class="op">;</span></span>
-<span id="cb2-258"><a href="#cb2-258"></a>  }</span>
-<span id="cb2-259"><a href="#cb2-259"></a>  <span class="co">// 不完全ベータ関数（連分数展開）</span></span>
-<span id="cb2-260"><a href="#cb2-260"></a>  <span class="kw">function</span> <span class="fu">betacf</span>(a<span class="op">,</span> b<span class="op">,</span> x) {</span>
-<span id="cb2-261"><a href="#cb2-261"></a>    <span class="kw">const</span> FPMIN <span class="op">=</span> <span class="fl">1e-300</span><span class="op">;</span></span>
-<span id="cb2-262"><a href="#cb2-262"></a>    <span class="kw">let</span> qab <span class="op">=</span> a <span class="op">+</span> b<span class="op">,</span> qap <span class="op">=</span> a <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> qam <span class="op">=</span> a <span class="op">-</span> <span class="dv">1</span><span class="op">,</span> c <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> d <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> qab <span class="op">*</span> x <span class="op">/</span> qap<span class="op">;</span></span>
-<span id="cb2-263"><a href="#cb2-263"></a>    <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
-<span id="cb2-264"><a href="#cb2-264"></a>    d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span></span>
-<span id="cb2-265"><a href="#cb2-265"></a>    <span class="kw">let</span> h <span class="op">=</span> d<span class="op">;</span></span>
-<span id="cb2-266"><a href="#cb2-266"></a>    <span class="cf">for</span> (<span class="kw">let</span> m <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> m <span class="op">&lt;=</span> <span class="dv">200</span><span class="op">;</span> m<span class="op">++</span>) {</span>
-<span id="cb2-267"><a href="#cb2-267"></a>      <span class="kw">const</span> m2 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> m<span class="op">;</span></span>
-<span id="cb2-268"><a href="#cb2-268"></a>      <span class="kw">let</span> aa <span class="op">=</span> m <span class="op">*</span> (b <span class="op">-</span> m) <span class="op">*</span> x <span class="op">/</span> ((qam <span class="op">+</span> m2) <span class="op">*</span> (a <span class="op">+</span> m2))<span class="op">;</span></span>
-<span id="cb2-269"><a href="#cb2-269"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">*</span> d<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
-<span id="cb2-270"><a href="#cb2-270"></a>      c <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">/</span> c<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(c) <span class="op">&lt;</span> FPMIN) c <span class="op">=</span> FPMIN<span class="op">;</span></span>
-<span id="cb2-271"><a href="#cb2-271"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span> h <span class="op">*=</span> d <span class="op">*</span> c<span class="op">;</span></span>
-<span id="cb2-272"><a href="#cb2-272"></a>      aa <span class="op">=</span> <span class="op">-</span>(a <span class="op">+</span> m) <span class="op">*</span> (qab <span class="op">+</span> m) <span class="op">*</span> x <span class="op">/</span> ((a <span class="op">+</span> m2) <span class="op">*</span> (qap <span class="op">+</span> m2))<span class="op">;</span></span>
-<span id="cb2-273"><a href="#cb2-273"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">*</span> d<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
-<span id="cb2-274"><a href="#cb2-274"></a>      c <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">/</span> c<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(c) <span class="op">&lt;</span> FPMIN) c <span class="op">=</span> FPMIN<span class="op">;</span></span>
-<span id="cb2-275"><a href="#cb2-275"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span></span>
-<span id="cb2-276"><a href="#cb2-276"></a>      <span class="kw">const</span> del <span class="op">=</span> d <span class="op">*</span> c<span class="op">;</span></span>
-<span id="cb2-277"><a href="#cb2-277"></a>      h <span class="op">*=</span> del<span class="op">;</span></span>
-<span id="cb2-278"><a href="#cb2-278"></a>      <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(del <span class="op">-</span> <span class="dv">1</span>) <span class="op">&lt;</span> <span class="fl">1e-14</span>) <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb2-279"><a href="#cb2-279"></a>    }</span>
-<span id="cb2-280"><a href="#cb2-280"></a>    <span class="cf">return</span> h<span class="op">;</span></span>
-<span id="cb2-281"><a href="#cb2-281"></a>  }</span>
-<span id="cb2-282"><a href="#cb2-282"></a>  <span class="kw">function</span> <span class="fu">ibeta</span>(x<span class="op">,</span> a<span class="op">,</span> b) {</span>
-<span id="cb2-283"><a href="#cb2-283"></a>    <span class="cf">if</span> (x <span class="op">&lt;=</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-284"><a href="#cb2-284"></a>    <span class="cf">if</span> (x <span class="op">&gt;=</span> <span class="dv">1</span>) <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb2-285"><a href="#cb2-285"></a>    <span class="kw">const</span> bt <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="fu">lgamma</span>(a <span class="op">+</span> b) <span class="op">-</span> <span class="fu">lgamma</span>(a) <span class="op">-</span> <span class="fu">lgamma</span>(b) <span class="op">+</span> a <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(x) <span class="op">+</span> b <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">-</span> x))<span class="op">;</span></span>
-<span id="cb2-286"><a href="#cb2-286"></a>    <span class="cf">return</span> x <span class="op">&lt;</span> (a <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> (a <span class="op">+</span> b <span class="op">+</span> <span class="dv">2</span>) <span class="op">?</span> bt <span class="op">*</span> <span class="fu">betacf</span>(a<span class="op">,</span> b<span class="op">,</span> x) <span class="op">/</span> a <span class="op">:</span> <span class="dv">1</span> <span class="op">-</span> bt <span class="op">*</span> <span class="fu">betacf</span>(b<span class="op">,</span> a<span class="op">,</span> <span class="dv">1</span> <span class="op">-</span> x) <span class="op">/</span> b<span class="op">;</span></span>
-<span id="cb2-287"><a href="#cb2-287"></a>  }</span>
-<span id="cb2-288"><a href="#cb2-288"></a>  <span class="co">// t分布の確率密度</span></span>
-<span id="cb2-289"><a href="#cb2-289"></a>  <span class="kw">const</span> pdf <span class="op">=</span> (x<span class="op">,</span> v) <span class="kw">=&gt;</span></span>
-<span id="cb2-290"><a href="#cb2-290"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="fu">lgamma</span>((v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">-</span> <span class="fu">lgamma</span>(v <span class="op">/</span> <span class="dv">2</span>)) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(v <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">*</span></span>
-<span id="cb2-291"><a href="#cb2-291"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">1</span> <span class="op">+</span> x <span class="op">*</span> x <span class="op">/</span> v<span class="op">,</span> <span class="op">-</span>(v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
-<span id="cb2-292"><a href="#cb2-292"></a>  <span class="co">// 両側P値</span></span>
-<span id="cb2-293"><a href="#cb2-293"></a>  <span class="kw">const</span> p2 <span class="op">=</span> (t<span class="op">,</span> v) <span class="kw">=&gt;</span> <span class="fu">ibeta</span>(v <span class="op">/</span> (v <span class="op">+</span> t <span class="op">*</span> t)<span class="op">,</span> v <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
-<span id="cb2-294"><a href="#cb2-294"></a>  <span class="co">// 両側検定の臨界値（二分法）</span></span>
-<span id="cb2-295"><a href="#cb2-295"></a>  <span class="kw">const</span> crit <span class="op">=</span> (alpha<span class="op">,</span> v) <span class="kw">=&gt;</span> {</span>
-<span id="cb2-296"><a href="#cb2-296"></a>    <span class="kw">let</span> lo <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> hi <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
-<span id="cb2-297"><a href="#cb2-297"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">100</span><span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb2-298"><a href="#cb2-298"></a>      <span class="kw">const</span> m <span class="op">=</span> (lo <span class="op">+</span> hi) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb2-299"><a href="#cb2-299"></a>      <span class="cf">if</span> (<span class="fu">p2</span>(m<span class="op">,</span> v) <span class="op">&gt;</span> alpha) lo <span class="op">=</span> m<span class="op">;</span> <span class="cf">else</span> hi <span class="op">=</span> m<span class="op">;</span></span>
-<span id="cb2-300"><a href="#cb2-300"></a>    }</span>
-<span id="cb2-301"><a href="#cb2-301"></a>    <span class="cf">return</span> (lo <span class="op">+</span> hi) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
-<span id="cb2-302"><a href="#cb2-302"></a>  }<span class="op">;</span></span>
-<span id="cb2-303"><a href="#cb2-303"></a>  <span class="cf">return</span> {pdf<span class="op">,</span> p2<span class="op">,</span> crit}<span class="op">;</span></span>
-<span id="cb2-304"><a href="#cb2-304"></a>}</span>
-<span id="cb2-305"><a href="#cb2-305"></a></span>
-<span id="cb2-306"><a href="#cb2-306"></a>pValue <span class="op">=</span> tTools<span class="op">.</span><span class="fu">p2</span>(tP<span class="op">,</span> dfP)</span>
-<span id="cb2-307"><a href="#cb2-307"></a>tCrit <span class="op">=</span> tTools<span class="op">.</span><span class="fu">crit</span>(<span class="fl">0.05</span><span class="op">,</span> dfP)</span>
-<span id="cb2-308"><a href="#cb2-308"></a></span>
-<span id="cb2-309"><a href="#cb2-309"></a><span class="fu">md</span><span class="vs">`自由度 </span><span class="sc">${</span>dfP<span class="sc">}</span><span class="vs">　t = </span><span class="sc">${</span>tP<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">　**P値（両側）= </span><span class="sc">${</span>pValue<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">**　臨界値（両側・5%）= ±</span><span class="sc">${</span>tCrit<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">　→　</span><span class="sc">${</span>pValue <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="op">?</span> <span class="st">"有意水準5%で帰無仮説を**棄却します**"</span> <span class="op">:</span> <span class="st">"有意水準5%で帰無仮説を**棄却しません**"</span><span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="301" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 300;"><span id="cb2-301"><a href="#cb2-301"></a>tTools <span class="op">=</span> {</span>
+<span id="cb2-302"><a href="#cb2-302"></a>  <span class="co">// 対数ガンマ関数（Lanczos近似）</span></span>
+<span id="cb2-303"><a href="#cb2-303"></a>  <span class="kw">function</span> <span class="fu">lgamma</span>(z) {</span>
+<span id="cb2-304"><a href="#cb2-304"></a>    <span class="kw">const</span> g <span class="op">=</span> <span class="dv">7</span><span class="op">;</span></span>
+<span id="cb2-305"><a href="#cb2-305"></a>    <span class="kw">const</span> c <span class="op">=</span> [<span class="fl">0.99999999999980993</span><span class="op">,</span> <span class="fl">676.5203681218851</span><span class="op">,</span> <span class="op">-</span><span class="fl">1259.1392167224028</span><span class="op">,</span></span>
+<span id="cb2-306"><a href="#cb2-306"></a>      <span class="fl">771.32342877765313</span><span class="op">,</span> <span class="op">-</span><span class="fl">176.61502916214059</span><span class="op">,</span> <span class="fl">12.507343278686905</span><span class="op">,</span></span>
+<span id="cb2-307"><a href="#cb2-307"></a>      <span class="op">-</span><span class="fl">0.13857109526572012</span><span class="op">,</span> <span class="fl">9.9843695780195716e-6</span><span class="op">,</span> <span class="fl">1.5056327351493116e-7</span>]<span class="op">;</span></span>
+<span id="cb2-308"><a href="#cb2-308"></a>    <span class="cf">if</span> (z <span class="op">&lt;</span> <span class="fl">0.5</span>) <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(<span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span> <span class="op">*</span> z)) <span class="op">-</span> <span class="fu">lgamma</span>(<span class="dv">1</span> <span class="op">-</span> z)<span class="op">;</span></span>
+<span id="cb2-309"><a href="#cb2-309"></a>    z <span class="op">-=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-310"><a href="#cb2-310"></a>    <span class="kw">let</span> x <span class="op">=</span> c[<span class="dv">0</span>]<span class="op">;</span></span>
+<span id="cb2-311"><a href="#cb2-311"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> g <span class="op">+</span> <span class="dv">2</span><span class="op">;</span> i<span class="op">++</span>) x <span class="op">+=</span> c[i] <span class="op">/</span> (z <span class="op">+</span> i)<span class="op">;</span></span>
+<span id="cb2-312"><a href="#cb2-312"></a>    <span class="kw">const</span> t <span class="op">=</span> z <span class="op">+</span> g <span class="op">+</span> <span class="fl">0.5</span><span class="op">;</span></span>
+<span id="cb2-313"><a href="#cb2-313"></a>    <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">2</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">+</span> (z <span class="op">+</span> <span class="fl">0.5</span>) <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(t) <span class="op">-</span> t <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(x)<span class="op">;</span></span>
+<span id="cb2-314"><a href="#cb2-314"></a>  }</span>
+<span id="cb2-315"><a href="#cb2-315"></a>  <span class="co">// 不完全ベータ関数（連分数展開）</span></span>
+<span id="cb2-316"><a href="#cb2-316"></a>  <span class="kw">function</span> <span class="fu">betacf</span>(a<span class="op">,</span> b<span class="op">,</span> x) {</span>
+<span id="cb2-317"><a href="#cb2-317"></a>    <span class="kw">const</span> FPMIN <span class="op">=</span> <span class="fl">1e-300</span><span class="op">;</span></span>
+<span id="cb2-318"><a href="#cb2-318"></a>    <span class="kw">let</span> qab <span class="op">=</span> a <span class="op">+</span> b<span class="op">,</span> qap <span class="op">=</span> a <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> qam <span class="op">=</span> a <span class="op">-</span> <span class="dv">1</span><span class="op">,</span> c <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> d <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> qab <span class="op">*</span> x <span class="op">/</span> qap<span class="op">;</span></span>
+<span id="cb2-319"><a href="#cb2-319"></a>    <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-320"><a href="#cb2-320"></a>    d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span></span>
+<span id="cb2-321"><a href="#cb2-321"></a>    <span class="kw">let</span> h <span class="op">=</span> d<span class="op">;</span></span>
+<span id="cb2-322"><a href="#cb2-322"></a>    <span class="cf">for</span> (<span class="kw">let</span> m <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> m <span class="op">&lt;=</span> <span class="dv">200</span><span class="op">;</span> m<span class="op">++</span>) {</span>
+<span id="cb2-323"><a href="#cb2-323"></a>      <span class="kw">const</span> m2 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> m<span class="op">;</span></span>
+<span id="cb2-324"><a href="#cb2-324"></a>      <span class="kw">let</span> aa <span class="op">=</span> m <span class="op">*</span> (b <span class="op">-</span> m) <span class="op">*</span> x <span class="op">/</span> ((qam <span class="op">+</span> m2) <span class="op">*</span> (a <span class="op">+</span> m2))<span class="op">;</span></span>
+<span id="cb2-325"><a href="#cb2-325"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">*</span> d<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-326"><a href="#cb2-326"></a>      c <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">/</span> c<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(c) <span class="op">&lt;</span> FPMIN) c <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-327"><a href="#cb2-327"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span> h <span class="op">*=</span> d <span class="op">*</span> c<span class="op">;</span></span>
+<span id="cb2-328"><a href="#cb2-328"></a>      aa <span class="op">=</span> <span class="op">-</span>(a <span class="op">+</span> m) <span class="op">*</span> (qab <span class="op">+</span> m) <span class="op">*</span> x <span class="op">/</span> ((a <span class="op">+</span> m2) <span class="op">*</span> (qap <span class="op">+</span> m2))<span class="op">;</span></span>
+<span id="cb2-329"><a href="#cb2-329"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">*</span> d<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(d) <span class="op">&lt;</span> FPMIN) d <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-330"><a href="#cb2-330"></a>      c <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> aa <span class="op">/</span> c<span class="op">;</span> <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(c) <span class="op">&lt;</span> FPMIN) c <span class="op">=</span> FPMIN<span class="op">;</span></span>
+<span id="cb2-331"><a href="#cb2-331"></a>      d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> d<span class="op">;</span></span>
+<span id="cb2-332"><a href="#cb2-332"></a>      <span class="kw">const</span> del <span class="op">=</span> d <span class="op">*</span> c<span class="op">;</span></span>
+<span id="cb2-333"><a href="#cb2-333"></a>      h <span class="op">*=</span> del<span class="op">;</span></span>
+<span id="cb2-334"><a href="#cb2-334"></a>      <span class="cf">if</span> (<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(del <span class="op">-</span> <span class="dv">1</span>) <span class="op">&lt;</span> <span class="fl">1e-14</span>) <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb2-335"><a href="#cb2-335"></a>    }</span>
+<span id="cb2-336"><a href="#cb2-336"></a>    <span class="cf">return</span> h<span class="op">;</span></span>
+<span id="cb2-337"><a href="#cb2-337"></a>  }</span>
+<span id="cb2-338"><a href="#cb2-338"></a>  <span class="kw">function</span> <span class="fu">ibeta</span>(x<span class="op">,</span> a<span class="op">,</span> b) {</span>
+<span id="cb2-339"><a href="#cb2-339"></a>    <span class="cf">if</span> (x <span class="op">&lt;=</span> <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-340"><a href="#cb2-340"></a>    <span class="cf">if</span> (x <span class="op">&gt;=</span> <span class="dv">1</span>) <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-341"><a href="#cb2-341"></a>    <span class="kw">const</span> bt <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="fu">lgamma</span>(a <span class="op">+</span> b) <span class="op">-</span> <span class="fu">lgamma</span>(a) <span class="op">-</span> <span class="fu">lgamma</span>(b) <span class="op">+</span> a <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(x) <span class="op">+</span> b <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log</span>(<span class="dv">1</span> <span class="op">-</span> x))<span class="op">;</span></span>
+<span id="cb2-342"><a href="#cb2-342"></a>    <span class="cf">return</span> x <span class="op">&lt;</span> (a <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> (a <span class="op">+</span> b <span class="op">+</span> <span class="dv">2</span>) <span class="op">?</span> bt <span class="op">*</span> <span class="fu">betacf</span>(a<span class="op">,</span> b<span class="op">,</span> x) <span class="op">/</span> a <span class="op">:</span> <span class="dv">1</span> <span class="op">-</span> bt <span class="op">*</span> <span class="fu">betacf</span>(b<span class="op">,</span> a<span class="op">,</span> <span class="dv">1</span> <span class="op">-</span> x) <span class="op">/</span> b<span class="op">;</span></span>
+<span id="cb2-343"><a href="#cb2-343"></a>  }</span>
+<span id="cb2-344"><a href="#cb2-344"></a>  <span class="co">// t分布の確率密度</span></span>
+<span id="cb2-345"><a href="#cb2-345"></a>  <span class="kw">const</span> pdf <span class="op">=</span> (x<span class="op">,</span> v) <span class="kw">=&gt;</span></span>
+<span id="cb2-346"><a href="#cb2-346"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="fu">lgamma</span>((v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>) <span class="op">-</span> <span class="fu">lgamma</span>(v <span class="op">/</span> <span class="dv">2</span>)) <span class="op">/</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(v <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>) <span class="op">*</span></span>
+<span id="cb2-347"><a href="#cb2-347"></a>    <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">1</span> <span class="op">+</span> x <span class="op">*</span> x <span class="op">/</span> v<span class="op">,</span> <span class="op">-</span>(v <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span>)<span class="op">;</span></span>
+<span id="cb2-348"><a href="#cb2-348"></a>  <span class="co">// 両側P値</span></span>
+<span id="cb2-349"><a href="#cb2-349"></a>  <span class="kw">const</span> p2 <span class="op">=</span> (t<span class="op">,</span> v) <span class="kw">=&gt;</span> <span class="fu">ibeta</span>(v <span class="op">/</span> (v <span class="op">+</span> t <span class="op">*</span> t)<span class="op">,</span> v <span class="op">/</span> <span class="dv">2</span><span class="op">,</span> <span class="fl">0.5</span>)<span class="op">;</span></span>
+<span id="cb2-350"><a href="#cb2-350"></a>  <span class="co">// 両側検定の臨界値（二分法）</span></span>
+<span id="cb2-351"><a href="#cb2-351"></a>  <span class="kw">const</span> crit <span class="op">=</span> (alpha<span class="op">,</span> v) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-352"><a href="#cb2-352"></a>    <span class="kw">let</span> lo <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> hi <span class="op">=</span> <span class="dv">100</span><span class="op">;</span></span>
+<span id="cb2-353"><a href="#cb2-353"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">100</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb2-354"><a href="#cb2-354"></a>      <span class="kw">const</span> m <span class="op">=</span> (lo <span class="op">+</span> hi) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-355"><a href="#cb2-355"></a>      <span class="cf">if</span> (<span class="fu">p2</span>(m<span class="op">,</span> v) <span class="op">&gt;</span> alpha) lo <span class="op">=</span> m<span class="op">;</span> <span class="cf">else</span> hi <span class="op">=</span> m<span class="op">;</span></span>
+<span id="cb2-356"><a href="#cb2-356"></a>    }</span>
+<span id="cb2-357"><a href="#cb2-357"></a>    <span class="cf">return</span> (lo <span class="op">+</span> hi) <span class="op">/</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb2-358"><a href="#cb2-358"></a>  }<span class="op">;</span></span>
+<span id="cb2-359"><a href="#cb2-359"></a>  <span class="cf">return</span> {pdf<span class="op">,</span> p2<span class="op">,</span> crit}<span class="op">;</span></span>
+<span id="cb2-360"><a href="#cb2-360"></a>}</span>
+<span id="cb2-361"><a href="#cb2-361"></a></span>
+<span id="cb2-362"><a href="#cb2-362"></a>pValue <span class="op">=</span> tTools<span class="op">.</span><span class="fu">p2</span>(tP<span class="op">,</span> dfP)</span>
+<span id="cb2-363"><a href="#cb2-363"></a>tCrit <span class="op">=</span> tTools<span class="op">.</span><span class="fu">crit</span>(<span class="fl">0.05</span><span class="op">,</span> dfP)</span>
+<span id="cb2-364"><a href="#cb2-364"></a></span>
+<span id="cb2-365"><a href="#cb2-365"></a><span class="fu">md</span><span class="vs">`自由度 </span><span class="sc">${</span>dfP<span class="sc">}</span><span class="vs">　t = </span><span class="sc">${</span>tP<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">　**P値（両側）= </span><span class="sc">${</span>pValue<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">**　臨界値（両側・5%）= ±</span><span class="sc">${</span>tCrit<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">　→　</span><span class="sc">${</span>pValue <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="op">?</span> <span class="st">"有意水準5%で帰無仮説を**棄却します**"</span> <span class="op">:</span> <span class="st">"有意水準5%で帰無仮説を**棄却しません**"</span><span class="sc">}</span><span class="vs">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -865,25 +874,25 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 </div>
 <details class="code-fold hidden">
 <summary>コードを表示</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="311" data-source-offset="-2378"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 310;"><span id="cb3-311"><a href="#cb3-311"></a>{</span>
-<span id="cb3-312"><a href="#cb3-312"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="op">-</span><span class="dv">6</span><span class="op">,</span> <span class="fl">6.001</span><span class="op">,</span> <span class="fl">0.02</span>)<span class="op">;</span></span>
-<span id="cb3-313"><a href="#cb3-313"></a>  <span class="kw">const</span> curve <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> tTools<span class="op">.</span><span class="fu">pdf</span>(x<span class="op">,</span> dfP)}))<span class="op">;</span></span>
-<span id="cb3-314"><a href="#cb3-314"></a>  <span class="kw">const</span> right <span class="op">=</span> curve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> tP)<span class="op">;</span></span>
-<span id="cb3-315"><a href="#cb3-315"></a>  <span class="kw">const</span> left <span class="op">=</span> curve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> <span class="op">-</span>tP)<span class="op">;</span></span>
-<span id="cb3-316"><a href="#cb3-316"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb3-317"><a href="#cb3-317"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">6</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"t"</span>}<span class="op">,</span></span>
-<span id="cb3-318"><a href="#cb3-318"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="fl">0.42</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"確率密度"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
-<span id="cb3-319"><a href="#cb3-319"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb3-320"><a href="#cb3-320"></a>      Plot<span class="op">.</span><span class="fu">areaY</span>(right<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.5</span>})<span class="op">,</span></span>
-<span id="cb3-321"><a href="#cb3-321"></a>      Plot<span class="op">.</span><span class="fu">areaY</span>(left<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.5</span>})<span class="op">,</span></span>
-<span id="cb3-322"><a href="#cb3-322"></a>      Plot<span class="op">.</span><span class="fu">line</span>(curve<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
-<span id="cb3-323"><a href="#cb3-323"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="op">-</span>tCrit<span class="op">,</span> tCrit]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
-<span id="cb3-324"><a href="#cb3-324"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="op">-</span>tP<span class="op">,</span> tP]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
-<span id="cb3-325"><a href="#cb3-325"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> tP<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="vs">`t = </span><span class="sc">${</span>tP<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">`</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span>})<span class="op">,</span></span>
-<span id="cb3-326"><a href="#cb3-326"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
-<span id="cb3-327"><a href="#cb3-327"></a>    ]</span>
-<span id="cb3-328"><a href="#cb3-328"></a>  })<span class="op">;</span></span>
-<span id="cb3-329"><a href="#cb3-329"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="367" data-source-offset="-2378"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 366;"><span id="cb3-367"><a href="#cb3-367"></a>{</span>
+<span id="cb3-368"><a href="#cb3-368"></a>  <span class="kw">const</span> xs <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="op">-</span><span class="dv">6</span><span class="op">,</span> <span class="fl">6.001</span><span class="op">,</span> <span class="fl">0.02</span>)<span class="op">;</span></span>
+<span id="cb3-369"><a href="#cb3-369"></a>  <span class="kw">const</span> curve <span class="op">=</span> xs<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> ({<span class="dt">x</span><span class="op">:</span> x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> tTools<span class="op">.</span><span class="fu">pdf</span>(x<span class="op">,</span> dfP)}))<span class="op">;</span></span>
+<span id="cb3-370"><a href="#cb3-370"></a>  <span class="kw">const</span> right <span class="op">=</span> curve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> tP)<span class="op">;</span></span>
+<span id="cb3-371"><a href="#cb3-371"></a>  <span class="kw">const</span> left <span class="op">=</span> curve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> <span class="op">-</span>tP)<span class="op">;</span></span>
+<span id="cb3-372"><a href="#cb3-372"></a>  <span class="cf">return</span> Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-373"><a href="#cb3-373"></a>    <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="op">-</span><span class="dv">6</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"t"</span>}<span class="op">,</span></span>
+<span id="cb3-374"><a href="#cb3-374"></a>    <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> <span class="fl">0.42</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"確率密度"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span>}<span class="op">,</span></span>
+<span id="cb3-375"><a href="#cb3-375"></a>    <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-376"><a href="#cb3-376"></a>      Plot<span class="op">.</span><span class="fu">areaY</span>(right<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.5</span>})<span class="op">,</span></span>
+<span id="cb3-377"><a href="#cb3-377"></a>      Plot<span class="op">.</span><span class="fu">areaY</span>(left<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.5</span>})<span class="op">,</span></span>
+<span id="cb3-378"><a href="#cb3-378"></a>      Plot<span class="op">.</span><span class="fu">line</span>(curve<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"steelblue"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span>})<span class="op">,</span></span>
+<span id="cb3-379"><a href="#cb3-379"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="op">-</span>tCrit<span class="op">,</span> tCrit]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
+<span id="cb3-380"><a href="#cb3-380"></a>      Plot<span class="op">.</span><span class="fu">ruleX</span>([<span class="op">-</span>tP<span class="op">,</span> tP]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb3-381"><a href="#cb3-381"></a>      Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> tP<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="vs">`t = </span><span class="sc">${</span>tP<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">`</span>}]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"#E36C09"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span>})<span class="op">,</span></span>
+<span id="cb3-382"><a href="#cb3-382"></a>      Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>])</span>
+<span id="cb3-383"><a href="#cb3-383"></a>    ]</span>
+<span id="cb3-384"><a href="#cb3-384"></a>  })<span class="op">;</span></span>
+<span id="cb3-385"><a href="#cb3-385"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -915,8 +924,8 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <h2 data-number="18.11" class="anchored" data-anchor-id="検定の結論"><span class="header-section-number">18.11</span> 検定の結論</h2>
 <p><span class="orange"><strong>手順5：検定の結論を出す</strong></span></p>
 <ul>
-<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京都内の大学生の平均時給は1,000円である</li>
-<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円ではない</li>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京でバイトしている大学生の平均時給は1,000円である</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京でバイトしている大学生の平均時給は1,000円ではない</li>
 </ul>
 <div style="margin-top: 1.0em;">
 
@@ -925,7 +934,7 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <li><strong>帰無仮説が棄却された場合</strong>
 <ul>
 <li>対立仮説が正しいと判断し、対立仮説をそのまま主張します。</li>
-<li>例：「東京都内の大学生の平均時給は1,000円ではない（有意水準5%）」</li>
+<li>例：「東京でバイトしている大学生の平均時給は1,000円ではない（有意水準5%）」</li>
 </ul></li>
 <li><strong>帰無仮説が棄却できなかった場合</strong>
 <ul>
@@ -933,12 +942,33 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <li>帰無仮説が棄却されないからといって、帰無仮説が正しい（平均時給が1,000円である）とは限りません。</li>
 </ul></li>
 </ul>
+<div class="my-note callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>前回（信頼区間）とのつながり
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>「具体的な計算」の例（<span class="math inline">\(n = 4\)</span>、<span class="math inline">\(\bar{x} = 1{,}020\)</span>、<span class="math inline">\(s = 10\)</span>）で、前回学んだ母平均の95%信頼区間を求めてみます（自由度3、<span class="math inline">\(t_{0.025}(3) = 3.182\)</span>）。</p>
+<p><span class="math display">\[
+1{,}020 \pm 3.182 \times \frac{10}{\sqrt{4}} = 1{,}020 \pm 15.9 \quad \rightarrow \quad [1{,}004.1,\ 1{,}035.9]
+\]</span></p>
+<p>この区間には1,000が含まれていません。一方、有意水準5%の両側検定では、帰無仮説 <span class="math inline">\(\mu = 1{,}000\)</span> が棄却されました。</p>
+<ul>
+<li>「<span class="math inline">\(\mu_0\)</span> が95%信頼区間に含まれない」ことと、「有意水準5%の両側検定で帰無仮説 <span class="math inline">\(\mu = \mu_0\)</span> が棄却される」ことは、同じことを表しています。</li>
+<li>99%信頼区間は <span class="math inline">\(1{,}020 \pm 5.841 \times 5 = [990.8,\ 1{,}049.2]\)</span> で、1,000を含みます。有意水準1%では棄却されなかった結果（「エクセルでの計算方法」参照）と一致します。</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="仮説検定の手順まとめ" class="level2" data-number="18.12">
 <h2 data-number="18.12" class="anchored" data-anchor-id="仮説検定の手順まとめ"><span class="header-section-number">18.12</span> 仮説検定の手順まとめ</h2>
 <ol type="1">
 <li>仮説を設定する。</li>
-<li>有意水準（臨界値 critical value）を決める。</li>
+<li>有意水準を決める（これで臨界値 critical value が決まる）。</li>
 <li>検定統計量 <span class="math inline">\(t\)</span> を求める（P値を計算する）。</li>
 <li>検定統計量と臨界値を比較する（P値と有意水準を比較する）。</li>
 <li>検定の結論を出す。</li>
@@ -949,28 +979,28 @@ t = \frac{\bar{X} - 1{,}000}{\frac{s}{\sqrt{n}}} = \frac{1{,}020 - 1{,}000}{\fra
 <p>これまでの検定は、対立仮説が「1,000円ではない」（高い場合と低い場合の両方）だったので、棄却域を分布の両側に置きました。これを<span class="orange">両側検定</span>といいます。</p>
 <p>対立仮説を「高い」または「低い」の一方だけにする場合は、棄却域を分布の片側だけに置きます。これを<span class="orange">片側検定</span>といいます。</p>
 <ul>
-<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京都内の大学生の平均時給は1,000円である</li>
+<li>帰無仮説（<span class="math inline">\(H_0\)</span>）：東京でバイトしている大学生の平均時給は1,000円である</li>
 </ul>
 <p><span class="math display">\[
-H_0: \mu = \mu_0 \quad \rightarrow \quad \mu = 1{,}000
+H_0: \mu = \mu_0 \quad つまり \quad \mu = 1{,}000
 \]</span></p>
 <ul>
-<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円ではない（両側検定）</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京でバイトしている大学生の平均時給は1,000円ではない（両側検定）</li>
 </ul>
 <p><span class="math display">\[
-H_1: \mu \neq \mu_0 \quad \rightarrow \quad \mu \neq 1{,}000
+H_1: \mu \neq \mu_0 \quad つまり \quad \mu \neq 1{,}000
 \]</span></p>
 <ul>
-<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円より高い（片側検定）</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京でバイトしている大学生の平均時給は1,000円より高い（片側検定）</li>
 </ul>
 <p><span class="math display">\[
-H_1: \mu &gt; \mu_0 \quad \rightarrow \quad \mu &gt; 1{,}000
+H_1: \mu &gt; \mu_0 \quad つまり \quad \mu &gt; 1{,}000
 \]</span></p>
 <ul>
-<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京都内の大学生の平均時給は1,000円より低い（片側検定）</li>
+<li>対立仮説（<span class="math inline">\(H_1\)</span>）：東京でバイトしている大学生の平均時給は1,000円より低い（片側検定）</li>
 </ul>
 <p><span class="math display">\[
-H_1: \mu &lt; \mu_0 \quad \rightarrow \quad \mu &lt; 1{,}000
+H_1: \mu &lt; \mu_0 \quad つまり \quad \mu &lt; 1{,}000
 \]</span></p>
 </section>
 <section id="片側検定を行う際の留意点" class="level2" data-number="18.14">
@@ -1014,7 +1044,7 @@ H_1: \mu &lt; \mu_0 \quad \rightarrow \quad \mu &lt; 1{,}000
 </section>
 <section id="エクセルでの計算方法" class="level2" data-number="18.15">
 <h2 data-number="18.15" class="anchored" data-anchor-id="エクセルでの計算方法"><span class="header-section-number">18.15</span> エクセルでの計算方法</h2>
-<p>「具体的な計算」の例（<span class="math inline">\(n = 4\)</span>、<span class="math inline">\(\bar{X} = 1{,}020\)</span>、<span class="math inline">\(s^2 = 100\)</span>）を、エクセルで計算してみます。</p>
+<p>「具体的な計算」の例（<span class="math inline">\(n = 4\)</span>、<span class="math inline">\(\bar{x} = 1{,}020\)</span>、<span class="math inline">\(s^2 = 100\)</span>）を、エクセルで計算してみます。</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1058,6 +1088,12 @@ H_1: \mu &lt; \mu_0 \quad \rightarrow \quad \mu &lt; 1{,}000
 <li><code>T.DIST.2T(t値の絶対値, 自由度)</code>：両側検定のP値を求めます。<span class="math inline">\(t\)</span> 値がマイナスのときはエラーになるので、<code>ABS</code> 関数で絶対値にして入れます。</li>
 <li>自由度は <span class="math inline">\(n - 1\)</span> なので、この例では3です。</li>
 </ul></li>
+<li><strong>t分布表で臨界値を読む場合</strong>
+<ul>
+<li>課題のシート「t分布のパーセント点表」は、表の上の確率が片側（上側）の確率 <span class="math inline">\(\alpha\)</span> です。両側検定では、有意水準を半分にした列を見ます。</li>
+<li>両側・有意水準10% → 0.05 の列、両側・有意水準5% → 0.025 の列、両側・有意水準1% → 0.005 の列。行は自由度 <span class="math inline">\(n - 1\)</span> です。</li>
+<li>例：自由度3、両側・有意水準5% → 0.025 の列の3の行 → 3.182（<code>T.INV.2T(0.05, 3)</code> と同じ値）。</li>
+</ul></li>
 <li><strong>結果の読み方</strong>
 <ul>
 <li>有意水準5%の場合：<span class="math inline">\(t = 4\)</span> は臨界値3.182より大きく、P値0.028は0.05より小さいので、帰無仮説は棄却されます。つまり、「平均時給は1,000円ではない」と判断されます。</li>
@@ -1071,7 +1107,7 @@ H_1: \mu &lt; \mu_0 \quad \rightarrow \quad \mu &lt; 1{,}000
 <li><strong>片側検定の場合</strong>
 <ul>
 <li>臨界値は <code>=T.INV(0.95, 3)</code>（右側検定・有意水準5%、結果は2.353）、P値は <code>=T.DIST.RT(4, 3)</code>（右側検定、結果は0.014）で求められます。</li>
-<li>片側検定のP値は、両側検定のP値のちょうど半分になります。</li>
+<li><span class="math inline">\(t\)</span> が対立仮説の向き（右側検定なら <span class="math inline">\(t &gt; 0\)</span>）にあるとき、片側検定のP値は両側検定のP値のちょうど半分になります。逆向きのときは、<span class="math inline">\(1 - (\text{両側のP値}) / 2\)</span> になり、帰無仮説は棄却されません。</li>
 </ul></li>
 </ul>
 
